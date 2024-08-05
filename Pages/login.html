@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulearn - Login/Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .custom-bg {
+            background-color: #0082A2; /* Custom background color */
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background-color: #fbbf24; /* Tailwind's yellow-500 */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-circle span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0082A2;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fbbf24;
+            margin-left: 10px;
+        }
+        .form-container {
+            min-height: 50vh; /* Minimum height of half the viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) { /* Tablet */
+            .logo-circle {
+                width: 40px;
+                height: 40px;
+            }
+            .logo-circle span {
+                font-size: 18px;
+            }
+            .logo-text {
+                font-size: 18px;
+            }
+        }
+        @media (max-width: 768px) { /* Mobile */
+            .logo-circle {
+                width: 30px;
+                height: 30px;
+            }
+            .logo-circle span {
+                font-size: 14px;
+            }
+            .logo-text {
+                font-size: 14px;
+                margin-left: 5px;
+            }
+        }
+    </style>
+</head>
+<body class="custom-bg h-screen flex items-center justify-center">
+    <div class="form-container w-full max-w-xs">
+        <div class="mb-8 text-center logo">
+            <div class="logo-circle">
+                <span>U</span>
+            </div>
+            <div class="logo-text">learn</div>
+        </div>
+        <!-- Login Form -->
+        <div id="login-form" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="login-username">
+                        Username
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="login-username" type="text" placeholder="Username">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="login-password">
+                        Password
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="login-password" type="password" placeholder="******************">
+                    <p class="text-red-500 text-xs italic hidden" id="login-error-message">Please choose a password.</p>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="validateLogin()">
+                        Sign In
+                    </button>
+                </div>
+            </form>
+            <p class="text-center text-gray-500 text-xs mt-4">
+                Don't have an account? <a href="#" onclick="toggleForms()" class="text-yellow-500">Sign Up</a>
+            </p>
+        </div>
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden">
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-username">
+                        Username
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="signup-username" type="text" placeholder="Username">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-email">
+                        Email
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="signup-email" type="email" placeholder="Email">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-password">
+                        Password
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="signup-password" type="password" placeholder="******************">
+                    <p class="text-red-500 text-xs italic hidden" id="signup-error-message">Please choose a password.</p>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="validateSignup()">
+                        Sign Up
+                    </button>
+                </div>
+            </form>
+            <p class="text-center text-gray-500 text-xs mt-4">
+                Already have an account? <a href="#" onclick="toggleForms()" class="text-yellow-500">Sign In</a>
+            </p>
+        </div>
+        <p class="text-center text-gray-500 text-xs">
+            &copy;2024 Ulearn. All rights reserved.
+        </p>
+    </div>
+    <script>
+        function validateLogin() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            const errorMessage = document.getElementById('login-error-message');
+
+            if (!username || !password) {
+                errorMessage.classList.remove('hidden');
+            } else {
+                errorMessage.classList.add('hidden');
+                alert('Login successful');
+                // Here you can add the code to handle the login, like redirecting to the dashboard or verifying credentials
+            }
+        }
+
+        function validateSignup() {
+            const username = document.getElementById('signup-username').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const errorMessage = document.getElementById('signup-error-message');
+
+            if (!username || !email || !password) {
+                errorMessage.classList.remove('hidden');
+            } else {
+                errorMessage.classList.add('hidden');
+                alert('Sign up successful');
+                // Here you can add the code to handle the sign-up, like redirecting to a welcome page or verifying credentials
+            }
+        }
+
+        function toggleForms() {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+
+            if (loginForm.classList.contains('hidden')) {
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+            } else {
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

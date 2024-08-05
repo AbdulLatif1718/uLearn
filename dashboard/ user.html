@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .custom-bg {
+            background-color: #0082A2; /* Custom background color */
+        }
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            background-color: #fbbf24; /* Tailwind's yellow-500 */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-circle span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0082A2;
+        }
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fbbf24;
+            margin-left: 10px;
+        }
+        .sidebar {
+            background-color: #e2dccb; /* Yellow sidebar */
+        }
+        .sidebar-item {
+            transition: background-color 0.3s;
+            color: #0082A2; /* Blue text */
+        }
+        .sidebar-item:hover {
+            background-color: #f8c74e; /* Slightly darker yellow on hover */
+        }
+        .top-nav {
+            background-color: #0082A2; /* Blue top nav */
+        }
+        .search-bar {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .blurred {
+            filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="h-screen flex">
+    <!-- Sidebar -->
+    <div class="sidebar w-64 h-full flex flex-col hidden md:flex" id="sidebar">
+        <div class="flex items-center justify-between p-4 bg-yellow-600">
+            <div class="flex items-center">
+                <div class="logo-circle">
+                    <span>U</span>
+                </div>
+                <div class="logo-text">learn</div>
+            </div>
+            <button class="md:hidden" id="close-sidebar">
+                <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 p-4">
+            <ul>
+                <li>
+                    <a href="#" class="block sidebar-item p-2 rounded">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="block sidebar-item p-2 rounded">Profile</a>
+                </li>
+                <li>
+                    <a href="#" class="block sidebar-item p-2 rounded">Settings</a>
+                </li>
+                <li>
+                    <a href="#" class="block sidebar-item p-2 rounded">Messages</a>
+                </li>
+                <li>
+                    <a href="#" class="block sidebar-item p-2 rounded">Notifications</a>
+                </li>
+                <li>
+                    <a href="#" class="block sidebar-item p-2 rounded">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col" id="main-content">
+        <!-- Top Nav -->
+        <header class="top-nav text-white p-4 flex items-center justify-between">
+            <div class="text-lg font-semibold">Welcome, User</div>
+            <div class="flex items-center">
+                <input type="text" placeholder="Search..." class="p-2 rounded search-bar hidden md:block">
+                <button class="md:hidden ml-4" id="menu-toggle">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" id="menu-icon"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <!-- Content -->
+        <main class="flex-1 p-6 bg-gray-100">
+            <h1 class="text-2xl font-semibold mb-4">Dashboard Content</h1>
+            <p>
+                This is where the main content of the dashboard will go. You can add additional sections here as needed.
+            </p>
+        </main>
+    </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const menuIcon = document.getElementById('menu-icon');
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeSidebar = document.getElementById('close-sidebar');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('hidden');
+            mainContent.classList.toggle('blurred');
+
+            if (sidebar.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+            } else {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        }
+
+        menuToggle.addEventListener('click', toggleSidebar);
+        closeSidebar.addEventListener('click', toggleSidebar);
+    </script>
+</body>
+</html>
