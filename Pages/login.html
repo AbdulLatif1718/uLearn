@@ -15,8 +15,8 @@
             justify-content: center;
         }
         .logo-circle {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background-color: #fbbf24; /* Tailwind's yellow-500 */
             border-radius: 50%;
             display: flex;
@@ -24,17 +24,29 @@
             justify-content: center;
         }
         .logo-circle span {
-            font-size: 32px;
+            font-size: 40px;
             font-weight: bold;
             color: #0082A2;
         }
         .logo-text {
-            font-size: 32px;
+            font-size: 40px;
             font-weight: bold;
             color: #fbbf24;
             margin-left: 10px;
         }
         @media (max-width: 1024px) { /* Tablet */
+            .logo-circle {
+                width: 60px;
+                height: 60px;
+            }
+            .logo-circle span {
+                font-size: 32px;
+            }
+            .logo-text {
+                font-size: 32px;
+            }
+        }
+        @media (max-width: 768px) { /* Mobile */
             .logo-circle {
                 width: 50px;
                 height: 50px;
@@ -44,18 +56,6 @@
             }
             .logo-text {
                 font-size: 24px;
-            }
-        }
-        @media (max-width: 768px) { /* Mobile */
-            .logo-circle {
-                width: 40px;
-                height: 40px;
-            }
-            .logo-circle span {
-                font-size: 18px;
-            }
-            .logo-text {
-                font-size: 18px;
                 margin-left: 5px;
             }
         }
@@ -79,32 +79,35 @@
         <a href="login.html" class="bg-transparent border border-yellow-500 text-yellow-500 font-bold py-2 px-4 rounded mx-2">Log in</a>
         <a href="register.html" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-4 rounded mx-2">Register</a>
     </div>
-    <div class="text-center">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-8">Grow your Education and Level up with</h1>
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-yellow-500 mt-4">Ulearn</h2>
-        <p class="text-lg md:text-xl lg:text-2xl text-white mt-4">Learn on your own at your own pace, with ULEARN</p>
-        <p class="text-lg md:text-xl lg:text-2xl text-white mt-2">it's free</p>
+    <div class="text-center mt-16 lg:mt-24">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-8">Grow your Education and Level up with</h1>
+        <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold text-yellow-500 mt-4">Ulearn</h2>
+        <p class="text-2xl md:text-3xl lg:text-4xl text-white mt-4">Learn on your own at your own pace, with ULEARN</p>
+        <p class="text-2xl md:text-3xl lg:text-4xl text-white mt-2">it's free</p>
         <div class="mt-8">
-            <button class="bg-white hover:bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded-full inline-flex items-center">
-                <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" class="w-6 h-6 mr-2"/>
+            <button class="bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-6 rounded-full inline-flex items-center">
+                <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" class="w-8 h-8 mr-2"/>
                 Log in with Google
             </button>
         </div>
-        <div class="flex items-center justify-center mt-4">
+        <div class="flex items-center justify-center mt-8">
             <hr class="w-1/4 border-t border-white"/>
-            <span class="mx-2 text-white">or</span>
+            <span class="mx-4 text-white text-xl">or</span>
             <hr class="w-1/4 border-t border-white"/>
         </div>
         <div class="mt-4">
-            <a href="more-options.html" class="bg-transparent border border-white text-white font-bold py-2 px-4 rounded">see more options</a>
+            <a href="more-options.html" class="bg-transparent border border-white text-white font-bold py-3 px-6 rounded">see more options</a>
         </div>
     </div>
     <!-- Dotted designs -->
-    <div class="dot" style="top: 20%; left: 10%;"></div>
-    <div class="dot" style="top: 22%; left: 12%;"></div>
-    <div class="dot" style="top: 24%; left: 14%;"></div>
-    <div class="dot" style="bottom: 20%; right: 10%;"></div>
-    <div class="dot" style="bottom: 22%; right: 12%;"></div>
-    <div class="dot" style="bottom: 24%; right: 14%;"></div>
+    <div class="dot" style="top: 10%; left: 5%;"></div>
+    <div class="dot" style="top: 12%; left: 6%;"></div>
+    <div class="dot" style="top: 14%; left: 7%;"></div>
+    <div class="dot" style="bottom: 10%; right: 5%;"></div>
+    <div class="dot" style="bottom: 12%; right: 6%;"></div>
+    <div class="dot" style="bottom: 14%; right: 7%;"></div>
+    <div class="dot" style="bottom: 10%; left: 15%;"></div>
+    <div class="dot" style="bottom: 12%; left: 16%;"></div>
+    <div class="dot" style="bottom: 14%; left: 17%;"></div>
 </body>
 </html>
