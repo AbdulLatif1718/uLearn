@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulearn - Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .custom-bg {
+            background-color: #1192b3; /* Custom background color */
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background-color: #fbbf24; /* Tailwind's yellow-500 */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        .logo-circle span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0082A2;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fbbf24;
+        }
+        .signup-heading {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .signup-form {
+            background-color: #1192b3; /* Custom background color */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .signup-form input {
+            border: 2px solid #fbbf24;
+            border-radius: 0.5rem;
+        }
+        .signup-form button {
+            background-color: #fbbf24;
+            color: #0082A2;
+            font-weight: bold;
+        }
+        .signup-form button:hover {
+            background-color: #eab308;
+        }
+        .signup-form a {
+            color: #fbbf24;
+        }
+        .signup-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-left {
+            flex: 1.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .signup-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .signup-left img {
+            max-width: 95%; /* Increased the size of the image */
+            border-radius: 1rem;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #fbbf24; /* Tailwind's yellow-500 */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="custom-bg">
+    <div class="header">
+        <div class="logo">
+            <div class="logo-circle">
+                <span>U</span>
+            </div>
+            <div class="logo-text">learn</div>
+        </div>
+        <div class="signup-heading">Sign Up</div>
+    </div>
+    <div class="signup-container">
+        <div class="signup-left">
+            <img src="/images/sign-up.png" alt="Sign Up Image style="width: 95%; height: auto;">
+        </div>
+        <div class="signup-right">
+            <form class="signup-form">
+                <div class="text-center mb-6">
+                    <img src="https://img.icons8.com/color/48/000000/add-user-male.png" alt="Sign Up Icon" class="mx-auto mb-4" style="width: 50px; height: 50px;">
+                </div>
+                <div class="mb-4">
+                    <input type="text" placeholder="Username" class="w-full py-2 px-4">
+                </div>
+                <div class="mb-4">
+                    <input type="text" placeholder="Full Name" class="w-full py-2 px-4">
+                </div>
+                <div class="mb-4">
+                    <input type="email" placeholder="Email" class="w-full py-2 px-4">
+                </div>
+                <div class="mb-4">
+                    <input type="password" placeholder="Password" class="w-full py-2 px-4">
+                </div>
+                <div class="mb-4">
+                    <button type="submit" class="w-full py-2 px-4">Sign Up</button>
+                </div>
+                <div class="text-center">
+                    <a href="#" class="text-yellow-500">I'm already a member</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="back-button" onclick="window.history.back();">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/left.png" alt="Back Icon">
+    </div>
+</body>
+</html>

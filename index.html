@@ -15,8 +15,8 @@
             justify-content: center;
         }
         .logo-circle {
-            width: 90px;
-            height: 90px;
+            width: 120px; 
+            height: 120px; 
             background-color: #fbbf24; 
             border-radius: 50%;
             display: flex;
@@ -24,43 +24,39 @@
             justify-content: center;
         }
         .logo-circle span {
-            font-size: 32px;
+            font-size: 48px; 
             font-weight: bold;
             color: #0082A2;
         }
         .logo-text {
-            font-size: 40px;
+            font-size: 56px; 
             font-weight: bold;
             color: #fbbf24;
-            margin-left: 10px;
+            margin-left: 20px; 
         }
-
-        /* Responsive adjustments */
-        @media (max-width: 1024px) { /* Tablet */
+        @media (max-width: 1024px) { 
             .logo-circle {
-                width: 50px;
-                height: 50px;
+                width: 70px; 
+                height: 70px; 
             }
             .logo-circle span {
-                font-size: 24px;
+                font-size: 32px; 
             }
             .logo-text {
-                font-size: 24px;
+                font-size: 32px; 
             }
         }
-        @media (max-width: 768px) { /* Mobile */
+        @media (max-width: 768px) { 
             .logo-circle {
-                width: 40px;
-                height: 40px;
+                width: 50px; 
+                height: 50px; 
             }
             .logo-circle span {
-                font-size: 18px;
+                font-size: 24px; 
             }
             .logo-text {
-                font-size: 18px;
-            }
-            .logo-text {
-                margin-left: 5px;
+                font-size: 24px; 
+                margin-left: 10px; 
             }
             select {
                 width: 100%;
@@ -70,35 +66,42 @@
 </head>
 <body class="custom-bg h-screen flex items-center justify-center">
     <div class="text-center">
-        <div class="mb-4 logo">
+        <div class="mb-8 logo">
             <div class="logo-circle">
                 <span>U</span>
             </div>
             <div class="logo-text">learn</div>
         </div>
-        <div class="relative inline-block w-64 md:w-72 lg:w-80 mb-4">
-            <select id="categorySelect" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-base md:text-lg lg:text-xl" onchange="showContinueButton()">
+        <div class="relative inline-block w-80 md:w-96 lg:w-112 mb-8">
+            <select id="categorySelect" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-6 py-3 pr-10 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-lg md:text-xl lg:text-2xl" onchange="navigateToCourse()">
                 <option value="" disabled selected>Select Category</option>
-                <option>Nursery and KG</option>
-                <option>Lower Primary</option>
-                <option>Upper Primary</option>
-                <option>Junior High School</option>
-                <option>Senior High School</option>
+                <option value="nursery">Nursery and KG</option>
+                <option value="lower-primary">Lower Primary</option>
+                <option value="upper-primary">Upper Primary</option>
+                <option value="jhs">Junior High School</option>
+                <option value="shs">Senior High School</option>
             </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg class="fill-current h-4 w-4 md:h-5 md:w-5 lg:h-6 lg:w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10l5 5 5-5H7z"/></svg>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
+                <svg class="fill-current h-6 w-6 md:h-7 md:w-7 lg:h-8 lg:w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10l5 5 5-5H7z"/></svg>
             </div>
         </div>
-        <div><a id="continueButton" href="/Pages/login.html" class="hidden bg-yellow-500 text-blue-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-600">Continue</a></div>
     </div>
+
     <script>
-        function showContinueButton() {
+        function navigateToCourse() {
             const select = document.getElementById('categorySelect');
-            const button = document.getElementById('continueButton');
-            if (select.value) {
-                button.classList.remove('hidden');
-            } else {
-                button.classList.add('hidden');
+            const category = select.value;
+
+            if (category) {
+                const courseUrlMap = {
+                    'nursery': 'Kids/kids.html',
+                    'lower-primary': 'Kids/kids.html',
+                    'upper-primary': 'Adults/login.html',
+                    'jhs': 'Adults/login.html',
+                    'shs': 'Adults/login.html'
+                };
+
+                window.location.href = courseUrlMap[category];
             }
         }
     </script>

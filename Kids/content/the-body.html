@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulearn for Kids - Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Wavy Header Background */
+        .header-bg {
+            background-color: #fbbf24;
+            height: 150px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            clip-path: path("M0,0 C100,150 300,0 400,100 C500,200 700,50 800,100 C900,150 1100,0 1200,50 C1300,100 1500,0 1600,50 L1600,0 L1600,0 Z");
+            z-index: 1;
+        }
+
+        /* Sidebar Item Styling */
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: #0082A2;
+            border-radius: 10px;
+            margin: 0.5rem;
+        }
+        .sidebar-item img {
+            width: 60px;
+            height: 60px;
+            margin-right: 1rem;
+        }
+
+        /* Ask Me Box Styling */
+        .ask-me-box {
+            background-color: #0082A2;
+            border-radius: 10px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .ask-me-box img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 0.5rem;
+        }
+        .ask-me-box input {
+            background-color: #1e9ebe;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            width: 100%;
+            margin-top: 0.5rem;
+            border-radius: 5px;
+        }
+
+        /* Main Container Styling */
+        .main-container {
+            height: calc(100vh - 150px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .header-bg {
+                height: 120px;
+            }
+            .sidebar-item img, .ask-me-box img {
+                width: 50px;
+                height: 50px;
+            }
+            .text-2xl {
+                font-size: 1.5rem;
+            }
+            .header-bg {
+                clip-path: path("M0,0 C80,120 240,0 320,80 C400,160 560,40 640,80 C720,120 880,0 960,40 C1040,80 1200,0 1280,40 L1280,0 L1280,0 Z");
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-bg {
+                height: 100px;
+            }
+            .sidebar-item img, .ask-me-box img {
+                width: 40px;
+                height: 40px;
+            }
+            .text-4xl {
+                font-size: 2rem;
+            }
+            .sidebar-item span, .ask-me-box span {
+                font-size: 1.25rem;
+            }
+            .header-bg {
+                clip-path: path("M0,0 C60,90 180,0 240,60 C300,120 420,30 480,60 C540,90 660,0 720,30 C780,60 900,0 960,30 L960,0 L960,0 Z");
+            }
+        }
+
+        @media (max-width: 640px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .sidebar-item {
+                width: auto;
+                flex-grow: 1;
+            }
+            .sidebar-item img, .ask-me-box img {
+                width: 30px;
+                height: 30px;
+            }
+            .text-4xl {
+                font-size: 1.5rem;
+            }
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            .header-bg {
+                clip-path: path("M0,0 C40,60 120,0 160,40 C200,80 280,20 320,40 C360,60 440,0 480,20 C520,40 600,0 640,20 L640,0 L640,0 Z");
+            }
+        }
+    </style>
+</head>
+<body class="relative flex flex-col justify-center items-center min-h-screen" style="background: #0082A2;">
+    <!-- Wavy Header Background -->
+    <div class="w-full header-bg"></div>
+
+    <!-- Space Heading and Back Icon -->
+    <div class="flex items-center justify-between w-full px-4 md:px-8 mt-32">
+        <h2 class="text-4xl font-bold text-yellow-500">The Body</h2> <!-- Space Heading -->
+        <img src="/images/back-icon.png" alt="Back" class="w-11 h-11 cursor-pointer"> <!-- Back Icon -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex flex-wrap w-full mt-4 px-4 md:px-8 main-container">
+        <!-- Sidebar (Horizontal on Small Screens) -->
+        <div class="flex flex-col md:flex-col w-full md:w-1/4 p-4 items-stretch md:items-start md:space-y-8 md:space-x-0 space-x-2 space-y-0" style="background: #0082A2; border-radius: 0 10px 10px 0; height: 100%;">
+            <div class="flex flex-row md:flex-col space-x-2 md:space-x-0 w-full justify-between md:justify-start">
+                <div class="sidebar-item">
+                    <a href="/do-it-yourself" class="flex items-center justify-center">
+                        <img src="/images/doit-urself.png" alt="Do it yourself">
+                        <span class="text-2xl font-bold text-white ml-2">Do it yourself</span>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="/ulearn-videos" class="flex items-center justify-center">
+                        <img src="/images/uleran-videos.png" alt="Ulearn Videos">
+                        <span class="text-2xl font-bold text-white ml-2">Ulearn Videos</span>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-auto mb-4 w-full">
+                <div class="ask-me-box">
+                    <img src="/path/to/ask-icon.png" alt="Ask Me">
+                    <span class="text-2xl font-bold text-white">Ask Me</span>
+                    <input type="text" placeholder="Type Something..." />
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="flex-grow p-4 md:p-8 ml-0 md:ml-4 mt-4 md:mt-0" style="background: #1e9ebe; border: 2px solid #0082A2; border-radius: 10px; height: 100%;">
+            <div class="text-4xl font-bold text-white flex justify-center items-center h-full">content</div>
+        </div>
+    </div>
+</body>
+</html>
