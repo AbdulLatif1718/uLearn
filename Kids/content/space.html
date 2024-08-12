@@ -6,9 +6,12 @@
     <title>Ulearn for Kids - Space</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        body {
+            background-color: #0082A2 ;
+        }
         /* Wavy Header Background */
         .header-bg {
-            background-color: #fbbf24;
+            background-color: #fbbf24; /* Yellow */
             height: 150px;
             width: 100%;
             position: absolute;
@@ -18,12 +21,22 @@
             z-index: 1;
         }
 
+        /* Sidebar and Content Colors */
+        .sidebar-bg {
+            background-color: #0082A2; /* Dark Cyan */
+        }
+
+        .content-bg {
+            background-color: #1e9ebe; /* Light Cyan */
+            border-color: #0082A2; /* Dark Cyan */
+        }
+
         /* Sidebar Item Styling */
         .sidebar-item {
             display: flex;
             align-items: center;
             padding: 1rem;
-            background-color: #0082A2;
+            background-color: #0082A2; /* Dark Cyan */
             border-radius: 10px;
             margin: 0.5rem;
         }
@@ -35,7 +48,7 @@
 
         /* Ask Me Box Styling */
         .ask-me-box {
-            background-color: #0082A2;
+            background-color: #0082A2; /* Dark Cyan */
             border-radius: 10px;
             padding: 1rem;
             display: flex;
@@ -49,7 +62,7 @@
             margin-bottom: 0.5rem;
         }
         .ask-me-box input {
-            background-color: #1e9ebe;
+            background-color: #1e9ebe; /* Light Cyan */
             color: white;
             border: none;
             padding: 0.5rem;
@@ -60,6 +73,8 @@
 
         /* Main Container Styling */
         .main-container {
+            display: flex;
+            flex-direction: row;
             height: calc(100vh - 150px);
         }
 
@@ -100,12 +115,15 @@
         }
 
         @media (max-width: 640px) {
+            .header-bg {
+                height: 100px;
+            }
             .main-container {
                 flex-direction: column;
             }
             .sidebar-item {
-                width: auto;
-                flex-grow: 1;
+                width: 100%;
+                margin: 0.5rem 0;
             }
             .sidebar-item img, .ask-me-box img {
                 width: 30px;
@@ -120,10 +138,13 @@
             .header-bg {
                 clip-path: path("M0,0 C40,60 120,0 160,40 C200,80 280,20 320,40 C360,60 440,0 480,20 C520,40 600,0 640,20 L640,0 L640,0 Z");
             }
+            .main-container > .flex-grow {
+                margin-top: 1rem;
+            }
         }
     </style>
 </head>
-<body class="relative flex flex-col justify-center items-center min-h-screen" style="background: #0082A2;">
+<body class="relative flex flex-col justify-center items-center min-h-screen">
     <!-- Wavy Header Background -->
     <div class="w-full header-bg"></div>
 
@@ -134,18 +155,18 @@
     </div>
 
     <!-- Main Content -->
-    <div class="flex flex-wrap w-full mt-4 px-4 md:px-8 main-container">
-        <!-- Sidebar (Horizontal on Small Screens) -->
-        <div class="flex flex-col md:flex-col w-full md:w-1/4 p-4 items-stretch md:items-start md:space-y-8 md:space-x-0 space-x-2 space-y-0" style="background: #0082A2; border-radius: 0 10px 10px 0; height: 100%;">
+    <div class="flex flex-wrap w-full px-4 md:px-8 main-container">
+        <!-- Sidebar -->
+        <div class="flex flex-col w-full md:w-1/4 p-4 items-stretch sidebar-bg rounded-r-lg md:rounded-none">
             <div class="flex flex-row md:flex-col space-x-2 md:space-x-0 w-full justify-between md:justify-start">
                 <div class="sidebar-item">
-                    <a href="/do-it-yourself" class="flex items-center justify-center">
+                    <a href="/do-it-yourself" class="flex items-center">
                         <img src="/images/doit-urself.png" alt="Do it yourself">
                         <span class="text-2xl font-bold text-white ml-2">Do it yourself</span>
                     </a>
                 </div>
                 <div class="sidebar-item">
-                    <a href="/ulearn-videos" class="flex items-center justify-center">
+                    <a href="/ulearn-videos" class="flex items-center">
                         <img src="/images/uleran-videos.png" alt="Ulearn Videos">
                         <span class="text-2xl font-bold text-white ml-2">Ulearn Videos</span>
                     </a>
@@ -153,7 +174,7 @@
             </div>
             <div class="mt-auto mb-4 w-full">
                 <div class="ask-me-box">
-                    <img src="/path/to/ask-icon.png" alt="Ask Me">
+                    <img src="/images/ask-me-icon.png" alt="Ask Me">
                     <span class="text-2xl font-bold text-white">Ask Me</span>
                     <input type="text" placeholder="Type Something..." />
                 </div>
@@ -161,7 +182,7 @@
         </div>
 
         <!-- Content Area -->
-        <div class="flex-grow p-4 md:p-8 ml-0 md:ml-4 mt-4 md:mt-0" style="background: #1e9ebe; border: 2px solid #0082A2; border-radius: 10px; height: 100%;">
+        <div class="flex-grow p-4 md:p-8 mt-4 md:mt-0 content-bg border-2 rounded-lg">
             <div class="text-4xl font-bold text-white flex justify-center items-center h-full">content</div>
         </div>
     </div>

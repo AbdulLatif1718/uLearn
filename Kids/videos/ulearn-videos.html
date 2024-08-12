@@ -75,7 +75,7 @@
         .main-container {
             display: flex;
             flex-direction: row;
-            height: calc(100vh - 150px);
+            height: calc(90vh - 150px);
         }
 
         /* Responsive Adjustments */
@@ -141,6 +141,13 @@
             .main-container > .flex-grow {
                 margin-top: 1rem;
             }
+            .sidebar-bg {
+                overflow-x: scroll;
+                display: flex;
+                flex-direction: row;
+                white-space: nowrap;
+                padding: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -150,7 +157,12 @@
 
     <!-- Space Heading and Back Icon -->
     <div class="flex items-center justify-between w-full px-4 md:px-8 mt-32">
-        <h2 class="text-4xl font-bold text-yellow-500">The Body</h2> <!-- Space Heading -->
+        <div class="sidebar-item">
+            <a href="/ulearn-videos" class="flex items-center">
+                <img src="/images/uleran-videos.png" alt="Ulearn Videos">
+                <span class="text-2xl font-bold text-white ml-2">Ulearn Videos</span>
+            </a>
+        </div>
         <img src="/images/back-icon.png" alt="Back" class="w-11 h-11 cursor-pointer"> <!-- Back Icon -->
     </div>
 
@@ -160,30 +172,62 @@
         <div class="flex flex-col w-full md:w-1/4 p-4 items-stretch sidebar-bg rounded-r-lg md:rounded-none">
             <div class="flex flex-row md:flex-col space-x-2 md:space-x-0 w-full justify-between md:justify-start">
                 <div class="sidebar-item">
-                    <a href="/do-it-yourself" class="flex items-center">
-                        <img src="/images/doit-urself.png" alt="Do it yourself">
-                        <span class="text-2xl font-bold text-white ml-2">Do it yourself</span>
-                    </a>
+                  <a href="/do-it-yourself" class="flex items-center hover:bg-gray-700 p-2 rounded">
+                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2h3l3-3 3 3h3a2 2 0 012 2z"></path>
+                    </svg>
+                    <span class="text-2xl font-bold text-white ml-2">The Body</span>
+                  </a>
                 </div>
                 <div class="sidebar-item">
-                    <a href="/ulearn-videos" class="flex items-center">
-                        <img src="/images/uleran-videos.png" alt="Ulearn Videos">
-                        <span class="text-2xl font-bold text-white ml-2">Ulearn Videos</span>
-                    </a>
+                  <a href="/ulearn-videos" class="flex items-center hover:bg-gray-700 p-2 rounded">
+                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l4-4 4 4m0-8l-4 4-4-4"></path>
+                    </svg>
+                    <span class="text-2xl font-bold text-white ml-2">Scientific Tools</span>
+                  </a>
                 </div>
-            </div>
-            <div class="mt-auto mb-4 w-full">
-                <div class="ask-me-box">
-                    <img src="/images/ask-me-icon.png" alt="Ask Me">
-                    <span class="text-2xl font-bold text-white">Ask Me</span>
-                    <input type="text" placeholder="Type Something..." />
+                <div class="sidebar-item">
+                  <a href="/ulearn-videos" class="flex items-center hover:bg-gray-700 p-2 rounded">
+                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1112.21 3H13a4 4 0 104 4v.79z"></path>
+                    </svg>
+                    <span class="text-2xl font-bold text-white ml-2">Space</span>
+                  </a>
                 </div>
-            </div>
+                <div class="sidebar-item">
+                  <a href="/ulearn-videos" class="flex items-center hover:bg-gray-700 p-2 rounded">
+                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2m16-10a9 9 0 10-18 0 9 9 0 0018 0z"></path>
+                    </svg>
+                    <span class="text-2xl font-bold text-white ml-2">Environment</span>
+                  </a>
+                </div>
+                <div class="sidebar-item">
+                  <a href="/ulearn-videos" class="flex items-center hover:bg-gray-700 p-2 rounded">
+                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10H2M7 14H2m10-4h10m-6 4h6"></path>
+                    </svg>
+                    <span class="text-2xl font-bold text-white ml-2">Scientists</span>
+                  </a>
+                </div>
+                <div class="sidebar-item">
+                  <a href="/ulearn-videos" class="flex items-center hover:bg-gray-700 p-2 rounded">
+                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-2xl font-bold text-white ml-2">Fun Fact</span>
+                  </a>
+                </div>
+              </div>
+              
+
         </div>
 
-        <!-- Content Area -->
-        <div class="flex-grow p-4 md:p-8 mt-4 md:mt-0 content-bg border-2 rounded-lg">
-            <div class="text-4xl font-bold text-white flex justify-center items-center h-full">content</div>
+        <!-- Main Content Area -->
+        <div class="flex-grow flex flex-col items-center justify-center content-bg border-t-8 p-4 rounded-t-lg md:rounded-none mt-8 md:mt-0">
+            <span class="text-4xl font-bold text-white">Learn About Space!</span>
+            <img src="/images/space-image.png" alt="Space Image" class="mt-8 w-full max-w-lg rounded-lg">
         </div>
     </div>
 </body>

@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>Educational Web App</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script> <!-- Feather Icons CDN -->
     <style>
         .custom-bg {
             background-color: #0082A2; /* Custom background color */
         }
         .logo-circle {
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             background-color: #fbbf24; /* Tailwind's yellow-500 */
             border-radius: 50%;
             display: flex;
@@ -19,41 +20,117 @@
             justify-content: center;
         }
         .logo-circle span {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: bold;
             color: #0082A2;
         }
         .logo-text {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: bold;
             color: #fbbf24;
             margin-left: 10px;
         }
         .sidebar {
-            background-color: #e2dccb; /* Yellow sidebar */
+            background-color: #e2dccb; /* Sidebar background color */
+            padding: 1rem;
+            min-width: 280px; /* Increased sidebar width */
         }
         .sidebar-item {
-            transition: background-color 0.3s;
-            color: #0082A2; /* Blue text */
+            transition: background-color 0.3s, color 0.3s;
+            color: #0082A2; /* Text color */
+            font-size: 18px; /* Increased font size */
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
         }
         .sidebar-item:hover {
-            background-color: #f8c74e; /* Slightly darker yellow on hover */
+            background-color: #f8c74e; /* Hover color */
+            color: #ffffff; /* Text color on hover */
         }
-        .top-nav {
-            background-color: #0082A2; /* Blue top nav */
+        .sidebar-item .icon {
+            margin-right: 0.5rem;
         }
-        .search-bar {
+        .dropdown-menu {
+            display: none;
             background-color: #ffffff;
-            color: #000000;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 10;
+            min-width: 200px;
         }
-        .blurred {
-            filter: blur(5px);
+        .dropdown-menu.show {
+            display: block;
+        }
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        .dropdown-item:hover {
+            background-color: #f8c74e; /* Hover color */
+            color: #ffffff; /* Text color on hover */
+        }
+        .level-dropdown {
+            display: none;
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 10;
+            min-width: 200px;
+        }
+        .level-dropdown.show {
+            display: block;
+        }
+        .progress-bar {
+            background-color: #e2dccb; /* Background color of progress bar */
+            border-radius: 0.5rem;
+            height: 12px;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            background-color: #0082A2; /* Fill color */
+            height: 100%;
+            border-radius: 0.5rem;
+            width: 60%; /* Adjust width as needed */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .progress-percentage {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            color: #fff;
+        }
+        .recent-courses {
+            margin-top: 1rem;
+        }
+        .recent-course-item {
+            padding: 0.5rem;
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.5rem;
+        }
+        .recent-course-item:hover {
+            background-color: #f8c74e; /* Hover color */
         }
     </style>
 </head>
 <body class="h-screen flex">
     <!-- Sidebar -->
-    <div class="sidebar w-64 h-full flex flex-col hidden md:flex" id="sidebar">
+    <div class="sidebar w-80 h-full flex flex-col hidden md:flex relative" id="sidebar">
         <div class="flex items-center justify-between p-4 bg-yellow-600">
             <div class="flex items-center">
                 <div class="logo-circle">
@@ -61,7 +138,7 @@
                 </div>
                 <div class="logo-text">learn</div>
             </div>
-            <button class="md:hidden" id="close-sidebar">
+            <button class="md:hidden" id="close-sidebar" aria-label="Close sidebar">
                 <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
@@ -69,35 +146,42 @@
         </div>
         <nav class="flex-1 p-4">
             <ul>
-                <li>
-                    <a href="#" class="block sidebar-item p-2 rounded">Home</a>
+                <li><a href="#" class="block sidebar-item rounded" aria-label="Home"><i data-feather="home" class="icon"></i>Home</a></li>
+                <li class="relative">
+                    <a href="#" class="block sidebar-item rounded" id="courses-menu" aria-label="Courses"><i data-feather="book" class="icon"></i>Courses</a>
+                    <div class="dropdown-menu" id="courses-dropdown">
+                        <div class="dropdown-item" data-level="Upper Primary">Upper Primary</div>
+                        <div class="dropdown-item" data-level="Junior High School">Junior High School</div>
+                        <div class="dropdown-item" data-level="Senior High School">Senior High School</div>
+                    </div>
+                    <div class="level-dropdown" id="level-dropdown">
+                        <!-- Course options will be populated here based on level selection -->
+                    </div>
                 </li>
-                <li>
-                    <a href="#" class="block sidebar-item p-2 rounded">Profile</a>
-                </li>
-                <li>
-                    <a href="#" class="block sidebar-item p-2 rounded">Settings</a>
-                </li>
-                <li>
-                    <a href="#" class="block sidebar-item p-2 rounded">Messages</a>
-                </li>
-                <li>
-                    <a href="#" class="block sidebar-item p-2 rounded">Notifications</a>
-                </li>
-                <li>
-                    <a href="#" class="block sidebar-item p-2 rounded">Logout</a>
-                </li>
+                <li><a href="#quizzes" class="block sidebar-item rounded" aria-label="Quizzes"><i data-feather="file-text" class="icon"></i>Quizzes</a></li>
+                <li><a href="#resources" class="block sidebar-item rounded" aria-label="Resources"><i data-feather="file" class="icon"></i>Resources</a></li>
+                <li><a href="#contact" class="block sidebar-item rounded" aria-label="Contact"><i data-feather="mail" class="icon"></i>Contact</a></li>
             </ul>
         </nav>
+        <div class="progress-bar">
+            <div class="progress-bar-fill" style="width: 60%;"></div> <!-- Adjust width as needed -->
+            <div class="progress-percentage">60%</div>
+        </div>
+        <div class="recent-courses mt-4">
+            <div class="font-semibold text-lg mb-2">Recent Courses</div>
+            <div class="recent-course-item">Introduction to Algebra</div>
+            <div class="recent-course-item">Basic Chemistry</div>
+            <div class="recent-course-item">World History Overview</div>
+        </div>
     </div>
     <!-- Main content -->
     <div class="flex-1 flex flex-col" id="main-content">
         <!-- Top Nav -->
-        <header class="top-nav text-white p-4 flex items-center justify-between">
-            <div class="text-lg font-semibold">Welcome, User</div>
-            <div class="flex items-center">
-                <input type="text" placeholder="Search..." class="p-2 rounded search-bar hidden md:block">
-                <button class="md:hidden ml-4" id="menu-toggle">
+        <header class="top-nav bg-gradient-to-r from-blue-800 to-teal-600 text-white p-4 flex items-center justify-between shadow-lg">
+            <div id="welcome-message" class="text-lg font-semibold">Welcome, User</div>
+            <div class="flex items-center space-x-4">
+                <input type="text" placeholder="Search..." class="p-2 rounded-md bg-gray-100 text-gray-700 placeholder-gray-500 hidden md:block w-64" aria-label="Search">
+                <button class="md:hidden ml-4 p-2 rounded-md bg-blue-700 hover:bg-blue-800 transition" id="menu-toggle" aria-label="Open menu">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" id="menu-icon"></path>
                     </svg>
@@ -107,31 +191,81 @@
         <!-- Content -->
         <main class="flex-1 p-6 bg-gray-100">
             <h1 class="text-2xl font-semibold mb-4">Dashboard Content</h1>
-            <p>
-                This is where the main content of the dashboard will go. You can add additional sections here as needed.
-            </p>
+            <p>This is where the main content of the dashboard will go. You can add additional sections here as needed.</p>
         </main>
     </div>
     <script>
+        feather.replace(); // Initialize Feather Icons
+
+        // Update welcome message based on time and first-time visit
+        function updateWelcomeMessage() {
+            const welcomeMessage = document.getElementById('welcome-message');
+            const now = new Date();
+            const hours = now.getHours();
+            const isFirstVisit = !localStorage.getItem('visited');
+
+            let message;
+            if (isFirstVisit) {
+                localStorage.setItem('visited', 'true');
+                message = "Welcome to our platform! We're glad to have you here.";
+            } else if (hours < 12) {
+                message = "Good morning! Let's get learning.";
+            } else if (hours < 18) {
+                message = "Good afternoon! Time to hit the books.";
+            } else {
+                message = "Good evening! Ready for some late-night learning?";
+            }
+
+            welcomeMessage.textContent = message;
+        }
+
+        updateWelcomeMessage();
+
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.getElementById('main-content');
         const menuIcon = document.getElementById('menu-icon');
         const menuToggle = document.getElementById('menu-toggle');
         const closeSidebar = document.getElementById('close-sidebar');
+        const coursesMenu = document.getElementById('courses-menu');
+        const coursesDropdown = document.getElementById('courses-dropdown');
+        const levelDropdown = document.getElementById('level-dropdown');
+        const levelItems = document.querySelectorAll('.dropdown-item');
 
         function toggleSidebar() {
             sidebar.classList.toggle('hidden');
-            mainContent.classList.toggle('blurred');
-
-            if (sidebar.classList.contains('hidden')) {
-                menuIcon.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
-            } else {
-                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-            }
+            mainContent.classList.toggle('ml-80'); // Adjust main content margin based on sidebar visibility
         }
 
         menuToggle.addEventListener('click', toggleSidebar);
         closeSidebar.addEventListener('click', toggleSidebar);
+
+        coursesMenu.addEventListener('click', () => {
+            coursesDropdown.classList.toggle('show');
+        });
+
+        levelItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const level = item.getAttribute('data-level');
+                levelDropdown.innerHTML = ''; // Clear previous options
+                if (level === 'Upper Primary') {
+                    levelDropdown.innerHTML = '<div class="dropdown-item">Math</div><div class="dropdown-item">Science</div>';
+                } else if (level === 'Junior High School') {
+                    levelDropdown.innerHTML = '<div class="dropdown-item">English</div><div class="dropdown-item">History</div>';
+                } else if (level === 'Senior High School') {
+                    levelDropdown.innerHTML = '<div class="dropdown-item">Physics</div><div class="dropdown-item">Chemistry</div>';
+                }
+                levelDropdown.classList.add('show');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!coursesMenu.contains(e.target) && !coursesDropdown.contains(e.target)) {
+                coursesDropdown.classList.remove('show');
+            }
+            if (!levelDropdown.contains(e.target)) {
+                levelDropdown.classList.remove('show');
+            }
+        });
     </script>
 </body>
 </html>
