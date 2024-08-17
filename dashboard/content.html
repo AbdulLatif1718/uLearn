@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Content</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Add custom styles here */
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-visible {
+            transform: translateX(0);
+        }
+
+        .lg-sidebar-collapsed {
+            width: 16px;
+        }
+
+        .lg-sidebar-expanded {
+            width: 256px;
+        }
+
+        .sidebar-item {
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sidebar-item:hover {
+            transform: translateX(4px);
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #footer {
+            display: none;
+            background-color: #f8f9fa;
+            color: #6c757d;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased bg-[#0082A2] text-white">
+
+    <div class="flex flex-col lg:flex-row h-screen">
+
+        <!-- Sidebar -->
+        <div id="sidebar"
+            class="bg-[#0082A2] w-64 p-6 flex flex-col fixed lg:relative top-0 left-0 h-full lg:h-auto transition-transform duration-300 sidebar-hidden lg:translate-x-0 lg:translate-y-0 z-30 lg:w-64 lg:lg-sidebar-expanded">
+            <!-- Close Button -->
+            <button id="close-sidebar" class="text-white text-2xl mb-4 lg:hidden absolute top-4 right-4">
+                <i class="fas fa-times"></i>
+            </button>
+            <!-- Toggle Button for large screens -->
+            <button id="toggle-sidebar"
+                class="text-white text-2xl mb-4 lg:absolute lg:top-4 lg:right-4 hidden lg:block">
+                <i class="fas fa-angle-double-left"></i>
+            </button>
+            <div class="flex items-center mb-8">
+                <img src="/images/ulearn.png" alt="Logo" class="w-12 h-12 mr-3">
+                <span class="text-2xl lg:text-3xl font-bold">Ulearn</span>
+            </div>
+            <nav class="flex flex-col space-y-4 p-4">
+                <a href="#" class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 hover:bg-gray-200 transition duration-300 ease-in-out">
+                    <i class="fas fa-home"></i>
+                    <span class="sidebar-text">Home</span>
+                </a>
+                <div class="relative">
+                    <button id="courses-dropdown"
+                        class="sidebar-item bg-[#fbbf24] py-3 px-5 rounded text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 border border-gray-300 shadow-md shadow-black/30 hover:bg-yellow-300 transition duration-300 ease-in-out w-full">
+                        <i class="fas fa-book"></i>
+                        <span class="sidebar-text">Courses</span>
+                        <i class="fas fa-chevron-down ml-2"></i>
+                    </button>
+                    <div id="courses-list"
+                        class="absolute left-0 mt-2 w-full bg-white text-gray-800 rounded shadow-md hidden">
+                        <!-- Courses will be dynamically added here -->
+                    </div>
+                </div>
+                <a href="#" class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 hover:bg-gray-200 transition duration-300 ease-in-out">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span class="sidebar-text">Quizzes</span>
+                </a>
+                <a href="#" class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 hover:bg-gray-200 transition duration-300 ease-in-out">
+                    <i class="fas fa-folder-open"></i>
+                    <span class="sidebar-text">Resources</span>
+                </a>
+                <a href="#" class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 hover:bg-gray-200 transition duration-300 ease-in-out">
+                    <i class="fas fa-comments"></i>
+                    <span class="sidebar-text">Discuss</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col lg:pl-64 lg:transition-all lg:duration-300">
+            <!-- Top Nav -->
+            <header class="bg-[#fbbf24] flex items-center justify-between p-6">
+                <button id="hamburger" class="lg:hidden text-3xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div id="greeting" class="text-xl lg:text-3xl font-bold text-white mb-4 lg:mb-0">
+                    Hi <span id="username">Loading...</span>
+                </div>
+
+                <div class="relative w-full lg:w-1/4 mt-4 lg:mt-0 hidden lg:block">
+                    <input type="text" placeholder="Search..."
+                        class="p-3 pl-10 rounded-md w-full bg-white text-gray-700 placeholder-gray-500 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+                </div>
+            </header>
+
+            <!-- Course Content Section -->
+            <main class="flex-1 p-6 bg-[#1e9ebe] overflow-y-auto">
+                <section id="course-content">
+                    <!-- Video Embed Section -->
+                    <div id="video-section" class="mb-6">
+                        <div class="video-container">
+                            <iframe id="course-video" 
+                                    src="https://www.youtube.com/embed/gQojMIhELvM?controls=1&modestbranding=1&rel=0&showinfo=0"
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+            
+                    <!-- Course Text Content -->
+                    <div id="text-content" class="mb-6">
+                        <h2 class="text-2xl font-bold mb-4">Chapter Title</h2>
+                        <p class="text-gray-300">This is the text content for the current chapter. It explains the key points discussed in the video and provides additional information or exercises for the user.</p>
+                    </div>
+            
+                    <!-- Navigation Buttons -->
+                    <div id="navigation-buttons" class="flex justify-between">
+                        <button id="prev-chapter" class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">Previous</button>
+                        <button id="next-chapter" class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">Next</button>
+                    </div>
+                </section>
+            </main>
+            
+
+            <footer id="footer" class="bg-[#fbbf24] text-white p-6">
+                <div class="flex flex-col lg:flex-row items-center justify-between">
+                    <p class="text-sm">&copy; 2024 Ulearn. All rights reserved.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:underline">Privacy Policy</a>
+                        <a href="#" class="text-white hover:underline">Terms of Service</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // JavaScript for sidebar functionality
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('sidebar-hidden');
+            document.getElementById('sidebar').classList.toggle('sidebar-visible');
+        });
+
+        document.getElementById('close-sidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.add('sidebar-hidden');
+            document.getElementById('sidebar').classList.remove('sidebar-visible');
+        });
+
+        document.getElementById('toggle-sidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('sidebar-hidden');
+            document.getElementById('sidebar').classList.toggle('sidebar-visible');
+        });
+
+        // Example of dynamic course list
+        const courses = [
+            "Introduction to JavaScript",
+            "Advanced CSS Techniques",
+            "Frontend Development with React",
+            "Backend Development with Node.js",
+            "Full-Stack Web Development"
+        ];
+
+        const coursesList = document.getElementById('courses-list');
+        courses.forEach(course => {
+            const courseItem = document.createElement('a');
+            courseItem.href = "#";
+            courseItem.classList.add('block', 'py-2', 'px-4', 'text-gray-800', 'hover:bg-gray-200', 'transition', 'duration-300');
+            courseItem.textContent = course;
+            coursesList.appendChild(courseItem);
+        });
+        
+        // Video change example
+        document.getElementById('course-video').src = "https://www.youtube.com/embed/gQojMIhELvM?si";
+    </script>
+</body>
+
+</html>

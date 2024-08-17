@@ -95,18 +95,30 @@
         }
         .login-container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            padding: 1rem;
+        }
+        @media (min-width: 731px) {
+            .login-container {
+                flex-direction: row;
+            }
         }
         .login-left {
-            flex: 1; /* Increased size of the image container */
-            display: flex;
+            flex: 1;
+            display: none;
             align-items: center;
             justify-content: center;
             padding-top: 80px;
             padding: auto;
             box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+        }
+        @media (min-width: 731px) {
+            .login-left {
+                display: flex;
+            }
         }
         .login-right {
             flex: 1;
@@ -116,7 +128,7 @@
             padding: 2rem;
         }
         .login-left img {
-            max-width: 95%; /* Increased the size of the image */
+            max-width: 95%;
             border-radius: 1rem;
         }
         .dotted-design {
@@ -174,9 +186,8 @@
     <div class="dotted-design dotted-design-small" style="top: 24%; right: 14%;"></div>
     <div class="login-container">
         <div class="login-left">
-            <img src="/images/log-in.png" alt="Login Image" style="width: 75%; height: auto;">
+            <img src="/images/log-in.png" alt="Login Image">
         </div>
-        
         <div class="login-right">
             <form class="login-form">
                 <div class="text-center mb-6">
