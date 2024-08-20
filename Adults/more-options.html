@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,107 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .custom-bg {
-            background-color: #0082A2; /* Custom background color */
+            background-color: #1192b3;
         }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 1rem;
+        }
+
+        .login-left {
+            flex: 1;
+            display: none;
+        }
+
+        .login-left img {
+            max-width: 100vh;
+            border-radius: 1rem;
+        }
+
+        .login-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-form {
+            background-color: #1192b3;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-form input {
+            border: 2px solid #fbbf24;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .login-form button {
+            background-color: #fbbf24;
+            color: #0082A2;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+        }
+
+        .login-form button:hover {
+            background-color: #eab308;
+        }
+
+        .login-form .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-top: 0.75rem;
+            cursor: pointer;
+        }
+
+        .login-form .social-button img {
+            margin-right: 0.5rem;
+        }
+
+        .login-form .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .login-form .divider::before,
+        .login-form .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #d1d5db;
+        }
+
+        .login-form .divider::before {
+            margin-right: 0.5rem;
+        }
+
+        .login-form .divider::after {
+            margin-left: 0.5rem;
+        }
+
+        .signup-heading {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Logo Styles */
         .header {
             display: flex;
             align-items: center;
@@ -18,219 +118,172 @@
             left: 20px;
             right: 20px;
         }
+
         .logo {
             display: flex;
             align-items: center;
             position: absolute;
             left: 20px;
-            padding-top: 30px;
         }
+
         .logo-circle {
-            width: 80px;
-            height: 80px;
-            background-color: #fbbf24; /* Tailwind's yellow-500 */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .logo-circle span {
-            font-size: 40px;
-            font-weight: bold;
-            color: #0082A2;
-        }
-        .logo-text {
-            font-size: 40px;
-            font-weight: bold;
-            color: #fbbf24;
-            margin-left: 10px;
-        }
-        .login-heading {
-            font-size: 40px;
-            font-weight: bold;
-            color: white;
-            padding-right: 10%;
-        }
-        .login-form {
-            background-color: #0082A2; /* Custom background color */
-            padding: 2rem;
-            border-radius: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .login-form input {
-            border: 2px solid #fbbf24;
-            border-radius: 0.5rem;
-        }
-        .login-form button {
+            width: 50px;
+            height: 50px;
             background-color: #fbbf24;
-            color: #0082A2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .logo-circle span {
+            font-size: 24px;
             font-weight: bold;
+            color: #0082A2;
         }
-        .login-form button:hover {
-            background-color: #eab308;
-        }
-        .login-form a {
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
             color: #fbbf24;
         }
-        .login-form .social-buttons img {
-            width: 20px;
-            height: 20px;
-        }
-        .login-form .social-buttons button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: white;
-            border: 2px solid #fbbf24;
-            color: #0082A2;
-            font-weight: bold;
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            margin-top: 1rem;
-        }
-        .login-form .social-buttons button:hover {
-            background-color: #f3f4f6;
-        }
-        .login-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            padding: 1rem;
-        }
-        @media (min-width: 731px) {
-            .login-container {
-                flex-direction: row;
-            }
-        }
-        .login-left {
-            flex: 1;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding-top: 80px;
-            padding: auto;
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-        }
-        @media (min-width: 731px) {
-            .login-left {
-                display: flex;
-            }
-        }
-        .login-right {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        .login-left img {
-            max-width: 95%;
-            border-radius: 1rem;
-        }
-        .dotted-design {
-            position: absolute;
-            top: 10%;
-            left: 10%;
-            width: 50px;
-            height: 50px;
-            background-color: white;
-            border-radius: 50%;
-        }
-        .dotted-design-small {
-            width: 20px;
-            height: 20px;
-        }
-        .dotted-design-right {
-            position: absolute;
-            top: 20%;
-            right: 10%;
-            width: 50px;
-            height: 50px;
-            background-color: white;
-            border-radius: 50%;
-        }
+
+        /* Back Button */
         .back-button {
             position: absolute;
-            top: 10%;
-            right: 5%;
+            top: 20px;
+            right: 20px;
             width: 50px;
             height: 50px;
-            background-color: #fbbf24; /* Tailwind's yellow-500 */
+            background-color: #fbbf24;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
         }
+
+        @media (min-width: 1024px) {
+            .login-left {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .mobile-heading {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .desktop-heading {
+                display: none;
+            }
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 70%;
+            right: 1rem;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #fbbf24;
+            font-weight: bold;
+            font-size: 0.875rem; /* Tailwind's text-sm */
+            padding: 0.25rem;
+            background: rgba(0, 0, 0, 0.1); /* Optional for better visibility */
+            border-radius: 0.25rem;
+        }
+
+        .toggle-password:hover {
+            color: #eab308;
+        }
     </style>
 </head>
+
 <body class="custom-bg">
-    <div class="header">
+    <!-- Header with logo and Sign Up heading -->
+    <div class="header lg:block hidden">
         <div class="logo">
             <div class="logo-circle">
                 <span>U</span>
             </div>
             <div class="logo-text">learn</div>
         </div>
-        <div class="login-heading">Log In</div>
+        <div class="signup-heading">Log In</div>
     </div>
-    <div class="dotted-design"></div>
-    <div class="dotted-design dotted-design-small" style="top: 12%; left: 12%;"></div>
-    <div class="dotted-design dotted-design-small" style="top: 14%; left: 14%;"></div>
-    <div class="dotted-design-right"></div>
-    <div class="dotted-design dotted-design-small" style="top: 22%; right: 12%;"></div>
-    <div class="dotted-design dotted-design-small" style="top: 24%; right: 14%;"></div>
+
+    <!-- Back button -->
+    <div class="back-button" onclick="window.history.back();">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/left.png" alt="Back Icon">
+    </div>
+
+    <!-- Container -->
     <div class="login-container">
-        <div class="login-left">
-            <img src="/images/log-in.png" alt="Login Image">
+        <!-- Left section with image -->
+        <div class="login-left hidden lg:flex">
+            <img src="/images/login.png" alt="Login Image">
         </div>
+
+        <!-- Right section with form -->
         <div class="login-right">
             <form class="login-form">
-                <div class="text-center mb-6">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/login-rounded-right.png" alt="Login Icon" class="mx-auto mb-4" style="width: 50px; height: 50px;">
-                    <h2 class="text-3xl text-white font-bold mb-2">Log In</h2>
+                <!-- Heading for desktop view -->
+                <div class="signup-heading desktop-heading text-center">Log In</div>
+                <!-- Heading for mobile view -->
+                <div class="signup-heading mobile-heading text-center lg:hidden">Log In</div>
+                <!-- Login Icon -->
+                <div class="text-center mb-5">
+                    <img src="https://img.icons8.com/clouds/100/000000/login-rounded-right.png" alt="Login Icon"
+                        class="mx-auto">
                 </div>
+                <!-- Email Input -->
                 <div class="mb-4">
-                    <input type="email" placeholder="Email" class="w-full py-2 px-4">
+                    <label for="email" class="block text-white font-bold">Email</label>
+                    <input type="email" id="email" placeholder="Email" class="w-full">
                 </div>
+                <!-- Password Input -->
                 <div class="mb-4 relative">
-                    <input type="password" placeholder="Password" class="w-full py-2 px-4">
-                    <button type="button" class="absolute right-4 top-2 text-blue-500">show</button>
+                    <label for="password" class="block text-white font-bold">Password</label>
+                    <input type="password" id="password" placeholder="Password" class="w-full">
+                    <span id="togglePassword" class="toggle-password">show</span>
                 </div>
-                <div class="mb-4 text-right">
-                    <a href="#" class="text-yellow-500">Forgot Password?</a>
+                <!-- Forgot Password Link -->
+                <div class="text-right mb-4">
+                    <a href="#" class="text-yellow-500 text-sm">Forgot Password?</a>
                 </div>
+                <!-- Log In Button -->
                 <div class="mb-4">
-                    <button type="submit" class="w-full py-2 px-4">Log In</button>
+                    <button type="submit" class="w-full">Log In</button>
                 </div>
-                <div class="flex items-center justify-center my-4">
-                    <hr class="w-1/4 border-t border-white"/>
-                    <span class="mx-4 text-white">or</span>
-                    <hr class="w-1/4 border-t border-white"/>
+                <!-- Divider -->
+                <div class="divider text-gray-400">
+                    or
                 </div>
-                <div class="social-buttons">
-                    <button>
-                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo">
-                        Google
-                    </button>
-                    <button>
-                        <img src="https://img.icons8.com/ios-filled/50/000000/mac-os.png" alt="Apple Logo">
-                        Apple
-                    </button>
-                    <button>
-                        <img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png" alt="Facebook Logo">
-                        Facebook
-                    </button>
+                <!-- Social Login Buttons -->
+                <div class="mb-2">
+                    <div class="social-button border text-gray-700 bg-white">
+                        <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google"> Google
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="social-button border text-gray-700 bg-white">
+                        <img src="https://img.icons8.com/ios-filled/24/000000/mac-os.png" alt="Apple"> Apple
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="social-button border text-gray-700 bg-white">
+                        <img src="https://img.icons8.com/color/24/000000/facebook.png" alt="Facebook"> Facebook
+                    </div>
                 </div>
             </form>
         </div>
     </div>
-    <div class="back-button" onclick="window.history.back();">
-        <img src="https://img.icons8.com/ios-glyphs/30/000000/left.png" alt="Back Icon">
-    </div>
 </body>
+
 </html>
+
+<script src="/scripts/app.js"></script>
+<script src="/scripts/auth.js"></script>
+<script src="/scripts/script.js"></script>
