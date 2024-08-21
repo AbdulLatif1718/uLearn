@@ -149,6 +149,10 @@
                 padding: 0.5rem;
             }
         }
+        /*wrap the sidebar-item */
+        #wrap-content{
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 <body class="relative flex flex-col justify-center items-center min-h-screen">
@@ -170,7 +174,7 @@
     <div class="flex flex-wrap w-full px-4 md:px-8 main-container">
         <!-- Sidebar -->
         <div class="flex flex-col w-full md:w-1/4 p-4 items-stretch sidebar-bg rounded-r-lg md:rounded-none">
-            <div class="flex flex-row md:flex-col space-x-2 md:space-x-0 w-full justify-between md:justify-start">
+            <div class="flex flex-row md:flex-col space-x-2 md:space-x-0 w-full justify-between md:justify-start" id="wrap-content">
                 <div class="sidebar-item">
                   <a href="/do-it-yourself" class="flex items-center hover:bg-gray-700 p-2 rounded">
                     <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
