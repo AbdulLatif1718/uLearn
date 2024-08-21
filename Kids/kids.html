@@ -6,182 +6,151 @@
     <title>Ulearn for Kids</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        body {
+            background-color: #0082A2;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
         .header-bg {
             background-color: #fbbf24;
             height: 150px;
             width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
             clip-path: path("M0,0 C100,150 300,0 400,100 C500,200 700,50 800,100 C900,150 1100,0 1200,50 C1300,100 1500,0 1600,50 L1600,0 L1600,0 Z");
             z-index: 1;
+            margin-bottom: 2rem;
         }
+
+        .course-card {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            width: 280px;
+            height: 350px;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+        }
+
+        .course-card img {
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .course-card button {
+            transition: background-color 0.3s ease;
+        }
+
+        .course-card:hover button {
+            background-color: #006b80;
+        }
+
         .logo-bg {
             background-color: #fbbf24;
             height: 100px;
             width: 100px;
-        }
-        .custom-bg {
-            background-color: #0082A2;
-        }
-        .course-link {
-            position: relative;
-            width: 250px; /* Default width for desktop */
-            height: 150px; /* Default height for desktop */
-            margin-bottom: 1rem;
-            border: 4px solid #fff;
-            overflow: hidden;
-            border-radius: 8px;
-            background-color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s;
+            margin-bottom: 1rem;
         }
-        .course-link img {
-            transition: opacity 0.3s;
-        }
-        .course-link-left {
-            transform: skewY(20deg);
-        }
-        .course-link-left img {
-            transform: skewY(-20deg);
-        }
-        .course-link-right {
-            transform: skewY(-20deg);
-        }
-        .course-link-right img {
-            transform: skewY(20deg);
-        }
-        .course-link:hover img {
-            opacity: 0;
-        }
-        .course-link::after {
-            content: attr(data-course);
-            position: absolute;
-            color: black;
-            font-size: 1.5rem; /* Default font size for desktop */
+
+        .logo-bg span {
+            font-size: 3rem;
             font-weight: bold;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-            white-space: nowrap;
+            color: #0082A2;
         }
-        .course-link:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
-        .content-between {
-            font-size: 6rem; /* Default font size for desktop */
-            margin-bottom: 16rem; /* Default margin for desktop */
-        }
-        @media (min-width: 1536px) { /* Larger screens */
-            .course-link {
-                width: 300px; /* Adjusted width for larger screens */
-                height: 180px; /* Adjusted height for larger screens */
-            }
-            .course-link::after {
-                font-size: 1.75rem; /* Adjusted font size for larger screens */
-            }
-            .content-between {
-                font-size: 7rem; /* Adjusted font size for larger screens */
-                margin-bottom: 18rem; /* Adjusted margin for larger screens */
-            }
-        }
-        @media (max-width: 1280px) { /* Laptop view */
-            .course-link {
-                width: 220px; /* Adjusted width for laptops */
-                height: 130px; /* Adjusted height for laptops */
-            }
-            .course-link::after {
-                font-size: 1.25rem; /* Adjusted font size for laptops */
-            }
-            .content-between {
-                font-size: 5rem; /* Adjusted font size for laptops */
-                margin-bottom: 12rem; /* Adjusted margin for laptops */
-            }
-        }
-        @media (max-width: 1024px) { /* Tablet view */
-            .course-link {
-                width: 200px; /* Adjusted width for tablets */
-                height: 120px; /* Adjusted height for tablets */
-            }
-            .course-link::after {
-                font-size: 1.25rem; /* Adjusted font size for tablets */
-            }
-            .content-between {
-                font-size: 4rem; /* Adjusted font size for tablets */
-                margin-bottom: 8rem; /* Adjusted margin for tablets */
-            }
-        }
-        @media (max-width: 767px) { /* Mobile view */
-            .course-link {
-                width: 100%; /* Full width for mobile */
-                height: auto; /* Auto height for mobile */
-                flex-direction: column; /* Stack items vertically */
-                align-items: flex-start; /* Align items to the start */
-                text-align: left; /* Align text to the left */
-                transform: none; /* Remove skew effect */
-            }
-            .course-link img {
-                width: 100%; /* Full width for image */
-                height: 150px; /* Fixed height for consistency */
-                object-fit: cover; /* Ensure the image covers the area while maintaining aspect ratio */
-                transform: none; /* Remove skew effect from image */
-            }
-            .course-link::after {
-                position: relative;
-                font-size: 1rem; /* Adjusted font size for mobile */
-                opacity: 1;
-                visibility: visible;
-                margin-top: 0.5rem;
-            }
-            .content-between {
-                font-size: 3rem; /* Adjusted font size for mobile */
-                margin-bottom: 4rem; /* Adjusted margin for mobile */
-            }
+
+        .courses-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
     </style>
 </head>
-<body class="relative flex flex-col justify-center items-center min-h-screen custom-bg overflow-x-hidden">
-    <div class="w-full header-bg"></div>
-    <div class="flex flex-col md:flex-row lg:flex-nowrap justify-center items-center md:space-x-24 lg:space-x-96 mt-24 space-y-8 md:space-y-0 px-4">
-        <div class="flex flex-col space-y-8 order-2 md:order-1 lg:w-1/3">
-            <a href="/Kids/science.html" class="course-link course-link-left" data-course="Science">
-                <img src="/images/science-2.png" alt="Science">
-            </a>
-            <a href="/Kids/animals.html" class="course-link course-link-left" data-course="Animals">
-                <img src="/images/images.jpeg" alt="Animals">
-            </a>
-            <a href="/Kids/culture.html" class="course-link course-link-left" data-course="Culture">
-                <img src="/images/culture-kids.jpeg" alt="Culture">
-            </a>
-            <a href="/Kids/history.html" class="course-link course-link-left" data-course="History">
-                <img src="/images/our-world-kids.jpg" alt="History">
-            </a>
+<body class="flex flex-col items-center min-h-screen overflow-x-hidden">
+    <!-- Header Background -->
+    <div class="header-bg w-full"></div>
+
+    <!-- Logo and Title -->
+    <div class="flex flex-col items-center mb-10">
+        <div class="logo-bg rounded-full shadow-lg">
+            <span>U</span>
         </div>
-        <div class="flex flex-col items-center content-between order-1 md:order-2 lg:w-1/3">
-            <div class="w-16 h-16 lg:w-20 lg:h-20 logo-bg rounded-full flex items-center justify-center mb-4">
-                <span class="text-4xl lg:text-6xl font-bold text-[#0082A2]">U</span>
-            </div>
-            <div class="text-4xl lg:text-6xl font-bold text-white text-center">
-                learn <span class="text-[#fbbf24]"><br>for kids</span>
-            </div>
-        </div>
-        <div class="flex flex-col space-y-8 order-3 lg:w-1/3">
-            <a href="/Kids/maths.html" class="course-link course-link-right" data-course="Mathematics">
-                <img src="/images/maths-kids.jpeg" alt="Mathematics">
-            </a>
-            <a href="/Kids/read-write.html" class="course-link course-link-right" data-course="Read and Write">
-                <img src="/images/read-write-kids.jpg" alt="Read and Write">
-            </a>
-            <a href="/Kids/arts.html" class="course-link course-link-right" data-course="Arts">
-                <img src="/images/arts-kids.jpg" alt="Arts">
-            </a>
-            <a href="/Kids/sports.html" class="course-link course-link-right" data-course="Sports">
-                <img src="/images/sports-kids.png" alt="Sports">
-            </a>
-        </div>
+        <h1 class="text-4xl lg:text-5xl font-bold text-white text-center">
+            learn <span class="text-yellow-400">for kids</span>
+        </h1>
     </div>
+
+    <!-- Courses Section -->
+    <nav class="courses-container">
+        <!-- Science Course -->
+        <a href="/Kids/science.html" class="course-card relative group text-center bg-yellow-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            <img src="/images/science-2.png" alt="Science" class="w-36 h-36 mx-auto mb-2 rounded-full">
+            <h3 class="text-2xl font-bold text-blue-800">Science Fun</h3>
+            <p class="text-sm text-gray-700">Explore experiments!</p>
+            <button class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg font-bold">Start Now</button>
+        </a>
+
+        <!-- Animals Course -->
+        <a href="/Kids/animals.html" class="course-card relative group text-center bg-green-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            <img src="/images/images.jpeg" alt="Animals" class="w-36 h-36 mx-auto mb-2 rounded-full">
+            <h3 class="text-2xl font-bold text-green-800">Animal World</h3>
+            <p class="text-sm text-gray-700">Meet wild creatures!</p>
+            <button class="mt-4 bg-green-500 text-white px-6 py-2 rounded-lg font-bold">Let’s Go!</button>
+        </a>
+
+        <!-- Arts Course -->
+        <a href="/Kids/arts.html" class="course-card relative group text-center bg-pink-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            <img src="/images/arts-kids.jpg" alt="Arts" class="w-36 h-36 mx-auto mb-2 rounded-full">
+            <h3 class="text-2xl font-bold text-pink-800">Art Adventures</h3>
+            <p class="text-sm text-gray-700">Draw and create!</p>
+            <button class="mt-4 bg-pink-500 text-white px-6 py-2 rounded-lg font-bold">Get Creative!</button>
+        </a>
+
+        <!-- Mathematics Course -->
+        <a href="/Kids/maths.html" class="course-card relative group text-center bg-purple-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            <img src="/images/maths-kids.jpeg" alt="Mathematics" class="w-36 h-36 mx-auto mb-2 rounded-full">
+            <h3 class="text-2xl font-bold text-purple-800">Math Magic</h3>
+            <p class="text-sm text-gray-700">Solve puzzles!</p>
+            <button class="mt-4 bg-purple-500 text-white px-6 py-2 rounded-lg font-bold">Start Learning!</button>
+        </a>
+
+        <!-- History Course -->
+        <a href="/Kids/history.html" class="course-card relative group text-center bg-blue-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            <img src="/images/our-world-kids.jpg" alt="History" class="w-36 h-36 mx-auto mb-2 rounded-full">
+            <h3 class="text-2xl font-bold text-blue-800">History Journey</h3>
+            <p class="text-sm text-gray-700">Travel back in time!</p>
+            <button class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg font-bold">Explore Now</button>
+        </a>
+
+        <!-- Culture Course -->
+        <a href="/Kids/culture.html" class="course-card relative group text-center bg-orange-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            <img src="/images/culture-kids.jpeg" alt="Culture" class="w-36 h-36 mx-auto mb-2 rounded-full">
+            <h3 class="text-2xl font-bold text-orange-800">Culture Quest</h3>
+            <p class="text-sm text-gray-700">Discover the world!</p>
+            <button class="mt-4 bg-orange-500 text-white px-6 py-2 rounded-lg font-bold">Start Exploring</button>
+        </a>
+
+        <!-- Reading and Writing Course -->
+        <a href="/Kids/read-write.html" class="course-card relative group text-center bg-red-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            <img src="/images/read-write-kids.jpg" alt="Read and Write" class="w-36 h-36 mx-auto mb-2 rounded-full">
+            <h3 class="text-2xl font-bold text-red-800">Reading & Writing</h3>
+            <p class="text-sm text-gray-700">Fun with words!</p>
+            <button class="mt-4 bg-red-500 text-white px-6 py-2 rounded-lg font-bold">Let’s Read</button>
+        </a>
+
+        <!-- Sports Course -->
+        <a href="/Kids/sports.html" class="course-card relative group text-center bg-teal-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            <img src="/images/sports-kids.png" alt="Sports" class="w-36 h-36 mx-auto mb-2 rounded-full">
+            <h3 class="text-2xl font-bold text-teal-800">Sports Zone</h3>
+            <p class="text-sm text-gray-700">Get active and play!</p>
+            <button class="mt-4 bg-teal-500 text-white px-6 py-2 rounded-lg font-bold">Let’s Play</button>
+        </a>
+    </nav>
 </body>
 </html>
