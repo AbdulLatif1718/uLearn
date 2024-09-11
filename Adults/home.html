@@ -52,7 +52,7 @@
     <div class="flex flex-col lg:flex-row h-screen">
         <!-- Sidebar -->
         <div id="sidebar"
-            class="bg-[#0082A2] w-96 p-6 flex flex-col fixed lg:relative top-0 left-0 h-full lg:h-auto transition-transform duration-300 sidebar-hidden lg:translate-x-0 lg:translate-y-0 z-30 lg:w-80">
+            class="bg-[#0082A2] w-64 p-6 flex flex-col fixed lg:relative top-0 left-0 h-full lg:h-auto transition-transform duration-300 sidebar-hidden lg:translate-x-0 lg:translate-y-0 z-30 lg:w-80">
             <!-- Close Button -->
             <button id="close-sidebar" class="text-white text-2xl mb-4 lg:hidden absolute top-4 right-4">
                 <i class="fas fa-times"></i>
@@ -186,47 +186,8 @@
 </body>
 
 </html>
-<script>
-    // Sidebar toggle functionality
-    const sidebar = document.getElementById('sidebar');
-    const closeSidebar = document.getElementById('close-sidebar');
-    const toggleSidebar = document.getElementById('toggle-sidebar');
-    const hamburger = document.getElementById('hamburger');
-    const sidebarText = document.querySelectorAll('.sidebar-text'); // Define sidebarText
-
-    // Toggle sidebar on hamburger click
-    hamburger.addEventListener('click', () => {
-        sidebar.classList.toggle('sidebar-visible');
-        sidebar.classList.toggle('sidebar-hidden');
-    });
-
-    // Close sidebar on close button click
-    closeSidebar.addEventListener('click', () => {
-        sidebar.classList.add('sidebar-hidden');
-        sidebar.classList.remove('sidebar-visible');
-    });
-
-    // Toggle sidebar on large screen toggle button click
-    toggleSidebar.addEventListener('click', () => {
-        if (sidebar.classList.contains('lg-sidebar-expanded')) {
-            sidebar.classList.remove('lg-sidebar-expanded');
-            sidebar.classList.add('lg-sidebar-collapsed');
-            toggleSidebar.innerHTML = '<i class="fas fa-angle-double-right"></i>';
-            sidebarText.forEach(text => text.classList.add('hidden'));
-            document.querySelector('.lg\\:pl-64').classList.add('lg:pl-16');
-            document.querySelector('.lg\\:pl-64').classList.remove('lg:pl-64');
-        } else {
-            sidebar.classList.remove('lg-sidebar-collapsed');
-            sidebar.classList.add('lg-sidebar-expanded');
-            toggleSidebar.innerHTML = '<i class="fas fa-angle-double-left"></i>';
-            sidebarText.forEach(text => text.classList.remove('hidden'));
-            document.querySelector('.lg\\:pl-16').classList.remove('lg:pl-16');
-            document.querySelector('.lg\\:pl-64').classList.add('lg:pl-64');
-        }
-    });
-</script>
 <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js"></script>
 <script src="/app.js"></script>
 <script src="/auth.js"></script>
-<script src="/script.js"></script>
+<script src="script.js"></script>
