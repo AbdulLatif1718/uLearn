@@ -35,6 +35,11 @@
             margin-left: 10px;
         }
 
+        .dropdown-menu {
+            @apply absolute right-0 mt-2 bg-white border rounded shadow-lg;
+        }
+
+
         @media (max-width: 1024px) {
             .logo-circle {
                 width: 60px;
@@ -135,7 +140,7 @@
     </div>
 
     <!-- Dropdown for Desktop and Mobile -->
-    <div class="absolute top-4 right-4 flex items-center space-x-4">
+    <div x-data="{ open: false }" class="absolute top-4 right-4 flex items-center space-x-4">
         <div class="relative">
             <button @click="open = !open"
                 class="bg-yellow-500 text-white px-4 py-2 rounded flex items-center space-x-2 dropdown-button">
@@ -152,6 +157,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Main Content Section -->
     <div class="text-center mt-16 lg:mt-24 px-4">
