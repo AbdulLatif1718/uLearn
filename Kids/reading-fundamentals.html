@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulearn for Kids - Reading Fundamentals</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0082A2;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .header-bg {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .main-container {
+            display: flex;
+            height: calc(100vh - 150px);
+            padding: 0 1rem;
+            gap: 1rem;
+        }
+
+        .sidebar {
+            background-color: #FF6B6B;
+            border-radius: 20px;
+            padding: 1rem;
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .sidebar .button {
+            background-color: #FF6B6B;
+            color: white;
+            font-size: 1.5rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 15px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .sidebar .button:hover {
+            transform: scale(1.05);
+            background-color: #FF4C4C;
+            border-color: #FFD700;
+        }
+
+        .content-section {
+            background-color: #E6E6FA;
+            border-radius: 20px;
+            width: 75%;
+            padding: 2rem;
+            margin: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content-section img {
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .content-section h1 {
+            font-size: 2.5rem;
+            color: #4B0082;
+            text-shadow: 1px 1px 3px #FFD700;
+        }
+
+        .content-section p {
+            font-size: 1.25rem;
+            color: #333;
+            margin-top: 1rem;
+        }
+
+        .content-section .interactive-box {
+            background-color: #FFDEAD;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        .story-content {
+            max-height: 550px;
+            /* Adjust this value for desired scroll height */
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+
+        .interactive-box button {
+            background-color: #6A5ACD;
+            color: white;
+            font-size: 1.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .interactive-box button:hover {
+            transform: scale(1.05);
+            background-color: #483D8B;
+        }
+
+        @media (max-width: 1024px) {
+            .header-bg {
+                height: 120px;
+                font-size: 1.5rem;
+            }
+
+            .main-container {
+                flex-direction: column;
+                height: calc(100vh - 120px);
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                overflow-x: auto;
+                padding-top: 5%;
+                top: 0;
+                left: 0;
+                border-bottom: 2px solid #FFD700;
+            }
+
+            .sidebar .button {
+                flex: 1;
+                justify-content: center;
+                padding: 0.5rem;
+                text-align: center;
+                font-size: 1rem;
+                margin: 0;
+            }
+
+            .content-section {
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            .story-content {
+                max-height: 450px;
+                /* Adjust this value for desired scroll height */
+                overflow-y: auto;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="relative flex flex-col justify-center items-center min-h-screen">
+    <!-- Header -->
+    <div class="header-bg">
+        Reading Fundamentals for Kids
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container w-full">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="button" onclick="showContent('letters')">
+                🔤 Learn Letters
+            </div>
+            <div class="button" onclick="showContent('story')">
+                📖 Story Time
+            </div>
+            <div class="button" onclick="showContent('quiz')">
+                📝 Fun Quiz
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-section">
+            <!-- Welcome Message -->
+            <div id="welcome-message" class="text-center text-3xl font-bold text-gray-800 p-4">
+                <img class="mx-auto w-full max-w-xs rounded-md shadow-lg mb-4"
+                    src="https://www.beginlearning.com/wp-content/uploads/2023/08/writing-games_5.jpg"
+                    alt="Reading Image">
+                <h1 class="text-4xl text-purple-600 mb-2">Welcome to Reading!</h1>
+                <p class="text-xl text-gray-700">Let’s explore the wonderful world of reading! Choose an activity to
+                    begin.</p>
+            </div>
+
+
+            <!-- Content that will dynamically change -->
+            <div id="content" class="text-center text-3xl font-bold text-gray-800">
+                <!-- Content will be injected here based on the user's choice -->
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript for the Ulearn for Kids - Reading Fundamentals
+
+        // Function to update content based on sidebar button click
+        function showContent(contentType) {
+            const interactiveContent = document.getElementById('content');
+            const welcomeMessage = document.getElementById('welcome-message');
+            if (welcomeMessage) {
+                welcomeMessage.style.display = 'none';
+            }
+
+            // Story Time Content
+            if (contentType === 'story') {
+                interactiveContent.innerHTML = `
+                    <h2 class="text-xl text-purple-800">Story Time: The Little Red Hen</h2>
+                    <div class="story-content overflow-y-auto max-h-96 p-4">
+                        <p>Once upon a time, there was a little red hen who lived on a farm. One sunny morning, she found some shiny grains of wheat and thought, "Hmm, I should plant these and grow some yummy bread!"</p>
+                        <img src="https://img.icons8.com/cotton/64/chicken--v1.png" alt="Little Red Hen" class="mx-auto my-4">
+                        
+                        <p>She went to her friends, the dog, the cat, and the duck, and asked, "Who will help me plant the wheat?"</p>
+                        <img src="https://img.icons8.com/cotton/64/dog--v1.png" alt="Dog" class="inline-block mx-2">
+                        <img src="https://img.icons8.com/cotton/64/cat--v1.png" alt="Cat" class="inline-block mx-2">
+                        <img src="https://img.icons8.com/cotton/64/duck--v1.png" alt="Duck" class="inline-block mx-2">
+                        
+                        <p>"Not I," said the lazy dog, wagging his tail. "Not I," said the sleepy cat, yawning. "Not I," quacked the duck, swimming away.</p>
+                        <p>"Then I will plant it myself," said the little red hen bravely.</p>
+                        <img src="https://img.icons8.com/cotton/64/tractor--v1.png" alt="Planting" class="mx-auto my-4">
+                        
+                        <p>The wheat grew and grew until it was tall and golden. The little red hen was so excited! She asked her friends again, "Who will help me cut the wheat?"</p>
+                        <p>But once again, the dog, cat, and duck said, "Not I." So, the little red hen cut the wheat all by herself.</p>
+                        <img src="https://img.icons8.com/cotton/64/farm--v1.png" alt="Wheat Field" class="mx-auto my-4">
+                        
+                        <p>After cutting the wheat, she asked, "Who will help me grind the wheat into flour?" The friends still refused to help.</p>
+                        <p>"I'll do it myself!" said the little red hen.</p>
+                        <img src="https://img.icons8.com/cotton/64/wheat--v1.png" alt="Grain" class="mx-auto my-4">
+                        
+                        <p>Finally, the little red hen baked the most delicious bread! "Who will help me eat the bread?" she asked.</p>
+                        <p>This time, the dog, cat, and duck all shouted, "I will, I will!"</p>
+                        <img src="https://img.icons8.com/cotton/64/bread--v1.png" alt="Bread" class="mx-auto my-4">
+                        
+                        <p>But the little red hen shook her head. "No, I will eat it myself," she said, and she enjoyed every bite of her freshly baked bread.</p>
+                        <p>The end!</p>
+                        <img src="https://img.icons8.com/cotton/64/chicken--v1.png" alt="Little Red Hen" class="mx-auto my-4">
+                    </div>
+                    
+                    
+                `;
+            }
+
+
+            // Learn Letters Content
+            else if (contentType === 'letters') {
+                interactiveContent.innerHTML = `
+                    <h2 class="text-xl text-purple-800">Learn to Read: The Alphabet, Words, and Fun Videos</h2>
+                    <p>Let's begin our journey through reading fundamentals! Click on a letter or word to hear it spoken, or watch a fun video.</p>
+                    
+                    <!-- Alphabet Section -->
+                     <div class="story-content overflow-y-auto max-h-96 p-4">
+        <!-- Alphabet Section -->
+        <div class="my-6">
+            <h3 class="text-lg sm:text-xl lg:text-2xl text-green-700 font-bold text-center">Learn Letters: The Alphabet</h3>
+            <p class="text-center text-sm sm:text-base mb-4">Click on a letter to hear its sound and see a related word.</p>
+            <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-4 text-lg text-white">
+                ${generateAlphabetButtons()}
+            </div>
+        </div>
+
+        <!-- Two-Letter Words Section -->
+        <div class="my-6">
+            <h3 class="text-lg sm:text-xl lg:text-2xl text-blue-700 font-bold text-center">Learn Two-Letter Words</h3>
+            <p class="text-center text-sm sm:text-base mb-4">Click on a two-letter word to hear it spoken aloud.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-lg text-white">
+                <button class="bg-green-500 p-2 rounded w-full" onclick="alert('AT')">AT</button>
+                <button class="bg-green-500 p-2 rounded w-full" onclick="alert('IN')">IN</button>
+                <button class="bg-green-500 p-2 rounded w-full" onclick="alert('ON')">ON</button>
+                <button class="bg-green-500 p-2 rounded w-full" onclick="alert('IT')">IT</button>
+            </div>
+        </div>
+
+        <!-- Three-Letter Words Section -->
+        <div class="my-6">
+            <h3 class="text-lg sm:text-xl lg:text-2xl text-red-700 font-bold text-center">Learn Three-Letter Words</h3>
+            <p class="text-center text-sm sm:text-base mb-4">Click on a three-letter word to hear it spoken aloud.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-lg text-white">
+                <button class="bg-red-500 p-2 rounded w-full" onclick="alert('CAT 🐱')">CAT</button>
+                <button class="bg-red-500 p-2 rounded w-full" onclick="alert('DOG 🐶')">DOG</button>
+                <button class="bg-red-500 p-2 rounded w-full" onclick="alert('HAT 🎩')">HAT</button>
+                <button class="bg-red-500 p-2 rounded w-full" onclick="alert('BAT 🦇')">BAT</button>
+            </div>
+        </div>
+
+        <!-- Four-Letter Words Section -->
+        <div class="my-6">
+            <h3 class="text-lg sm:text-xl lg:text-2xl text-yellow-700 font-bold text-center">Learn Four-Letter Words</h3>
+            <p class="text-center text-sm sm:text-base mb-4">Click on a four-letter word to hear it spoken aloud.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg text-white">
+                <button class="bg-yellow-500 p-2 rounded w-full" onclick="alert('FISH 🐟')">FISH</button>
+                <button class="bg-yellow-500 p-2 rounded w-full" onclick="alert('BIRD 🐦')">BIRD</button>
+            </div>
+        </div>
+
+        <!-- YouTube Videos Section -->
+        <div class="my-6">
+            <h3 class="text-lg sm:text-xl lg:text-2xl text-purple-700 font-bold text-center">Watch and Learn: Fun Reading Videos</h3>
+            <p class="text-center text-sm sm:text-base mb-4">Click the video below to watch and learn!</p>
+            <div class="flex justify-center">
+                <iframe class="w-full h-48 sm:h-64 md:h-80 lg:h-96 max-w-3xl" src="https://www.youtube.com/embed/izqfrq_vpv4?si=81GQ-N-m96scnZPO" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+                     </div>
+                `;
+            }
+
+
+
+
+
+            // Fun Quiz Content
+            else if (contentType === 'quiz') {
+                interactiveContent.innerHTML = `
+            <h2 class="text-xl text-purple-800">Fun Quiz</h2>
+            <p>What letter does the word "Apple" start with?</p>
+            <button onclick="alert('Correct! It\'s A! 🎉')">A</button>
+            <button onclick="alert('Oops! Try again.')">B</button>
+            <p>Next question: What sound does the letter "C" make?</p>
+            <button onclick="alert('Correct! C sounds like K!')">C</button>
+            <button onclick="alert('Oops! Try again.')">D</button>
+            <p>Final question: What animal starts with the letter "G"?</p>
+            <button onclick="alert('Correct! Giraffe! 🦒')">G</button>
+            <button onclick="alert('Oops! Try again.')">H</button>
+        `;
+            }
+        }
+        // Function to generate alphabet buttons
+        function generateAlphabetButtons() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+            const words = {
+                A: 'Apple 🍎',
+                B: 'Ball ⚽',
+                C: 'Cat 🐱',
+                D: 'Dog 🐶',
+                E: 'Elephant 🐘',
+                F: 'Fish 🐟',
+                G: 'Giraffe 🦒',
+                H: 'Hat 🎩',
+                I: 'Ice Cream 🍦',
+                J: 'Juice 🧃',
+                K: 'Kite 🪁',
+                L: 'Lion 🦁',
+                M: 'Monkey 🐵',
+                N: 'Nest 🪹',
+                O: 'Orange 🍊',
+                P: 'Penguin 🐧',
+                Q: 'Queen 👑',
+                R: 'Rainbow 🌈',
+                S: 'Sun ☀️',
+                T: 'Turtle 🐢',
+                U: 'Umbrella ☂️',
+                V: 'Violin 🎻',
+                W: 'Whale 🐋',
+                X: 'Xylophone 🎶',
+                Y: 'Yak 🦬',
+                Z: 'Zebra 🦓'
+            };
+
+            return letters.map(letter => `
+                            <button class="bg-blue-500 p-2 rounded" 
+                                onclick="alert('${letter} is for ${words[letter]}')">${letter}</button>
+                        `).join('');
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ulearn Course Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Additional styling for fixed sidebar on small screens */
+    #sidebar {
+      transform: translateX(-100%);
+    }
+
+    #sidebar.open {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
+  
+  <!-- Header with Top Navbar -->
+  <header class="bg-[#fbbf24] flex items-center justify-between p-6">
+    <div class="flex items-center space-x-4">
+      <button id="hamburger" class="lg:hidden text-3xl text-white">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 class="text-xl lg:text-3xl font-bold text-white">Ulearn Courses</h1>
+    </div>
+
+    <!-- Top Navbar for Other Courses -->
+    <nav class="hidden lg:flex space-x-6">
+      <a href="#" class="text-white text-lg hover:underline">Course 1</a>
+      <a href="#" class="text-white text-lg hover:underline">Course 2</a>
+      <a href="#" class="text-white text-lg hover:underline">Course 3</a>
+      <!-- Add more courses here -->
+    </nav>
+  </header>
+
+  <!-- Sidebar for Table of Contents -->
+  <div id="sidebar" class="bg-[#0082A2] w-64 p-6 flex flex-col fixed top-0 left-0 h-full z-30 transition-transform duration-300">
+    <h2 class="text-white text-2xl font-bold mb-4">Table of Contents</h2>
+    <nav class="flex flex-col space-y-4">
+      <a href="#section1" class="text-white text-lg">Introduction</a>
+      <a href="#section2" class="text-white text-lg">Chapter 1</a>
+      <a href="#section3" class="text-white text-lg">Chapter 2</a>
+      <a href="#section4" class="text-white text-lg">Chapter 3</a>
+      <!-- Add more sections as needed -->
+    </nav>
+  </div>
+
+  <!-- Main Content Section -->
+  <main class="flex-1 lg:pl-64 p-6 bg-[#1e9ebe] overflow-y-auto">
+    <section id="section1" class="mb-6">
+      <h2 class="text-3xl font-bold mb-4">Introduction</h2>
+      <p class="text-white">This is the introduction to the course...</p>
+    </section>
+    
+    <section id="section2" class="mb-6">
+      <h2 class="text-3xl font-bold mb-4">Chapter 1</h2>
+      <p class="text-white">Content of Chapter 1...</p>
+    </section>
+    
+    <section id="section3" class="mb-6">
+      <h2 class="text-3xl font-bold mb-4">Chapter 2</h2>
+      <p class="text-white">Content of Chapter 2...</p>
+    </section>
+    
+    <section id="section4" class="mb-6">
+      <h2 class="text-3xl font-bold mb-4">Chapter 3</h2>
+      <p class="text-white">Content of Chapter 3...</p>
+    </section>
+
+    <!-- Add more content sections as needed -->
+  </main>
+
+  <!-- Script for Sidebar Toggle on Mobile -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

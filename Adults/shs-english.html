@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Content</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Add custom styles here */
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-visible {
+            transform: translateX(0);
+        }
+
+        .lg-sidebar-collapsed {
+            width: 16px;
+        }
+
+        .lg-sidebar-expanded {
+            width: 256px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #0082A2;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-item:hover {
+            background-color: #eaeaea;
+        }
+
+        .sidebar-text {
+            margin-left: 10px;
+        }
+
+        .sidebar-item.completed {
+            background-color: #d4edda;
+            font-weight: bold;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .chapter-section {
+            margin-bottom: 40px;
+        }
+
+        .practice-section {
+            margin-top: 30px;
+        }
+
+        .practice-section h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .practice-section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .practice-section li {
+            margin-bottom: 10px;
+        }
+
+        #footer {
+            display: none;
+            background-color: #f8f9fa;
+            color: #6c757d;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased bg-[#0082A2] text-white">
+
+    <div class="flex flex-col lg:flex-row h-screen">
+
+        <!-- Sidebar -->
+        <div id="sidebar"
+            class="bg-[#0082A2] w-96 p-6 flex flex-col fixed lg:relative top-0 left-0 h-full lg:h-auto transition-transform duration-300 sidebar-hidden lg:translate-x-0 lg:translate-y-0 z-30 lg:w-80">
+            <!-- Close Button -->
+            <button id="close-sidebar" class="text-white text-2xl mb-4 lg:hidden absolute top-4 right-4">
+                <i class="fas fa-times"></i>
+            </button>
+            <!-- Toggle Button for large screens -->
+            <div class="flex items-center mb-8">
+                <img src="/images/ulearn.png" alt="Logo" class="w-12 h-12 mr-3">
+                <span class="text-2xl lg:text-3xl font-bold">Ulearn</span>
+            </div>
+            <nav class="flex flex-col space-y-4 p-4 py-11">
+                <a href="/Adults/home.html"
+                    class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 hover:bg-gray-200 transition duration-300 ease-in-out">
+                    <i class="fas fa-home"></i>
+                    <span class="sidebar-text">Back Home</span>
+                </a>
+                <div class="h-full max-h-[600px] lg:max-h-[700px] overflow-y-auto">
+                    <h1
+                        class="sidebar-text py-8 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3">
+                        Table of Content
+                    </h1>
+                    <!-- Sidebar Navigation -->
+                    <nav class="sidebar" id="sidebar">
+                        <!-- Chapter 1 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="1">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 1: Introduction to English Language</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section1-1" class="text-gray-700 hover:text-blue-600">Overview of English
+                                        Language</a></li>
+                                <li><a href="#section1-2" class="text-gray-700 hover:text-blue-600">Historical
+                                        Development</a></li>
+                                <li><a href="#section1-3" class="text-gray-700 hover:text-blue-600">Importance and
+                                        Scope</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 2 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="2">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 2: Grammar Fundamentals</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section2-1" class="text-gray-700 hover:text-blue-600">Parts of Speech</a>
+                                </li>
+                                <li><a href="#section2-2" class="text-gray-700 hover:text-blue-600">Sentence
+                                        Structure</a></li>
+                                <li><a href="#section2-3" class="text-gray-700 hover:text-blue-600">Tenses and
+                                        Agreement</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 3 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="3">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 3: Vocabulary Building</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section3-1" class="text-gray-700 hover:text-blue-600">Word Formation</a>
+                                </li>
+                                <li><a href="#section3-2" class="text-gray-700 hover:text-blue-600">Synonyms and
+                                        Antonyms</a></li>
+                                <li><a href="#section3-3" class="text-gray-700 hover:text-blue-600">Contextual Usage</a>
+                                </li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 4 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="4">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 4: Reading Comprehension</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section4-1" class="text-gray-700 hover:text-blue-600">Strategies for
+                                        Effective Reading</a></li>
+                                <li><a href="#section4-2" class="text-gray-700 hover:text-blue-600">Analyzing Texts</a>
+                                </li>
+                                <li><a href="#section4-3" class="text-gray-700 hover:text-blue-600">Understanding Main
+                                        Ideas and Details</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 5 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="5">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 5: Writing Skills</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section5-1" class="text-gray-700 hover:text-blue-600">Types of Writing</a>
+                                </li>
+                                <li><a href="#section5-2" class="text-gray-700 hover:text-blue-600">Essay Structure and
+                                        Development</a></li>
+                                <li><a href="#section5-3" class="text-gray-700 hover:text-blue-600">Revising and
+                                        Editing</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 6 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="6">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 6: Literature and Literary Analysis</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section6-1" class="text-gray-700 hover:text-blue-600">Genres of
+                                        Literature</a></li>
+                                <li><a href="#section6-2" class="text-gray-700 hover:text-blue-600">Analyzing Literary
+                                        Devices</a></li>
+                                <li><a href="#section6-3" class="text-gray-700 hover:text-blue-600">Themes and Character
+                                        Analysis</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 7 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="7">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 7: Oral Communication</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section7-1" class="text-gray-700 hover:text-blue-600">Public Speaking
+                                        Techniques</a></li>
+                                <li><a href="#section7-2" class="text-gray-700 hover:text-blue-600">Effective Listening
+                                        Skills</a></li>
+                                <li><a href="#section7-3" class="text-gray-700 hover:text-blue-600">Presentation and
+                                        Debate</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 8 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="8">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 8: Functional English</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section8-1" class="text-gray-700 hover:text-blue-600">Writing Formal
+                                        Letters</a></li>
+                                <li><a href="#section8-2" class="text-gray-700 hover:text-blue-600">Writing Reports and
+                                        Proposals</a></li>
+                                <li><a href="#section8-3" class="text-gray-700 hover:text-blue-600">Job Applications and
+                                        CV Writing</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 9 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="9">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 9: Language Use in Context</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2
+mt-2">
+                                <li><a href="#section9-1" class="text-gray-700 hover:text-blue-600">Language in
+                                        Different Settings</a></li>
+                                <li><a href="#section9-2" class="text-gray-700 hover:text-blue-600">Cultural and Social
+                                        Influences</a></li>
+                                <li><a href="#section9-3" class="text-gray-700 hover:text-blue-600">Adapting Language
+                                        for Specific Purposes</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 10 -->
+                        <details class="group border-b border-gray-300">
+                            <summary class="sidebar-item" data-chapter="10">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 10: Review and Assessment</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section10-1" class="text-gray-700 hover:text-blue-600">Review of Key
+                                        Concepts</a></li>
+                                <li><a href="#section10-2" class="text-gray-700 hover:text-blue-600">Practice
+                                        Exercises</a></li>
+                                <li><a href="#section10-3" class="text-gray-700 hover:text-blue-600">Assessment and
+                                        Feedback</a></li>
+                            </ul>
+                        </details>
+                    </nav>
+
+
+                </div>
+
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col lg:transition-all lg:duration-300"">
+            <!-- Top Nav -->
+            <header class=" bg-[#fbbf24] flex items-center justify-between p-6">
+            <button id="hamburger" class="lg:hidden text-3xl">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div id="greeting" class="text-xl lg:text-3xl font-bold text-white mb-4 lg:mb-0">
+                Hi <span id="username">Loading...</span>
+            </div>
+
+            <div class="relative w-full lg:w-1/4 mt-4 lg:mt-0 hidden lg:block">
+                <input type="text" placeholder="Search..."
+                    class="p-3 pl-10 rounded-md w-full bg-white text-gray-700 placeholder-gray-500 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+            </div>
+            </header>
+
+            <!-- Sub Nav Bar for Courses -->
+            <div class="relative">
+                <!-- Left Scroll Icon -->
+                <div id="left-arrow"
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-white bg-[#0082A2] cursor-pointer z-10">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+
+                <!-- Scrollable Navigation with padding for extra scroll space -->
+                <nav id="scrollable-nav"
+                    class="bg-[#0082A2] p-4 pl-28 pr-8 flex justify-center space-x-4 md:space-x-8 overflow-x-auto scroll-smooth no-scrollbar">
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap bg-yellow-500 rounded-lg p-2">
+                        English Language
+                    </a>
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap">
+                        Core Mathematics
+                    </a>
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap">
+                        Elective Mathematics
+                    </a>
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap">
+                        Social Studies
+                    </a>
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap">
+                        Integrated Science
+                    </a>
+                    <!-- Add more courses here -->
+                </nav>
+
+                <!-- Right Scroll Icon -->
+                <div id="right-arrow"
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 text-white bg-[#0082A2] cursor-pointer z-10">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+
+
+            <!-- Course Content Section -->
+            <main class="flex-1 p-2 bg-[#1e9ebe] overflow-y-auto">
+                <section id="course-content">
+                    <!-- Video Embed Section -->
+                    <div id="video-section" class="mb-6">
+                        <div class="video-container">
+                            <iframe id="course-video"
+                                src="https://www.youtube.com/embed/gQojMIhELvM?controls=1&modestbranding=1&rel=0&showinfo=0"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Course Text Content -->
+                    <div id="text-content" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 1:
+                            Introduction to English Language</h2>
+
+                        <!-- Section 1: Overview of the English Language -->
+                        <section id="section1-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Overview of the
+                                English Language</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                English is one of the most widely spoken languages in the world, serving as a global
+                                medium of communication. It originated from early Anglo-Saxon tribes and has evolved
+                                dramatically through history. Today, it is considered the international language of
+                                business, education, and diplomacy, shaping cultural and economic interactions
+                                worldwide.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                Classified as a West Germanic language, English has integrated influences from Latin,
+                                Old Norse, and French over centuries. Its adaptability and global spread have made it an
+                                essential skill for people across different nations, providing a common platform for
+                                exchanging ideas and innovations.
+                            </p>
+                        </section>
+
+                        <!-- Section 2: Historical Development of English -->
+                        <section id="section1-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Historical Development
+                                of English</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                English has undergone significant changes throughout its history, with three main
+                                periods marking its development: Old English, Middle English, and Modern English. Each
+                                period reflects the cultural and linguistic shifts that have shaped the language we use
+                                today.
+                            </p>
+
+                            <!-- Sub-section: Old English -->
+                            <h4 id="section1-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Old
+                                English (5th - 11th Century)</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                The roots of Old English date back to the Anglo-Saxon settlers, influenced by Latin due
+                                to Christianization and Old Norse from Viking invasions. Although complex in structure,
+                                much of its vocabulary has become obsolete, with only a few words surviving in modern
+                                English.
+                            </p>
+
+                            <!-- Sub-section: Middle English -->
+                            <h4 id="section1-2-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Middle
+                                English (11th - 15th Century)</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                The Norman Conquest in 1066 had a profound impact on English, incorporating many French
+                                words into the language. During this time, grammar began to simplify, and Middle English
+                                produced literary classics like Chaucer’s "The Canterbury Tales," marking a significant
+                                shift in English literature and language usage.
+                            </p>
+
+                            <!-- Sub-section: Modern English -->
+                            <h4 id="section1-2-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Modern
+                                English (15th Century - Present)</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                The transition to Modern English occurred around the time of the Renaissance, where a
+                                wealth of vocabulary from Latin and Greek entered the language. This period also saw the
+                                standardization of spelling and grammar, influenced by the invention of the printing
+                                press. Modern English is the form we speak today, continuously evolving with the rise of
+                                global communication and technology.
+                            </p>
+                        </section>
+
+                        <!-- Section 3: Importance of English in Modern Society -->
+                        <section id="section1-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Importance of English
+                                in Modern Society</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                English holds a dominant position as a global lingua franca. In many countries, it is
+                                the primary language of instruction in educational institutions and is commonly used in
+                                international business and diplomacy. Its versatility and wide usage make English an
+                                essential tool for career advancement, academic success, and cross-cultural
+                                communication.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                Proficiency in English is crucial for accessing global opportunities, particularly in
+                                sectors like technology, science, and entertainment. The language's adaptability allows
+                                it to continue expanding, integrating new terminology and expressions from various
+                                fields and cultures.
+                            </p>
+                        </section>
+
+                        <!-- Section 4: Challenges of Learning English -->
+                        <section id="section1-4" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Challenges of Learning
+                                English</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                While English is widely spoken, it presents learners with several challenges,
+                                particularly its inconsistent spelling rules and varied pronunciation. Additionally,
+                                English borrows heavily from other languages, resulting in a vast lexicon filled with
+                                synonyms and homophones that can confuse learners.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                Despite these challenges, learners can achieve proficiency by focusing on different
+                                language skills: reading, writing, speaking, and listening. By practicing regularly and
+                                immersing themselves in English, learners can gradually overcome its complexities and
+                                develop fluency.
+                            </p>
+                        </section>
+
+                        <!-- Section 5: Exercises -->
+                        <section id="section1-5" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Exercises</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Test your understanding of this chapter with the following questions:
+                            </p>
+                            <ul class="list-disc list-inside pl-6 md:pl-8 text-gray-700 text-base md:text-lg space-y-4">
+                                <li>Identify the three major periods in the development of the English language.</li>
+                                <li>Explain how the Norman Conquest influenced the English language.</li>
+                                <li>Why is English considered a global lingua franca?</li>
+                                <li>Discuss some of the challenges learners face when studying English.</li>
+                            </ul>
+                        </section>
+                    </div>
+                    <!-- Chapter 2: Grammar Fundamentals -->
+                    <div id="text-content-chapter2" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 2: Grammar
+                            Fundamentals</h2>
+
+                        <!-- Section 1: Understanding Grammar -->
+                        <section id="section2-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Understanding Grammar
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Grammar is the set of rules that govern how we form sentences in any language. It
+                                provides the structure needed to communicate clearly and effectively. Understanding
+                                grammar is crucial for mastering any language, as it helps you organize your thoughts
+                                and express them in a way that others can easily understand.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                In English, grammar includes various components such as nouns, verbs, adjectives,
+                                adverbs, pronouns, prepositions, conjunctions, and interjections. Each of these elements
+                                plays a specific role in building coherent and meaningful sentences.
+                            </p>
+                        </section>
+
+                        <!-- Section 2: Parts of Speech -->
+                        <section id="section2-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Parts of Speech</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                The parts of speech are the building blocks of grammar. Understanding each part helps
+                                you construct sentences that are grammatically correct and meaningful. The eight parts
+                                of speech in English are:
+                            </p>
+
+                            <!-- Sub-section: Nouns -->
+                            <h4 id="section2-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Nouns
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Nouns are words that name people, places, things, or ideas. Examples include "teacher,"
+                                "city," "car," and "freedom." Nouns can be singular or plural, and they can also show
+                                possession (e.g., "John’s book").
+                            </p>
+
+                            <!-- Sub-section: Verbs -->
+                            <h4 id="section2-2-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Verbs
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Verbs are action words that describe what a subject does (e.g., "run," "write") or a
+                                state of being (e.g., "is," "seem"). Verbs change form to indicate tense, person, and
+                                number, providing information about when an action takes place and who is performing it.
+                            </p>
+
+                            <!-- Sub-section: Adjectives -->
+                            <h4 id="section2-2-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Adjectives</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Adjectives describe or modify nouns. They provide more information about a noun, such as
+                                its size, color, or quantity (e.g., "big," "red," "three"). Adjectives help create vivid
+                                images in the reader’s or listener’s mind.
+                            </p>
+
+                            <!-- Sub-section: Adverbs -->
+                            <h4 id="section2-2-4" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Adverbs
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Adverbs modify verbs, adjectives, or other adverbs. They often describe how, when,
+                                where, or to what extent an action takes place (e.g., "quickly," "yesterday," "outside,"
+                                "very").
+                            </p>
+                        </section>
+
+                        <!-- Section 3: Sentence Structure -->
+                        <section id="section2-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Sentence Structure
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                A sentence is a group of words that expresses a complete thought. It must contain a
+                                subject and a predicate. The subject tells us what the sentence is about, while the
+                                predicate describes the action or state of being.
+                            </p>
+
+                            <!-- Sub-section: Simple Sentences -->
+                            <h4 id="section2-3-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Simple
+                                Sentences</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A simple sentence contains one independent clause, which is a group of words that has a
+                                subject and a verb and expresses a complete thought. For example: "The dog barked."
+                            </p>
+
+                            <!-- Sub-section: Compound Sentences -->
+                            <h4 id="section2-3-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Compound
+                                Sentences</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A compound sentence contains two or more independent clauses joined by a coordinating
+                                conjunction (e.g., "and," "but," "or"). For example: "The dog barked, and the cat ran
+                                away."
+                            </p>
+
+                            <!-- Sub-section: Complex Sentences -->
+                            <h4 id="section2-3-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Complex
+                                Sentences</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A complex sentence contains one independent clause and at least one dependent clause. A
+                                dependent clause cannot stand alone as a sentence. For example: "Although the dog
+                                barked, the cat remained calm."
+                            </p>
+                        </section>
+
+                        <!-- Section 4: Grammar in Writing -->
+                        <section id="section2-4" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Grammar in Writing
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Good grammar is essential for clear and effective writing. It helps you convey your
+                                ideas logically and ensures that your readers can understand your message without
+                                confusion. Whether writing an essay, a business report, or a creative story, following
+                                grammatical rules helps you maintain credibility and professionalism.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                Practicing proper grammar also improves your overall communication skills, making you a
+                                more confident and capable speaker and writer. By mastering the fundamentals of grammar,
+                                you can express yourself clearly and persuasively.
+                            </p>
+                        </section>
+
+                        <!-- Section 5: Exercises -->
+                        <section id="section2-5" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Exercises</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Test your knowledge of grammar fundamentals with these questions:
+                            </p>
+                            <ul class="list-disc list-inside pl-6 md:pl-8 text-gray-700 text-base md:text-lg space-y-4">
+                                <li>What are the eight parts of speech in the English language?</li>
+                                <li>Give an example of a simple, compound, and complex sentence.</li>
+                                <li>Why is grammar important in writing?</li>
+                                <li>What are the challenges of learning the different parts of speech?</li>
+                            </ul>
+                        </section>
+                    </div>
+                    <!-- Chapter 3: Vocabulary Building -->
+                    <div id="text-content-chapter3" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 3:
+                            Vocabulary Building</h2>
+
+                        <!-- Section 1: Word Formation -->
+                        <section id="section3-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Word Formation</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Word formation is the process of creating new words by using existing ones or adding
+                                prefixes, suffixes, or combining words. Understanding how words are formed helps you
+                                expand your vocabulary and understand the meanings of new words.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                There are several methods of word formation in English, including:
+                            </p>
+
+                            <!-- Sub-section: Prefixes and Suffixes -->
+                            <h4 id="section3-1-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Prefixes
+                                and Suffixes</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Prefixes and suffixes are added to the beginning or end of a word to create a new
+                                meaning. For example:
+                            </p>
+                            <ul class="list-disc list-inside pl-6 md:pl-8 text-gray-700 text-base md:text-lg space-y-4">
+                                <li><strong>Un-</strong> (prefix): <i>Unhappy</strong> (not happy)</i></li>
+                                <li><strong>-ful</strong> (suffix): <i>Beautiful</strong> (full of beauty)</i></li>
+                                <li><strong>Dis-</strong> (prefix): <i>Disagree</strong> (not agree)</i></li>
+                                <li><strong>-less</strong> (suffix): <i>Fearless</strong> (without fear)</i></li>
+                            </ul>
+
+                            <!-- Sub-section: Compound Words -->
+                            <h4 id="section3-1-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Compound
+                                Words</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Compound words are formed by combining two or more words to create a new word with a
+                                specific meaning. Examples include:
+                            </p>
+                            <ul class="list-disc list-inside pl-6 md:pl-8 text-gray-700 text-base md:text-lg space-y-4">
+                                <li><strong>Mailbox</strong> (mail + box)</li>
+                                <li><strong>Snowman</strong> (snow + man)</li>
+                                <li><strong>Toothbrush</strong> (tooth + brush)</li>
+                            </ul>
+                        </section>
+
+                        <!-- Section 2: Synonyms and Antonyms -->
+                        <section id="section3-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Synonyms and Antonyms
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Synonyms are words that have similar meanings, while antonyms are words with opposite
+                                meanings. Knowing synonyms and antonyms can help you choose the right word for different
+                                contexts and improve your writing.
+                            </p>
+
+                            <!-- Sub-section: Synonyms -->
+                            <h4 id="section3-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Synonyms
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Using synonyms can make your writing more interesting and varied. Here are some
+                                examples:
+                            </p>
+                            <ul class="list-disc list-inside pl-6 md:pl-8 text-gray-700 text-base md:text-lg space-y-4">
+                                <li><strong>Happy</strong>: <i>Joyful, Content, Cheerful</i></li>
+                                <li><strong>Fast</strong>: <i>Quick, Speedy, Rapid</i></li>
+                                <li><strong>Big</strong>: <i>Large, Huge, Enormous</i></li>
+                            </ul>
+
+                            <!-- Sub-section: Antonyms -->
+                            <h4 id="section3-2-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Antonyms
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Antonyms are useful for contrasting ideas. Here are some examples:
+                            </p>
+                            <ul class="list-disc list-inside pl-6 md:pl-8 text-gray-700 text-base md:text-lg space-y-4">
+                                <li><strong>Happy</strong>: <i>Sad, Unhappy, Miserable</i></li>
+                                <li><strong>Fast</strong>: <i>Slow, Sluggish, Leisurely</i></li>
+                                <li><strong>Big</strong>: <i>Small, Tiny, Petite</i></li>
+                            </ul>
+                        </section>
+
+                        <!-- Section 3: Contextual Usage -->
+                        <section id="section3-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Contextual Usage</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                The meaning of a word can change depending on the context in which it is used.
+                                Understanding the context helps you use words correctly and accurately in different
+                                situations.
+                            </p>
+
+                            <!-- Sub-section: Examples of Contextual Usage -->
+                            <h4 id="section3-3-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Examples
+                                of Contextual Usage</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Here are some examples of how words can be used differently depending on context:
+                            </p>
+                            <ul class="list-disc list-inside pl-6 md:pl-8 text-gray-700 text-base md:text-lg space-y-4">
+                                <li><strong>Bank</strong>: Can refer to a financial institution ("I went to the bank.")
+                                    or the side of a river ("The boat is near the river bank.").</li>
+                                <li><strong>Bat</strong>: Can mean a flying mammal ("A bat flew past my window.") or a
+                                    piece of sports equipment ("He swung the bat and hit the ball.").</li>
+                                <li><strong>Run</strong>: Can refer to moving swiftly on foot ("She likes to run in the
+                                    morning.") or operating something ("The machine is running smoothly.").</li>
+                            </ul>
+                        </section>
+                    </div>
+                    <!-- Chapter 4: Reading Comprehension -->
+                    <div id="text-content-chapter4" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 4: Reading
+                            Comprehension</h2>
+
+                        <!-- Section 1: Strategies for Effective Reading -->
+                        <section id="section4-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Strategies for
+                                Effective Reading</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Effective reading involves using various strategies to improve comprehension and
+                                retention. Here are some strategies to enhance your reading skills:
+                            </p>
+
+                            <!-- Sub-section: Previewing the Text -->
+                            <h4 id="section4-1-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Previewing the Text</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Before diving into a text, take a few moments to preview it. Look at headings,
+                                subheadings, and any highlighted or bolded text. This helps you get an overview of the
+                                content and understand what to expect.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                If you’re reading a chapter about "Climate Change," preview the headings like "Causes,"
+                                "Effects," and "Solutions" to get a sense of the structure and main topics.
+                            </p>
+
+                            <!-- Sub-section: Active Reading -->
+                            <h4 id="section4-1-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Active
+                                Reading</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Engage with the text by asking questions, making predictions, and summarizing
+                                information as you read. Active reading helps improve comprehension and recall.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                While reading about "Photosynthesis," ask yourself questions like "How does
+                                photosynthesis work?" and "What are the key stages?" Summarize each stage in your own
+                                words.
+                            </p>
+                        </section>
+
+                        <!-- Section 2: Analyzing Texts -->
+                        <section id="section4-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Analyzing Texts</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Analyzing texts involves examining their structure, language, and content to understand
+                                deeper meanings and nuances. Here are some key aspects to focus on:
+                            </p>
+
+                            <!-- Sub-section: Identifying Text Structure -->
+                            <h4 id="section4-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Identifying Text Structure</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Recognize the structure of the text, including its introduction, body, and conclusion.
+                                Understanding the organization helps in comprehending how ideas are presented and
+                                connected.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                In a persuasive essay, identify the introduction with the thesis statement, body
+                                paragraphs with arguments and evidence, and the conclusion with a summary and call to
+                                action.
+                            </p>
+
+                            <!-- Sub-section: Understanding Author's Purpose -->
+                            <h4 id="section4-2-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Understanding Author's Purpose</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Determine the author's intent behind writing the text. Are they trying to inform,
+                                persuade, entertain, or express an opinion? Understanding the purpose helps in
+                                interpreting the text accurately.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                If an article aims to persuade readers to support a cause, analyze the arguments
+                                presented and how they are designed to influence the audience.
+                            </p>
+                        </section>
+
+                        <!-- Section 3: Understanding Main Ideas and Details -->
+                        <section id="section4-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Understanding Main
+                                Ideas and Details</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Comprehending the main ideas and supporting details is crucial for effective reading.
+                                Here’s how you can identify and understand them:
+                            </p>
+
+                            <!-- Sub-section: Identifying Main Ideas -->
+                            <h4 id="section4-3-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Identifying Main Ideas</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Look for the central concept or argument in a text. Main ideas are often found in topic
+                                sentences or introductory statements.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                In a paragraph about "The Benefits of Exercise," the main idea might be that regular
+                                exercise improves overall health. Supporting sentences would provide details and
+                                examples.
+                            </p>
+
+                            <!-- Sub-section: Finding Supporting Details -->
+                            <h4 id="section4-3-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Finding
+                                Supporting Details</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Identify specific pieces of information that support the main idea. These details
+                                provide evidence, examples, or explanations that enhance understanding.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                In the same paragraph about exercise, supporting details might include statistics about
+                                health benefits, quotes from experts, and personal anecdotes.
+                            </p>
+                        </section>
+
+                        <!-- Comprehension Exercise -->
+                        <section id="comprehension-exercise"
+                            class="mt-10 p-6 md:p-8 bg-gray-100 border border-gray-300 rounded-lg">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Comprehension Exercise
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Test your understanding of this chapter by answering the following questions based on
+                                the content provided:
+                            </p>
+
+                            <!-- Exercise Questions -->
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">1. What is one strategy
+                                    for effective reading mentioned in this chapter?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Previewing the Text - looking at headings and subheadings before
+                                    reading the entire text.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">2. How can
+                                    understanding the author's purpose help in analyzing a text?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Knowing the author's purpose helps in interpreting the text more
+                                    accurately, whether it's to inform, persuade, entertain, or express an opinion.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">3. Identify the main
+                                    idea in a paragraph about the importance of good nutrition.</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: The main idea could be that maintaining good nutrition is essential
+                                    for overall health and well-being.)
+                                </p>
+                            </div>
+
+                            <p class="text-gray-600 text-base md:text-lg">
+                                Review your answers and refer back to the chapter if needed to ensure a thorough
+                                understanding.
+                            </p>
+                        </section>
+                    </div>
+                    <!-- Chapter 5: Writing Skills -->
+                    <div id="text-content-chapter5" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 5: Writing
+                            Skills</h2>
+
+                        <!-- Section 1: Types of Writing -->
+                        <section id="section5-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Types of Writing</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Writing can be categorized into several types, each serving different purposes.
+                                Understanding these types helps in selecting the appropriate style and approach for
+                                various writing tasks.
+                            </p>
+
+                            <!-- Sub-section: Narrative Writing -->
+                            <h4 id="section5-1-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Narrative
+                                Writing</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Narrative writing tells a story or recounts an event. It includes elements such as
+                                characters, plot, and setting.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                A short story about a journey through a magical forest with vivid descriptions of
+                                characters and events.
+                            </p>
+
+                            <!-- Sub-section: Descriptive Writing -->
+                            <h4 id="section5-1-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Descriptive Writing</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Descriptive writing focuses on detailing and describing a person, place, or event. It
+                                aims to paint a vivid picture for the reader using sensory details.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                A detailed description of a serene beach scene, including sights, sounds, and smells.
+                            </p>
+
+                            <!-- Sub-section: Persuasive Writing -->
+                            <h4 id="section5-1-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Persuasive Writing</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Persuasive writing aims to convince the reader of a particular viewpoint or argument. It
+                                uses evidence, reasoning, and rhetorical techniques.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                An editorial arguing for increased environmental conservation efforts, supported by data
+                                and logical arguments.
+                            </p>
+                        </section>
+
+                        <!-- Section 2: Essay Structure and Development -->
+                        <section id="section5-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Essay Structure and
+                                Development</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                An essay typically follows a structured format that helps in presenting arguments
+                                clearly and coherently. Understanding this structure is crucial for effective writing.
+                            </p>
+
+                            <!-- Sub-section: Introduction -->
+                            <h4 id="section5-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Introduction</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                The introduction sets the stage for the essay, providing background information and
+                                presenting the thesis statement.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                An introduction for an essay on climate change might include background information on
+                                global warming and end with a thesis statement on its impact.
+                            </p>
+
+                            <!-- Sub-section: Body Paragraphs -->
+                            <h4 id="section5-2-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Body
+                                Paragraphs</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Body paragraphs support the thesis statement with evidence, examples, and analysis. Each
+                                paragraph should focus on a single idea.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                A body paragraph discussing the effects of deforestation might include data on forest
+                                loss, impacts on wildlife, and consequences for climate.
+                            </p>
+
+                            <!-- Sub-section: Conclusion -->
+                            <h4 id="section5-2-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Conclusion</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                The conclusion summarizes the main points and reinforces the thesis statement, providing
+                                closure to the essay.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                A conclusion for an essay on climate change might restate the importance of taking
+                                action and summarize the key arguments made.
+                            </p>
+                        </section>
+
+                        <!-- Section 3: Revising and Editing -->
+                        <section id="section5-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Revising and Editing
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Revising and editing are crucial steps in the writing process. These steps help improve
+                                clarity, coherence, and overall quality of the text.
+                            </p>
+
+                            <!-- Sub-section: Revising -->
+                            <h4 id="section5-3-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Revising
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Revising involves making changes to improve the content and structure of your writing.
+                                This might include reorganizing paragraphs, refining arguments, and adding details.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                During revision, you might move a paragraph about renewable energy from the body to the
+                                introduction if it better sets up the thesis.
+                            </p>
+
+                            <!-- Sub-section: Editing -->
+                            <h4 id="section5-3-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Editing
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Editing focuses on correcting grammar, spelling, punctuation, and formatting errors. It
+                                ensures that the final draft is polished and error-free.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                During editing, you might correct a misplaced comma, fix spelling errors, and ensure
+                                consistent formatting throughout the essay.
+                            </p>
+                        </section>
+
+                        <!-- Comprehension Exercise -->
+                        <section id="comprehension-exercise"
+                            class="mt-10 p-6 md:p-8 bg-gray-100 border border-gray-300 rounded-lg">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Comprehension Exercise
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Test your understanding of this chapter by answering the following questions based on
+                                the content provided:
+                            </p>
+
+                            <!-- Exercise Questions -->
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">1. What is one type of
+                                    writing and its key characteristic?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Narrative Writing - tells a story with characters, plot, and
+                                    setting.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">2. Describe the
+                                    structure of a typical essay.</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: An essay usually has an introduction with a thesis statement, body
+                                    paragraphs with evidence and analysis, and a conclusion summarizing the main
+                                    points.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">3. How can revising and
+                                    editing improve your writing?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Revising helps improve content and structure, while editing
+                                    corrects grammar and formatting errors, resulting in a polished final draft.)
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- Chapter 6: Literature and Literary Analysis -->
+                    <div id="text-content-chapter6" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 6:
+                            Literature and Literary Analysis</h2>
+
+                        <!-- Section 1: Genres of Literature -->
+                        <section id="section6-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Genres of Literature
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Literature can be categorized into various genres, each with its own unique
+                                characteristics and conventions. Understanding these genres helps in appreciating and
+                                analyzing literary works.
+                            </p>
+
+                            <!-- Sub-section: Fiction -->
+                            <h4 id="section6-1-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Fiction
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Fiction refers to stories that are created from the imagination. It includes novels,
+                                short stories, and novellas.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                "To Kill a Mockingbird" by Harper Lee is a classic novel that explores themes of racial
+                                injustice and moral growth.
+                            </p>
+
+                            <!-- Sub-section: Non-Fiction -->
+                            <h4 id="section6-1-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Non-Fiction</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Non-fiction works are based on real events and factual information. They include
+                                biographies, essays, and reports.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                "Sapiens: A Brief History of Humankind" by Yuval Noah Harari provides a historical
+                                overview of human evolution and society.
+                            </p>
+
+                            <!-- Sub-section: Poetry -->
+                            <h4 id="section6-1-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Poetry
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Poetry uses rhythmic and often metaphorical language to express emotions and ideas. It
+                                includes various forms such as sonnets, haikus, and free verse.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                "The Road Not Taken" by Robert Frost is a well-known poem that reflects on choices and
+                                their consequences.
+                            </p>
+                        </section>
+
+                        <!-- Section 2: Analyzing Literary Devices -->
+                        <section id="section6-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Analyzing Literary
+                                Devices</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Literary devices are techniques used by writers to enhance their storytelling. Analyzing
+                                these devices helps in understanding the deeper meaning and craftsmanship behind a
+                                literary work.
+                            </p>
+
+                            <!-- Sub-section: Metaphor -->
+                            <h4 id="section6-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Metaphor
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A metaphor is a figure of speech that compares two unrelated things without using "like"
+                                or "as." It helps to create vivid imagery and convey complex ideas.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                In Shakespeare’s "As You Like It," the world is described as a stage, and people as
+                                actors: "All the world’s a stage, and all the men and women merely players."
+                            </p>
+
+                            <!-- Sub-section: Symbolism -->
+                            <h4 id="section6-2-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Symbolism
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Symbolism involves using symbols to represent ideas or concepts beyond the literal
+                                meaning. It adds layers of meaning to the text.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                In George Orwell’s "Animal Farm," the farm animals symbolize different political figures
+                                and ideologies.
+                            </p>
+
+                            <!-- Sub-section: Irony -->
+                            <h4 id="section6-2-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Irony
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Irony is a literary device where the intended meaning is different from the actual
+                                meaning. It often creates contrast between appearance and reality.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                In "Romeo and Juliet" by William Shakespeare, the audience knows Juliet is alive while
+                                Romeo believes she is dead, leading to tragic irony.
+                            </p>
+                        </section>
+
+                        <!-- Section 3: Themes and Characters -->
+                        <section id="section6-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Themes and Characters
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Themes and characters are central to understanding and interpreting literature. Themes
+                                represent the underlying messages, while characters drive the narrative and reflect
+                                various aspects of the theme.
+                            </p>
+
+                            <!-- Sub-section: Themes -->
+                            <h4 id="section6-3-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Themes
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Themes are the main ideas or messages explored in a literary work. They provide insight
+                                into human experiences and societal issues.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                In "1984" by George Orwell, themes of totalitarianism and surveillance are explored
+                                through the dystopian setting and oppressive regime.
+                            </p>
+
+                            <!-- Sub-section: Characters -->
+                            <h4 id="section6-3-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Characters</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Characters are the individuals who take part in the story. They can be complex or simple
+                                and often embody the themes of the work.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                In "Pride and Prejudice" by Jane Austen, Elizabeth Bennet is a central character whose
+                                personal growth reflects themes of social class and marriage.
+                            </p>
+                        </section>
+
+                        <!-- Comprehension Exercise -->
+                        <section id="comprehension-exercise"
+                            class="mt-10 p-6 md:p-8 bg-gray-100 border border-gray-300 rounded-lg">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Comprehension Exercise
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Test your understanding of this chapter by answering the following questions based on
+                                the content provided:
+                            </p>
+
+                            <!-- Exercise Questions -->
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">1. What are the main
+                                    genres of literature discussed in this chapter?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Fiction, Non-Fiction, and Poetry.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">2. Explain the use of
+                                    metaphor in literature and provide an example.</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: A metaphor compares two unrelated things to create vivid imagery.
+                                    Example: "All the world’s a stage" from Shakespeare's play.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">3. How do themes
+                                    enhance our understanding of a literary work?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Themes reveal underlying messages and reflect human experiences,
+                                    enhancing the depth of the narrative.)
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- Chapter 7: Oral Communication -->
+                    <div id="text-content-chapter7" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 7: Oral
+                            Communication</h2>
+
+                        <!-- Section 1: Public Speaking Techniques -->
+                        <section id="section7-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Public Speaking
+                                Techniques</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Public speaking is an essential skill that involves delivering a message effectively to
+                                an audience. Mastering techniques such as organization, delivery, and engagement can
+                                significantly enhance your speaking performance.
+                            </p>
+
+                            <!-- Sub-section: Organization -->
+                            <h4 id="section7-1-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Organization</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A well-organized speech ensures clarity and coherence. Structure your speech with an
+                                introduction, body, and conclusion. Use outlines and bullet points to organize your
+                                thoughts.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                Start with a compelling introduction, followed by key points in the body, and end with a
+                                memorable conclusion.
+                            </p>
+
+                            <!-- Sub-section: Delivery -->
+                            <h4 id="section7-1-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Delivery
+                            </h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Effective delivery includes good posture, eye contact, and clear articulation. Practice
+                                your speech to improve confidence and reduce nervousness.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                Maintain a strong and confident stance, use appropriate gestures, and speak clearly at a
+                                steady pace.
+                            </p>
+
+                            <!-- Sub-section: Engagement -->
+                            <h4 id="section7-1-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Engagement</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Engaging the audience can be achieved through storytelling, asking questions, and
+                                incorporating visuals. Keep your audience interested and involved.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                Use anecdotes or questions to make your speech more relatable and interactive.
+                            </p>
+                        </section>
+
+                        <!-- Section 2: Effective Listening Skills -->
+                        <section id="section7-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Effective Listening
+                                Skills</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Active listening is crucial for effective communication. It involves paying full
+                                attention, understanding, and responding appropriately to the speaker.
+                            </p>
+
+                            <!-- Sub-section: Active Listening -->
+                            <h4 id="section7-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Active
+                                Listening</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Active listening requires focusing on the speaker without interruptions. Use verbal and
+                                non-verbal cues to show that you are engaged.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                Nod occasionally, provide feedback, and avoid interrupting the speaker.
+                            </p>
+
+                            <!-- Sub-section: Reflective Listening -->
+                            <h4 id="section7-2-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Reflective Listening</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Reflective listening involves summarizing or paraphrasing what the speaker has said to
+                                ensure understanding. It helps to clarify and validate the speaker’s message.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                "What I hear you saying is that you feel overwhelmed by the current workload. Is that
+                                correct?"
+                            </p>
+
+                            <!-- Sub-section: Avoiding Distractions -->
+                            <h4 id="section7-2-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Avoiding
+                                Distractions</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Minimize distractions to maintain focus on the speaker. Find a quiet environment and put
+                                away electronic devices.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                Silence your phone and give the speaker your full attention.
+                            </p>
+                        </section>
+
+                        <!-- Section 3: Presentation and Debate -->
+                        <section id="section7-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Presentation and
+                                Debate</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Effective presentations and debates require preparation, organization, and the ability
+                                to articulate and defend your arguments clearly.
+                            </p>
+
+                            <!-- Sub-section: Presentation Skills -->
+                            <h4 id="section7-3-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Presentation Skills</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A successful presentation involves clear content, engaging visuals, and confident
+                                delivery. Tailor your presentation to the audience and purpose.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                Use slides to highlight key points and practice your delivery to ensure a smooth
+                                presentation.
+                            </p>
+
+                            <!-- Sub-section: Debate Techniques -->
+                            <h4 id="section7-3-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Debate
+                                Techniques</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Debating involves presenting arguments and counterarguments effectively. Understand your
+                                topic thoroughly and practice your rebuttal techniques.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                Structure your arguments with evidence and anticipate counterarguments to strengthen
+                                your position.
+                            </p>
+
+                            <!-- Sub-section: Handling Questions -->
+                            <h4 id="section7-3-3" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Handling
+                                Questions</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Addressing questions effectively demonstrates your understanding and engagement with the
+                                topic. Be clear and concise in your responses.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Example:
+                                <br>
+                                Restate the question before answering and provide a thoughtful response.
+                            </p>
+                        </section>
+
+                        <!-- Comprehension Exercise -->
+                        <section id="comprehension-exercise"
+                            class="mt-10 p-6 md:p-8 bg-gray-100 border border-gray-300 rounded-lg">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Comprehension Exercise
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Test your understanding of this chapter by answering the following questions based on
+                                the content provided:
+                            </p>
+
+                            <!-- Exercise Questions -->
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">1. What are the key
+                                    techniques for effective public speaking?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Organization, delivery, and engagement.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">2. How can active
+                                    listening improve communication?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: It ensures understanding and shows respect to the speaker.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">3. What are some
+                                    effective techniques for handling questions during a presentation or debate?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Restate the question, provide a clear response, and address any
+                                    follow-up questions.)
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- Chapter 8: Functional English -->
+                    <div id="text-content-chapter8" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 8:
+                            Functional English</h2>
+
+                        <!-- Section 1: Writing Formal Letters -->
+                        <section id="section8-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Writing Formal Letters
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Formal letters are essential for professional communication. They follow a specific
+                                format and tone to convey messages clearly and respectfully.
+                            </p>
+
+                            <!-- Sub-section: Structure of Formal Letters -->
+                            <h4 id="section8-1-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Structure
+                                of Formal Letters</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A formal letter should include the sender's address, date, recipient's address,
+                                salutation, body, closing, and signature. Each part must be formatted correctly to
+                                maintain professionalism.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    [Sender's Address] <br>
+                                    [Date] <br><br>
+
+                                    [Recipient's Address] <br><br>
+
+                                    Dear [Recipient's Name], <br><br>
+
+                                    [Body of the letter] <br><br>
+
+                                    Sincerely, <br>
+                                    [Your Name]
+                                </p>
+                            </div>
+
+                            <!-- Sub-section: Common Formal Letters -->
+                            <h4 id="section8-1-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Common
+                                Formal Letters</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Common types of formal letters include job applications, complaint letters, and
+                                resignation letters. Each type has its specific format and purpose.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    <strong>Job Application Letter:</strong> Includes introduction, qualifications, and
+                                    a request for an interview.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Section 2: Writing Reports and Proposals -->
+                        <section id="section8-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Writing Reports and
+                                Proposals</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Reports and proposals are crucial for presenting information and suggesting actions.
+                                They should be clear, structured, and objective.
+                            </p>
+
+                            <!-- Sub-section: Structure of Reports -->
+                            <h4 id="section8-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Structure
+                                of Reports</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A typical report includes a title page, table of contents, introduction, methodology,
+                                findings, conclusions, and recommendations. Each section should be clearly labeled and
+                                easy to navigate.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    Title Page <br>
+                                    Table of Contents <br>
+                                    Introduction <br>
+                                    Methodology <br>
+                                    Findings <br>
+                                    Conclusions <br>
+                                    Recommendations
+                                </p>
+                            </div>
+
+                            <!-- Sub-section: Structure of Proposals -->
+                            <h4 id="section8-2-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Structure
+                                of Proposals</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Proposals should include an introduction, problem statement, objectives, methodology,
+                                budget, and a conclusion. They aim to persuade the reader to approve or fund a project.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    Introduction <br>
+                                    Problem Statement <br>
+                                    Objectives <br>
+                                    Methodology <br>
+                                    Budget <br>
+                                    Conclusion
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Section 3: Job Applications and CV Writing -->
+                        <section id="section8-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Job Applications and
+                                CV Writing</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Writing effective job applications and CVs is crucial for job-seekers. They must
+                                highlight your skills, experience, and qualifications to stand out to potential
+                                employers.
+                            </p>
+
+                            <!-- Sub-section: Writing a CV -->
+                            <h4 id="section8-3-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Writing a
+                                CV</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A CV should include your personal details, education, work experience, skills, and
+                                references. It should be concise and tailored to the job you’re applying for.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    Personal Details <br>
+                                    Education <br>
+                                    Work Experience <br>
+                                    Skills <br>
+                                    References
+                                </p>
+                            </div>
+
+                            <!-- Sub-section: Writing a Job Application -->
+                            <h4 id="section8-3-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Writing a
+                                Job Application</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                A job application should include a cover letter and any required documents. The cover
+                                letter should introduce yourself, explain why you are a good fit for the job, and
+                                express your enthusiasm.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    Cover Letter <br>
+                                    [Introduction] <br>
+                                    [Why You’re a Good Fit] <br>
+                                    [Enthusiasm for the Role]
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Comprehension Exercise -->
+                        <section id="comprehension-exercise"
+                            class="mt-10 p-6 md:p-8 bg-gray-100 border border-gray-300 rounded-lg">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Comprehension Exercise
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Test your understanding of this chapter by answering the following questions based on
+                                the content provided:
+                            </p>
+
+                            <!-- Exercise Questions -->
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">1. What are the key
+                                    components of a formal letter?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Sender's address, date, recipient's address, salutation, body,
+                                    closing, and signature.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">2. What should be
+                                    included in a CV?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Personal details, education, work experience, skills, and
+                                    references.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">3. What is the purpose
+                                    of a job application cover letter?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: To introduce yourself, explain why you’re a good fit for the job,
+                                    and express enthusiasm for the role.)
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- Chapter 9: Language Use in Context -->
+                    <div id="text-content-chapter9" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 9: Language
+                            Use in Context</h2>
+
+                        <!-- Section 1: Language and Culture -->
+                        <section id="section9-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Language and Culture
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Language reflects the culture of its speakers. In Ghana, various languages and dialects
+                                like Twi, Ewe, and Hausa, carry cultural significance and express traditional values,
+                                customs, and social norms. Understanding these connections enhances cross-cultural
+                                communication and appreciation.
+                            </p>
+
+                            <!-- Sub-section: Examples of Language and Culture -->
+                            <h4 id="section9-1-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Examples
+                                of Language and Culture</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                For example, the use of proverbs in Akan is a reflection of wisdom and cultural
+                                heritage. Similarly, greetings and expressions in the local languages often convey
+                                respect and social hierarchy.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    In Twi, "Akwaaba" means "Welcome," reflecting the Ghanaian culture of hospitality.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Section 2: Dialects and Accents -->
+                        <section id="section9-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Dialects and Accents
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Ghana is a multilingual country with numerous dialects and accents. Each region has its
+                                own dialect, influenced by historical migrations and interactions among various ethnic
+                                groups. Understanding these variations enriches our appreciation of Ghanaian diversity.
+                            </p>
+
+                            <!-- Sub-section: Understanding Dialects and Accents -->
+                            <h4 id="section9-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Understanding Dialects and Accents</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                For instance, the Fante dialect of Akan differs from the Akuapem and Asante dialects in
+                                terms of pronunciation and vocabulary, even though they share a common root language.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    In Fante, "Abɔfoɔ" means "Good morning," whereas in Asante Twi, it's "Mema wo akye."
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Section 3: Language Variation and Change -->
+                        <section id="section9-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Language Variation and
+                                Change</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Languages evolve due to factors such as social interaction, technological advancements,
+                                and cultural exchanges. In Ghana, the influence of English, globalization, and media has
+                                introduced new expressions and changes in language use.
+                            </p>
+
+                            <!-- Sub-section: Factors Influencing Language Change -->
+                            <h4 id="section9-3-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Factors
+                                Influencing Language Change</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Factors such as urbanization and digital communication contribute to the evolution of
+                                local languages and the creation of new slang or expressions.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    The incorporation of English terms into local languages, like "computer" becoming
+                                    "komputa" in Twi, reflects technological influence.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Comprehension Exercise -->
+                        <section id="comprehension-exercise"
+                            class="mt-10 p-6 md:p-8 bg-gray-100 border border-gray-300 rounded-lg">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Comprehension Exercise
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Test your understanding of this chapter by answering the following questions based on
+                                the content provided:
+                            </p>
+
+                            <!-- Exercise Questions -->
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">1. How does language
+                                    reflect culture in Ghana?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Language reflects culture through its expressions, proverbs, and
+                                    greetings that carry cultural significance and values.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">2. What are some
+                                    examples of dialects and accents in Ghana?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: The Fante dialect, Akuapem Twi, and Asante Twi are examples of
+                                    dialects, while regional accents vary based on locality.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">3. What factors
+                                    contribute to the change in languages in Ghana?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Urbanization, globalization, and digital media contribute to
+                                    language change by introducing new expressions and blending languages.)
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- Chapter 10: Exam Preparation and Revision -->
+                    <div id="text-content-chapter10" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 10: Exam
+                            Preparation and Revision</h2>
+
+                        <!-- Section 1: Exam Techniques and Strategies -->
+                        <section id="section10-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Exam Techniques and
+                                Strategies</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Effective exam preparation involves mastering techniques and strategies that enhance
+                                performance. Start by understanding the exam format and types of questions. Develop a
+                                study plan that allocates time for each topic and practice regularly. Utilize active
+                                learning methods such as summarizing information, creating flashcards, and taking
+                                practice quizzes.
+                            </p>
+                            <h4 id="section10-1-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Tips for
+                                Effective Exam Techniques</h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>Read instructions carefully and manage your time effectively during the exam.</li>
+                                <li>Practice previous exam papers to familiarize yourself with the question patterns.
+                                </li>
+                                <li>Stay calm and focused, and tackle easier questions first to build confidence.</li>
+                            </ul>
+                        </section>
+
+                        <!-- Section 2: Practice Papers and Mock Exams -->
+                        <section id="section10-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Practice Papers and
+                                Mock Exams</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Practice papers and mock exams are crucial for exam preparation. They provide a
+                                simulation of the actual exam environment and help identify areas of weakness. Regularly
+                                attempting mock exams allows you to track progress, refine strategies, and manage exam
+                                stress effectively.
+                            </p>
+                            <h4 id="section10-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">How to
+                                Use Practice Papers</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Obtain past exam papers and sample questions to practice. Time yourself during these
+                                practice sessions to build stamina and improve time management. After completing each
+                                paper, review your answers and analyze mistakes to avoid repeating them.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    Use past GCE O-Level English exam papers to practice essay writing and
+                                    comprehension.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Section 3: Review of Key Concepts -->
+                        <section id="section10-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Review of Key Concepts
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Revising key concepts ensures that you retain important information and can apply it
+                                effectively. Create summaries of each topic, focusing on main ideas, definitions, and
+                                important details. Regularly review these summaries to reinforce learning and aid
+                                long-term retention.
+                            </p>
+                            <h4 id="section10-3-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">
+                                Techniques for Effective Revision</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Use techniques like mind mapping, spaced repetition, and self-testing to enhance your
+                                revision process. Break down topics into manageable sections and revise them
+                                systematically. Discuss challenging concepts with peers or seek clarification from
+                                teachers if needed.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                    <strong>Example:</strong>
+                                </p>
+                                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                                    Create a mind map of literary devices and their definitions to review for an English
+                                    literature exam.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Comprehension Exercise -->
+                        <section id="comprehension-exercise"
+                            class="mt-10 p-6 md:p-8 bg-gray-100 border border-gray-300 rounded-lg">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Comprehension Exercise
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Test your understanding of this chapter by answering the following questions based on
+                                the content provided:
+                            </p>
+
+                            <!-- Exercise Questions -->
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">1. What are some
+                                    effective exam techniques you can use?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Reading instructions carefully, practicing previous papers, and
+                                    managing time effectively.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">2. How can practice
+                                    papers and mock exams help you prepare?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: They simulate the exam environment, help identify weaknesses, and
+                                    improve time management.)
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-2">3. What are some
+                                    techniques for effective revision?</h4>
+                                <p class="text-gray-600 text-base md:text-lg mb-4">
+                                    (Example Answer: Mind mapping, spaced repetition, and self-testing to reinforce
+                                    learning and aid retention.)
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Practice and Mock Questions -->
+                        <section id="practice-mock-questions"
+                            class="mt-10 p-6 md:p-8 bg-gray-100 border border-gray-300 rounded-lg">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Practice and Mock
+                                Questions</h3>
+
+                            <!-- Chapter 1: Introduction to English -->
+                            <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Chapter 1: Introduction to
+                                English</h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>1. What are the key components of the English language?</li>
+                                <li>2. How does English influence global communication?</li>
+                                <li>3. Describe the evolution of English in Ghana.</li>
+                            </ul>
+
+                            <!-- Chapter 2: Grammar Fundamentals -->
+                            <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Chapter 2: Grammar
+                                Fundamentals</h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>1. What is the difference between active and passive voice? Provide examples.</li>
+                                <li>2. Identify and correct the grammatical errors in the following sentence: "She don't
+                                    like the color of their new car."</li>
+                                <li>3. Explain the role of punctuation in clarity and meaning in a sentence.</li>
+                            </ul>
+
+                            <!-- Chapter 3: Vocabulary Building -->
+                            <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Chapter 3: Vocabulary
+                                Building</h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>1. Create sentences using the following words: "elucidate," "ambiguous," and
+                                    "pragmatic."</li>
+                                <li>2. What is the difference between synonyms and antonyms? Provide examples.</li>
+                                <li>3. How can context help in understanding the meaning of an unfamiliar word?</li>
+                            </ul>
+
+                            <!-- Chapter 4: Reading Comprehension -->
+                            <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Chapter 4: Reading
+                                Comprehension</h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>1. Summarize the main ideas of the following passage.</li>
+                                <li>2. How does understanding the author's purpose enhance comprehension of a text?</li>
+                                <li>3. Analyze the structure of the given text and discuss its effectiveness in
+                                    conveying the main message.</li>
+                            </ul>
+
+                            <!-- Chapter 5: Writing Skills -->
+                            <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Chapter 5: Writing Skills
+                            </h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>1. Write an essay on a given topic, ensuring proper structure and development.</li>
+                                <li>2. Identify and correct the errors in the following paragraph: "The dog run quickly
+                                    across the park and the owners was happy."</li>
+                                <li>3. What are the key differences between narrative and descriptive writing?</li>
+                            </ul>
+
+                            <!-- Chapter 6: Literature and Literary Analysis -->
+                            <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Chapter 6: Literature and
+                                Literary Analysis</h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>1. Analyze the use of symbolism in a selected literary work.</li>
+                                <li>2. Compare and contrast two different genres of literature.</li>
+                                <li>3. Identify and discuss the main themes in a given literary text.</li>
+                            </ul>
+
+                            <!-- Chapter 7: Oral Communication -->
+                            <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Chapter 7: Oral
+                                Communication</h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>1. Prepare a short speech on a given topic, incorporating public speaking
+                                    techniques.</li>
+                                <li>2. Discuss the importance of effective listening skills in communication.</li>
+                                <li>3. Role-play a debate on a controversial topic, focusing on presentation and
+                                    argumentation skills.</li>
+                            </ul>
+
+                            <!-- Chapter 8: Functional English -->
+                            <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Chapter 8: Functional
+                                English</h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>1. Write a formal letter requesting information about a job vacancy.</li>
+                                <li>2. Create a report summarizing findings from a hypothetical research project.</li>
+                                <li>3. Draft a CV highlighting your education, work experience, and skills.</li>
+                            </ul>
+
+                            <!-- Chapter 9: Language Use in Context -->
+                            <h4 class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Chapter 9: Language Use in
+                                Context</h4>
+                            <ul class="list-disc list-inside text-gray-700 text-base md:text-lg mb-6">
+                                <li>1. Discuss how language reflects cultural values and norms in a given context.</li>
+                                <li>2. Identify and explain the differences between dialects and accents.</li>
+                                <li>3. Analyze how language variation can affect communication in different settings.
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+
+
+
+                    <!-- Navigation Buttons -->
+                    <div id="navigation-buttons" class="flex justify-between">
+                        <button id="prev-chapter"
+                            class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">Previous</button>
+                        <button id="next-chapter"
+                            class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">Next</button>
+                    </div>
+                </section>
+            </main>
+
+            <footer id="footer" class="bg-[#fbbf24] text-white p-6">
+                <div class="flex flex-col lg:flex-row items-center justify-between">
+                    <p class="text-sm">&copy; 2024 Ulearn. All rights reserved.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:underline">Privacy Policy</a>
+                        <a href="#" class="text-white hover:underline">Terms of Service</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // JavaScript for sidebar functionality
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('sidebar-hidden');
+            document.getElementById('sidebar').classList.toggle('sidebar-visible');
+        });
+
+        document.getElementById('close-sidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.add('sidebar-hidden');
+            document.getElementById('sidebar').classList.remove('sidebar-visible');
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fetch the username (placeholder example)
+            document.getElementById('username').textContent = 'User';
+        });
+        const scrollableNav = document.getElementById('scrollable-nav');
+        const leftArrow = document.getElementById('left-arrow');
+        const rightArrow = document.getElementById('right-arrow');
+
+        // Scroll Left
+        leftArrow.addEventListener('click', () => {
+            scrollableNav.scrollBy({
+                left: -250, // Adjust this value based on how much you want to scroll
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll Right
+        rightArrow.addEventListener('click', () => {
+            scrollableNav.scrollBy({
+                left: 250, // Adjust this value based on how much you want to scroll
+                behavior: 'smooth'
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            const sections = document.querySelectorAll('.chapter-section');
+            const sidebar = document.getElementById('sidebar');
+
+            function highlightCurrentChapter() {
+                let currentChapter = null;
+
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top >= 0 && rect.top < window.innerHeight) {
+                        const chapterNumber = section.id.split('-')[0].replace('section', '');
+                        currentChapter = chapterNumber;
+                    }
+                });
+
+                if (currentChapter) {
+                    sidebarItems.forEach(item => {
+                        const chapter = item.getAttribute('data-chapter');
+                        if (chapter === currentChapter) {
+                            item.classList.add('completed');
+                        } else {
+                            item.classList.remove('completed');
+                        }
+                    });
+                }
+            }
+
+            // Highlight chapter on scroll
+            window.addEventListener('scroll', highlightCurrentChapter);
+
+            // Initial highlight
+            highlightCurrentChapter();
+        });
+    </script>
+</body>
+
+</html>

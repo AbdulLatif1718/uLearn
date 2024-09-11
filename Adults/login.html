@@ -1,64 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ulearn - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.js" defer></script>
     <style>
         .custom-bg {
-            background-color: #0082A2; /* Custom background color */
+            background-color: #0082A2;
         }
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+
         .logo-circle {
             width: 80px;
             height: 80px;
-            background-color: #fbbf24; /* Tailwind's yellow-500 */
+            background-color: #fbbf24;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
         .logo-circle span {
             font-size: 40px;
             font-weight: bold;
             color: #0082A2;
         }
+
         .logo-text {
             font-size: 40px;
             font-weight: bold;
             color: #fbbf24;
             margin-left: 10px;
         }
-        @media (max-width: 1024px) { /* Tablet */
+
+        @media (max-width: 1024px) {
             .logo-circle {
                 width: 60px;
                 height: 60px;
             }
+
             .logo-circle span {
                 font-size: 32px;
             }
+
             .logo-text {
                 font-size: 32px;
             }
         }
-        @media (max-width: 768px) { /* Mobile */
+
+        @media (max-width: 768px) {
             .logo-circle {
                 width: 50px;
                 height: 50px;
             }
+
             .logo-circle span {
                 font-size: 24px;
             }
+
             .logo-text {
                 font-size: 24px;
                 margin-left: 5px;
             }
         }
+
         .dot {
             width: 10px;
             height: 10px;
@@ -66,40 +73,118 @@
             border-radius: 50%;
             position: absolute;
         }
+
+        .footer {
+            background-color: #004d60;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #fbbf24;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dropdown Styles */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            z-index: 20;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 16px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .dropdown-button:focus~.dropdown-menu,
+        .dropdown-menu:hover {
+            display: block;
+        }
     </style>
 </head>
-<body class="custom-bg min-h-screen flex flex-col items-center justify-center relative">
-    <div class="absolute top-4 left-4 flex logo">
+
+<body class="custom-bg min-h-screen flex flex-col items-center justify-center relative" x-data="{ open: false }">
+
+    <!-- Logo Section -->
+    <div class="absolute top-4 left-4 flex items-center logo">
         <div class="logo-circle">
             <span>U</span>
         </div>
         <div class="logo-text">learn</div>
     </div>
-    <div class="absolute top-4 right-4 flex">
-        <a href="/Adults/more-options.html" class="bg-transparent border border-yellow-500 text-yellow-500 font-bold py-2 px-4 rounded mx-2">Log in</a>
-        <a href="/Adults/signup.html" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-4 rounded mx-2">Register</a>
+
+    <!-- Dropdown for Desktop and Mobile -->
+    <div class="absolute top-4 right-4 flex items-center space-x-4">
+        <div class="relative">
+            <button @click="open = !open"
+                class="bg-yellow-500 text-white px-4 py-2 rounded flex items-center space-x-2 dropdown-button">
+                <span>Menu</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div x-show="open" @click.away="open = false" class="dropdown-menu">
+                <a href="/Adults/more-options.html">Log in</a>
+                <a href="/Adults/signup.html">Register</a>
+                <a href="/Adults/home.html">Guest Mode</a>
+            </div>
+        </div>
     </div>
-    <div class="text-center mt-16 lg:mt-24">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-8">Grow your Education and Level up with</h1>
+
+    <!-- Main Content Section -->
+    <div class="text-center mt-16 lg:mt-24 px-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-8">Grow your Education and Level up with
+        </h1>
         <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold text-yellow-500 mt-4">Ulearn</h2>
         <p class="text-2xl md:text-3xl lg:text-4xl text-white mt-4">Learn on your own at your own pace, with ULEARN</p>
-        <p class="text-2xl md:text-3xl lg:text-4xl text-white mt-2">it's free</p>
+        <p class="text-2xl md:text-3xl lg:text-4xl text-white mt-2">It's free</p>
         <div class="mt-8">
-            <button class="bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-6 rounded-full inline-flex items-center">
-                <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" class="w-8 h-8 mr-2"/>
+            <button
+                class="bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-6 rounded-full inline-flex items-center">
+                <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo"
+                    class="w-8 h-8 mr-2" />
                 Log in with Google
             </button>
         </div>
+
+        <!-- Divider Section -->
         <div class="flex items-center justify-center mt-8">
-            <hr class="w-1/4 border-t border-white"/>
+            <hr class="w-1/4 border-t border-white" />
             <span class="mx-4 text-white text-xl">or</span>
-            <hr class="w-1/4 border-t border-white"/>
+            <hr class="w-1/4 border-t border-white" />
         </div>
+
+        <!-- More Options Button -->
         <div class="mt-4">
-            <a href="more-options.html" class="bg-transparent border border-white text-white font-bold py-3 px-6 rounded">see more options</a>
+            <a href="more-options.html"
+                class="bg-transparent border border-white text-white font-bold py-3 px-6 rounded hover:bg-white hover:text-gray-800 transition duration-300">See
+                more options</a>
         </div>
     </div>
-    <!-- Dotted designs -->
+
+    <!-- Decorative Dots -->
     <div class="dot" style="top: 10%; left: 5%;"></div>
     <div class="dot" style="top: 12%; left: 6%;"></div>
     <div class="dot" style="top: 14%; left: 7%;"></div>
@@ -109,5 +194,16 @@
     <div class="dot" style="bottom: 10%; left: 15%;"></div>
     <div class="dot" style="bottom: 12%; left: 16%;"></div>
     <div class="dot" style="bottom: 14%; left: 17%;"></div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>© 2024 Ulearn. All rights reserved.</p>
+        <p>
+            <a href="#about">About Us</a> |
+            <a href="#contact">Contact</a> |
+            <a href="#privacy">Privacy Policy</a>
+        </p>
+    </footer>
 </body>
+
 </html>

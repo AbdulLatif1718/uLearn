@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Content</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Add custom styles here */
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-visible {
+            transform: translateX(0);
+        }
+
+        .lg-sidebar-collapsed {
+            width: 16px;
+        }
+
+        .lg-sidebar-expanded {
+            width: 256px;
+        }
+
+        .sidebar-item {
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sidebar-item:hover {
+            transform: translateX(4px);
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #footer {
+            display: none;
+            background-color: #f8f9fa;
+            color: #6c757d;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased bg-[#0082A2] text-white">
+
+    <div class="flex flex-col lg:flex-row h-screen">
+
+        <!-- Sidebar -->
+        <div id="sidebar"
+            class="bg-[#0082A2] w-96 p-6 flex flex-col fixed lg:relative top-0 left-0 h-full lg:h-auto transition-transform duration-300 sidebar-hidden lg:translate-x-0 lg:translate-y-0 z-30 lg:w-80">
+            <!-- Close Button -->
+            <button id="close-sidebar" class="text-white text-2xl mb-4 lg:hidden absolute top-4 right-4">
+                <i class="fas fa-times"></i>
+            </button>
+            <!-- Toggle Button for large screens -->
+            <div class="flex items-center mb-8">
+                <img src="/images/ulearn.png" alt="Logo" class="w-12 h-12 mr-3">
+                <span class="text-2xl lg:text-3xl font-bold">Ulearn</span>
+            </div>
+            <nav class="flex flex-col space-y-4 p-4 py-11">
+                <a href="/Adults/home.html"
+                    class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 hover:bg-gray-200 transition duration-300 ease-in-out">
+                    <i class="fas fa-home"></i>
+                    <span class="sidebar-text">Back Home</span>
+                </a>
+                <div class="h-full max-h-[600px] lg:max-h-[700px] overflow-y-auto">
+                    <h1
+                        class="sidebar-text py-8 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3">
+                        Table of Content
+                    </h1>
+                    <nav class="flex flex-col space-y-4 p-4">
+                        <!-- Chapter 1 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 1: Introduction to English Language</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section1-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Overview
+                                        of English Language</a></li>
+                                <li><a href="#section1-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Historical
+                                        Development</a></li>
+                                <li><a href="#section1-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Importance
+                                        and Scope</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 2 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 2: Grammar Fundamentals</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section2-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Parts
+                                        of Speech</a></li>
+                                <li><a href="#section2-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Sentence
+                                        Structure</a></li>
+                                <li><a href="#section2-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Tenses
+                                        and Agreement</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 3 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 3: Vocabulary Building</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section3-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Word
+                                        Formation</a></li>
+                                <li><a href="#section3-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Synonyms
+                                        and Antonyms</a></li>
+                                <li><a href="#section3-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Contextual
+                                        Usage</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 4 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 4: Reading Comprehension</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section4-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Strategies
+                                        for Effective Reading</a></li>
+                                <li><a href="#section4-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Analyzing
+                                        Texts</a></li>
+                                <li><a href="#section4-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Understanding
+                                        Main Ideas and Details</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 5 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 5: Writing Skills</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section5-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Types
+                                        of Writing</a></li>
+                                <li><a href="#section5-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Essay
+                                        Structure and Development</a></li>
+                                <li><a href="#section5-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Revising
+                                        and Editing</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 6 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 6: Literature and Literary Analysis</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section6-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Genres
+                                        of Literature</a></li>
+                                <li><a href="#section6-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Analyzing
+                                        Literary Devices</a></li>
+                                <li><a href="#section6-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Themes
+                                        and Character Analysis</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 7 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 7: Oral Communication</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section7-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Public
+                                        Speaking Techniques</a></li>
+                                <li><a href="#section7-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Effective
+                                        Listening Skills</a></li>
+                                <li><a href="#section7-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Presentation
+                                        and Debate</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 8 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 8: Functional English</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section8-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Writing
+                                        Formal Letters</a></li>
+                                <li><a href="#section8-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Writing
+                                        Reports and Proposals</a></li>
+                                <li><a href="#section8-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Job
+                                        Applications and CV Writing</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 9 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 9: Language Use in Context</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section9-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Language
+                                        and Culture</a></li>
+                                <li><a href="#section9-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Dialects
+                                        and Accents</a></li>
+                                <li><a href="#section9-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Language
+                                        Variation and Change</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 10 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 10: Exam Preparation and Revision</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section10-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Exam
+                                        Techniques and Strategies</a></li>
+                                <li><a href="#section10-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Practice
+                                        Papers and Mock Exams</a></li>
+                                <li><a href="#section10-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Review
+                                        of Key Concepts</a></li>
+                            </ul>
+                        </details>
+                    </nav>
+
+
+                </div>
+
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col lg:transition-all lg:duration-300"">
+            <!-- Top Nav -->
+            <header class=" bg-[#fbbf24] flex items-center justify-between p-6">
+            <button id="hamburger" class="lg:hidden text-3xl">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div id="greeting" class="text-xl lg:text-3xl font-bold text-white mb-4 lg:mb-0">
+                Hi <span id="username">Loading...</span>
+            </div>
+
+            <div class="relative w-full lg:w-1/4 mt-4 lg:mt-0 hidden lg:block">
+                <input type="text" placeholder="Search..."
+                    class="p-3 pl-10 rounded-md w-full bg-white text-gray-700 placeholder-gray-500 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+            </div>
+            </header>
+
+            <!-- Sub Nav Bar for Courses -->
+            <div class="relative">
+                <!-- Left Scroll Icon -->
+                <div id="left-arrow"
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-white bg-[#0082A2] cursor-pointer z-10">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+
+                <!-- Scrollable Navigation with padding for extra scroll space -->
+                <nav id="scrollable-nav"
+                    class="bg-[#0082A2] p-4 pl-28 pr-8 flex justify-center space-x-4 md:space-x-8 overflow-x-auto scroll-smooth no-scrollbar">
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap">
+                        English Language
+                    </a>
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap">
+                        Core Mathematics
+                    </a>
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap">
+                        Elective Mathematics
+                    </a>
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap">
+                        Social Studies
+                    </a>
+                    <a href="#"
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap">
+                        Integrated Science
+                    </a>
+                    <!-- Add more courses here -->
+                </nav>
+
+                <!-- Right Scroll Icon -->
+                <div id="right-arrow"
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 text-white bg-[#0082A2] cursor-pointer z-10">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+
+
+            <!-- Course Content Section -->
+            <main class="flex-1 p-2 bg-[#1e9ebe] overflow-y-auto">
+                <section id="course-content">
+                    <!-- Video Embed Section -->
+                    <div id="video-section" class="mb-6">
+                        <div class="video-container">
+                            <iframe id="course-video"
+                                src="https://www.youtube.com/embed/gQojMIhELvM?controls=1&modestbranding=1&rel=0&showinfo=0"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Course Text Content -->
+                    <!-- Chapter 2: Phonology and Pronunciation -->
+                    <div id="text-content" class="mb-10 p-6 md:p-8 bg-white shadow-xl rounded-lg max-w-full">
+                        <!-- Chapter Title -->
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-8 md:mb-10">Chapter 2: Phonology
+                            and Pronunciation</h2>
+
+                        <!-- Section 1: Introduction to Phonology -->
+                        <section id="section2-1" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Introduction to
+                                Phonology</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Phonology is the study of the sound systems within languages. It examines the way sounds
+                                function in a particular language and how they interact with each other. Phonology helps
+                                us understand pronunciation rules and how different sounds create meaning when combined
+                                into words.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                In English, phonology involves the study of vowels, consonants, stress, intonation, and
+                                rhythm. Mastering phonology is crucial for effective communication, as even slight
+                                changes in sound can alter the meaning of a word or sentence.
+                            </p>
+                        </section>
+
+                        <!-- Section 2: The Phonemic Chart -->
+                        <section id="section2-2" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">The Phonemic Chart
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                The phonemic chart is a visual representation of the sounds of English. Each symbol on
+                                the chart corresponds to a sound, or phoneme, in the English language. It includes vowel
+                                sounds, diphthongs (complex vowels), and consonants.
+                            </p>
+
+                            <!-- Sub-section: Vowel Sounds -->
+                            <h4 id="section2-2-1" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Vowel
+                                Sounds</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                English vowels are divided into short vowels, long vowels, and diphthongs. Vowel sounds
+                                vary based on mouth shape, tongue position, and vocal cord vibration. These slight
+                                changes in sound can distinguish between different words, making pronunciation accuracy
+                                essential.
+                            </p>
+
+                            <!-- Sub-section: Consonant Sounds -->
+                            <h4 id="section2-2-2" class="text-xl md:text-3xl font-semibold text-blue-700 mb-4">Consonant
+                                Sounds</h4>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                Consonants are produced by obstructing airflow at different points in the mouth and
+                                throat. English has voiced and voiceless consonants, where the vocal cords vibrate for
+                                voiced sounds and remain still for voiceless sounds.
+                            </p>
+                        </section>
+
+                        <!-- Section 3: Stress and Intonation -->
+                        <section id="section2-3" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Stress and Intonation
+                            </h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                Stress refers to the emphasis placed on certain syllables or words in a sentence. In
+                                English, stress patterns help convey meaning. Misplacing stress can lead to
+                                misunderstandings. Intonation, on the other hand, is the rise and fall in pitch when
+                                speaking. It can indicate questions, statements, emotions, and more.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                Mastering stress and intonation improves fluency and helps speakers sound more natural
+                                when speaking English.
+                            </p>
+                        </section>
+
+                        <!-- Section 4: Common Pronunciation Challenges -->
+                        <section id="section2-4" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Common Pronunciation
+                                Challenges</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                                English learners often face challenges with certain sounds, particularly those that do
+                                not exist in their native languages. For example, the "th" sound is difficult for many
+                                learners. Pronunciation also varies between British and American English, which can
+                                create confusion.
+                            </p>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                                Regular practice with phonology and focused pronunciation exercises can help learners
+                                overcome these challenges and speak more confidently.
+                            </p>
+                        </section>
+
+                        <!-- Section 5: Pronunciation Practice Exercises -->
+                        <section id="section2-5" class="mb-8 md:mb-12">
+                            <h3 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6">Pronunciation Practice
+                                Exercises</h3>
+                            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                To improve your pronunciation, try the following exercises:
+                            </p>
+                            <ul class="list-disc list-inside pl-6 md:pl-8 text-gray-700 text-base md:text-lg space-y-4">
+                                <li>Practice minimal pairs (e.g., "ship" vs. "sheep") to differentiate between similar
+                                    sounds.</li>
+                                <li>Record yourself reading sentences aloud to monitor stress and intonation patterns.
+                                </li>
+                                <li>Use a phonemic chart to familiarize yourself with the sounds of English and practice
+                                    their pronunciation.</li>
+                                <li>Listen to native speakers and repeat after them to mimic correct pronunciation.</li>
+                            </ul>
+                        </section>
+                    </div>
+
+
+
+
+                    <!-- Navigation Buttons -->
+                    <div id="navigation-buttons" class="flex justify-between">
+                        <button id="prev-chapter"
+                            class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">Previous</button>
+                        <button id="next-chapter"
+                            class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">Next</button>
+                    </div>
+                </section>
+            </main>
+
+            <footer id="footer" class="bg-[#fbbf24] text-white p-6">
+                <div class="flex flex-col lg:flex-row items-center justify-between">
+                    <p class="text-sm">&copy; 2024 Ulearn. All rights reserved.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:underline">Privacy Policy</a>
+                        <a href="#" class="text-white hover:underline">Terms of Service</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // JavaScript for sidebar functionality
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('sidebar-hidden');
+            document.getElementById('sidebar').classList.toggle('sidebar-visible');
+        });
+
+        document.getElementById('close-sidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.add('sidebar-hidden');
+            document.getElementById('sidebar').classList.remove('sidebar-visible');
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fetch the username (placeholder example)
+            document.getElementById('username').textContent = 'User';
+        });
+        const scrollableNav = document.getElementById('scrollable-nav');
+        const leftArrow = document.getElementById('left-arrow');
+        const rightArrow = document.getElementById('right-arrow');
+
+        // Scroll Left
+        leftArrow.addEventListener('click', () => {
+            scrollableNav.scrollBy({
+                left: -250, // Adjust this value based on how much you want to scroll
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll Right
+        rightArrow.addEventListener('click', () => {
+            scrollableNav.scrollBy({
+                left: 250, // Adjust this value based on how much you want to scroll
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,85 +8,140 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .custom-bg {
-            background-color: #0082A2; 
+            background-color: #0082A2;
         }
+
         .logo {
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
         .logo-circle {
-            width: 120px; 
-            height: 120px; 
-            background-color: #fbbf24; 
+            width: 120px;
+            height: 120px;
+            background-color: #fbbf24;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
         .logo-circle span {
-            font-size: 48px; 
+            font-size: 48px;
             font-weight: bold;
             color: #0082A2;
         }
+
         .logo-text {
-            font-size: 56px; 
+            font-size: 56px;
             font-weight: bold;
             color: #fbbf24;
-            margin-left: 20px; 
+            margin-left: 20px;
         }
-        @media (max-width: 1024px) { 
+
+        @media (max-width: 1024px) {
             .logo-circle {
-                width: 70px; 
-                height: 70px; 
+                width: 70px;
+                height: 70px;
             }
+
             .logo-circle span {
-                font-size: 32px; 
+                font-size: 32px;
             }
+
             .logo-text {
-                font-size: 32px; 
+                font-size: 32px;
             }
         }
-        @media (max-width: 768px) { 
+
+        @media (max-width: 768px) {
             .logo-circle {
-                width: 50px; 
-                height: 50px; 
+                width: 50px;
+                height: 50px;
             }
+
             .logo-circle span {
-                font-size: 24px; 
+                font-size: 24px;
             }
+
             .logo-text {
-                font-size: 24px; 
-                margin-left: 10px; 
+                font-size: 24px;
+                margin-left: 10px;
             }
+
             select {
                 width: 100%;
             }
         }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #004d60;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #fbbf24;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
-<body class="custom-bg h-screen flex items-center justify-center">
-    <div class="text-center">
-        <div class="mb-8 logo">
-            <div class="logo-circle">
-                <span>U</span>
+
+<body class="custom-bg min-h-screen flex flex-col justify-between">
+
+    <!-- Main Content -->
+    <div class="flex-grow flex items-center justify-center">
+        <div class="text-center">
+            <div class="mb-8 logo">
+                <div class="logo-circle">
+                    <span>U</span>
+                </div>
+                <div class="logo-text">learn</div>
             </div>
-            <div class="logo-text">learn</div>
-        </div>
-        <div class="relative inline-block w-80 md:w-96 lg:w-112 mb-8">
-            <select id="categorySelect" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-6 py-3 pr-10 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-lg md:text-xl lg:text-2xl" onchange="navigateToCourse()">
-                <option value="" disabled selected>Select Category</option>
-                <option value="nursery">Nursery and KG</option>
-                <option value="lower-primary">Lower Primary</option>
-                <option value="upper-primary">Upper Primary</option>
-                <option value="jhs">Junior High School</option>
-                <option value="shs">Senior High School</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
-                <svg class="fill-current h-6 w-6 md:h-7 md:w-7 lg:h-8 lg:w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10l5 5 5-5H7z"/></svg>
+            <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Welcome to Ulearn</h1>
+            <p class="text-white text-lg md:text-xl lg:text-2xl mb-8">Select Your Educational Level to Start Learning
+            </p>
+            <div class="relative inline-block w-80 md:w-96 lg:w-112 mb-8">
+                <select id="categorySelect"
+                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-6 py-3 pr-10 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-lg md:text-xl lg:text-2xl"
+                    aria-label="Select Category" onchange="navigateToCourse()">
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="nursery">Nursery and KG</option>
+                    <option value="lower-primary">Lower Primary</option>
+                    <option value="upper-primary">Upper Primary</option>
+                    <option value="jhs">Junior High School</option>
+                    <option value="shs">Senior High School</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
+                    <svg class="fill-current h-6 w-6 md:h-7 md:w-7 lg:h-8 lg:w-8" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20">
+                        <path d="M7 10l5 5 5-5H7z" />
+                    </svg>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Ulearn. All rights reserved.</p>
+        <p>
+            <a href="#about">About Us</a> |
+            <a href="#contact">Contact</a> |
+            <a href="#privacy">Privacy Policy</a>
+        </p>
+    </footer>
 
     <script>
         function navigateToCourse() {
@@ -95,7 +151,7 @@
             if (category) {
                 const courseUrlMap = {
                     'nursery': 'Kids/kids.html',
-                    'lower-primary': 'Kids/kids.html',
+                    'lower-primary': 'Kids/lower-primary.html',
                     'upper-primary': 'Adults/login.html',
                     'jhs': 'Adults/login.html',
                     'shs': 'Adults/login.html'
@@ -105,5 +161,7 @@
             }
         }
     </script>
+
 </body>
+
 </html>
