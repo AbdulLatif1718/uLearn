@@ -13,8 +13,10 @@
 
         .logo {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            margin-bottom: 24px;
         }
 
         .logo-circle {
@@ -25,6 +27,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .logo-circle:hover {
+            transform: scale(1.05);
         }
 
         .logo-circle span {
@@ -34,16 +41,17 @@
         }
 
         .logo-text {
-            font-size: 56px;
+            font-size: 48px;
             font-weight: bold;
             color: #fbbf24;
-            margin-left: 20px;
+            margin-top: 20px;
+            text-align: center;
         }
 
         @media (max-width: 1024px) {
             .logo-circle {
-                width: 70px;
-                height: 70px;
+                width: 80px;
+                height: 80px;
             }
 
             .logo-circle span {
@@ -51,14 +59,14 @@
             }
 
             .logo-text {
-                font-size: 32px;
+                font-size: 36px;
             }
         }
 
         @media (max-width: 768px) {
             .logo-circle {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
             }
 
             .logo-circle span {
@@ -66,8 +74,7 @@
             }
 
             .logo-text {
-                font-size: 24px;
-                margin-left: 10px;
+                font-size: 28px;
             }
 
             select {
@@ -81,9 +88,6 @@
             color: white;
             text-align: center;
             padding: 20px 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
         }
 
         .footer a {
@@ -95,24 +99,52 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        /* Responsive adjustments */
+        .content-wrapper {
+            padding: 0 20px;
+        }
+
+        @media (min-width: 768px) {
+            .content-wrapper {
+                padding: 0 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .content-wrapper {
+                padding: 0 80px;
+            }
+        }
+
+        .select-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .select-wrapper select {
+            width: 100%;
+        }
     </style>
 </head>
 
 <body class="custom-bg min-h-screen flex flex-col justify-between">
 
     <!-- Main Content -->
-    <div class="flex-grow flex items-center justify-center">
+    <div class="flex-grow flex items-center justify-center content-wrapper">
         <div class="text-center">
-            <div class="mb-8 logo">
+            <div class="logo">
                 <div class="logo-circle">
                     <span>U</span>
                 </div>
                 <div class="logo-text">learn</div>
             </div>
-            <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Welcome to Ulearn</h1>
-            <p class="text-white text-lg md:text-xl lg:text-2xl mb-8">Select Your Educational Level to Start Learning
-            </p>
-            <div class="relative inline-block w-80 md:w-96 lg:w-112 mb-8">
+            <h1 class="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Welcome to Ulearn</h1>
+            <p class="text-white text-md sm:text-lg md:text-xl lg:text-2xl mb-8">Select Your Educational Level to Start
+                Learning</p>
+            <div class="select-wrapper mb-8">
                 <select id="categorySelect"
                     class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-6 py-3 pr-10 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-lg md:text-xl lg:text-2xl"
                     aria-label="Select Category" onchange="navigateToCourse()">
