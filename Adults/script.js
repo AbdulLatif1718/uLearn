@@ -49,16 +49,24 @@ displayGreeting();
 
 // Mock course data
 const courses = [
-    { title: "Elective Mathematics", description: "Advanced topics in mathematics, including calculus, algebra, and statistics.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "English Language", description: "Comprehensive study of English language including literature, grammar, and writing skills.", status: "completed", image: "https://via.placeholder.com/150" },
-    { title: "Social Studies", description: "Exploration of social systems, history, and cultures.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "Integrated Science", description: "Study of basic principles in biology, chemistry, and physics.", status: "completed", image: "https://via.placeholder.com/150" },
-    { title: "General Science", description: "Overview of fundamental scientific principles and practical applications.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "Physics", description: "Introduction to the principles of physics, including mechanics and electricity.", status: "completed", image: "https://via.placeholder.com/150" },
-    { title: "Chemistry", description: "Study of chemical reactions, properties, and the periodic table.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "Biology", description: "Basics of living organisms, including anatomy, ecology, and genetics.", status: "completed", image: "https://via.placeholder.com/150" },
-    { title: "Geography", description: "Understanding physical and human geography, including maps and environmental systems.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "Economics", description: "Introduction to economic principles, including micro and macroeconomics.", status: "completed", image: "https://via.placeholder.com/150" }
+    { title: "Elective Mathematics", description: "Advanced topics in mathematics, including calculus, algebra, and statistics.", status: "in-progress", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFW1G7Nq0V6Zn8QouCjSruDeTrORd6oW7s3A&s" },
+    { title: "English Language", description: "Comprehensive study of English language including literature, grammar, and writing skills.", status: "completed", image: "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2021/04/english-language-irregularities-437x230.jpeg", link: "shs-english.html" },
+    { title: "Social Studies", description: "Exploration of social systems, history, and cultures.", status: "in-progress", image: "https://i.pinimg.com/originals/e0/8f/fd/e08ffdd752fef3ec414652eccef9ca12.jpg" },
+    { title: "Integrated Science", description: "Study of basic principles in biology, chemistry, and physics.", status: "completed", image: "https://media.proprofs.com/images/QM/user_images/2503852/New%20Project%20(29)(91).jpg" },
+    { title: "Physics", description: "Introduction to the principles of physics, including mechanics and electricity.", status: "in-progress", image: "https://media.geeksforgeeks.org/wp-content/uploads/20240502160218/Physics.webp" },
+    { title: "Chemistry", description: "Study of chemical reactions, properties, and the periodic table.", status: "in-progress", image: "https://d1whtlypfis84e.cloudfront.net/guides/wp-content/uploads/2018/03/23211546/chem-300x225.jpg" },
+    { title: "Biology", description: "Basics of living organisms, including anatomy, ecology, and genetics.", status: "completed", image: "https://media.geeksforgeeks.org/wp-content/uploads/20231110153856/Biology-copy.webp" },
+    { title: "Geography", description: "Understanding physical and human geography, including maps and environmental systems.", status: "", image: "https://study.com/cimages/videopreview/videopreview-full/p3c2j8y73a.jpg" },
+    { title: "Economics", description: "Introduction to economic principles, including micro and macroeconomics.", status: "", image: "https://i.ytimg.com/vi/42wq0gyw3p4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB5mpmuLDX1Shg832ZO3l8uYMWfhw" },
+    { title: "Personal Health and Wellness", description: "Focuses on maintaining physical health, nutrition, and exercise.", status: "", image: "https://cdn.prod.website-files.com/65fda7b5fdef3cef45c71e36/660a90a790a05eb56f3496e8_651c8d5cc9737092ac09f06b_HealthWellness%2520Banner.png" },
+    { title: "Mental Health Awareness", description: "Understanding mental health issues, stress management, and emotional well-being.", status: "", image: "https://i.ytimg.com/vi/b_ZFjw-eEGo/maxresdefault.jpg" },
+    { title: "Sexual Education", description: "Provides information on sexual health, relationships, and reproductive health.", status: "in-progress", image: "https://world.edu/wp-content/uploads/2018/07/sex-ed.jpg" },
+    { title: "Substance Abuse Prevention", description: "Educates about the risks of drug and alcohol use and strategies for prevention.", status: "", image: "https://media.slidesgo.com/storage/44190978/conversions/0-substance-abuse-prevention-health-6th-grade-thumb.jpg" },
+    { title: "Nutrition and Healthy Eating", description: "Covers the principles of a balanced diet, meal planning, and healthy eating habits.", status: "", image: "https://i0.wp.com/fitonapp.com/wp-content/uploads/FitOn-Definitive-Guide-to-Healthy-Eating-2.png?fit=1200%2C526&ssl=1" },
+    { title: "Physical Education", description: "Promotes physical fitness through various sports and exercise routines.", image: "https://3.files.edl.io/e8b3/20/06/03/173520-4fea658e-b146-4b70-b8f8-5feb6053e380.jpg" },
+    { title: "First Aid and Safety", description: "Basic first aid skills, emergency response, and personal safety.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-oA5JiKsL-t9bs_PRIzAWP7Elifma1b2AVw&s" },
+    { title: "Life Skills and Personal Development", description: "Includes practical skills such as financial literacy, time management, and goal setting.", image: "https://miro.medium.com/v2/resize:fit:860/1*ORFKWFBfDSGaH7Rno7RwQQ.jpeg" },
+    { title: "Stress Management and Resilience", description: "Techniques for managing stress, building resilience, and maintaining mental well-being.", image: "https://media.licdn.com/dms/image/C5612AQG4nYmvXgf3Lg/article-cover_image-shrink_720_1280/0/1631917864859?e=2147483647&v=beta&t=61cKTUKkzjqzJ6rIxxM6gSpeTFR3vl-wpLle3s1Qhy0" }
 ];
 
 
@@ -135,3 +143,4 @@ togglePassword.addEventListener("click", function () {
     // Toggle the text between "show" and "hide"
     this.textContent = type === "password" ? "show" : "hide";
 });
+
