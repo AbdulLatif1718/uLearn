@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ulearn - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.js" defer></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.js" defer></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/alpine.min.js" defer></script>
+
     <style>
         .custom-bg {
             background-color: #0082A2;
@@ -34,11 +36,6 @@
             color: #fbbf24;
             margin-left: 10px;
         }
-
-        .dropdown-menu {
-            @apply absolute right-0 mt-2 bg-white border rounded shadow-lg;
-        }
-
 
         @media (max-width: 1024px) {
             .logo-circle {
@@ -140,23 +137,25 @@
     </div>
 
     <!-- Dropdown for Desktop and Mobile -->
-    <div x-data="{ open: false }" class="absolute top-4 right-4 flex items-center space-x-4">
+    <div class="absolute top-4 right-4 flex items-center space-x-4">
         <div class="relative">
-            <button @click="open = !open"
-                class="bg-yellow-500 text-white px-4 py-2 rounded flex items-center space-x-2 dropdown-button">
-                <span>Menu</span>
+            <button id="dropdownButton"
+                class="bg-yellow-500 text-white px-4 py-2 rounded flex items-center space-x-2 focus:outline-none">
+                <span>Account</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
-            <div x-show="open" @click.away="open = false" class="dropdown-menu">
-                <a href="more-options.html">Log in</a>
-                <a href="signup.html">Register</a>
-                <a href="home.html">Guest Mode</a>
+            <div id="dropdownMenu"
+                class="hidden absolute right-5  w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                <a href="more-options.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Log in</a>
+                <a href="signup.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Register</a>
+                <a href="home.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Guest Mode</a>
             </div>
         </div>
     </div>
+
 
 
     <!-- Main Content Section -->
@@ -210,6 +209,20 @@
             <a href="#privacy">Privacy Policy</a>
         </p>
     </footer>
+    <script>
+        const button = document.getElementById('dropdownButton');
+        const menu = document.getElementById('dropdownMenu');
+
+        button.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!button.contains(event.target) && !menu.contains(event.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 
 </html>

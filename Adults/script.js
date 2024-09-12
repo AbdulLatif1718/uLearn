@@ -49,17 +49,18 @@ displayGreeting();
 
 // Mock course data
 const courses = [
-    { title: "Full-Stack Web Development", description: "Learn full-stack development with Node.js and React.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "Introduction to Programming", description: "Basic programming concepts using Python.", status: "completed", image: "https://via.placeholder.com/150" },
-    { title: "Front-End Engineering", description: "Advanced front-end techniques with React.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "Back-End Development", description: "Back-end development using Node.js and Express.", status: "completed", image: "https://via.placeholder.com/150" },
-    { title: "Data Structures and Algorithms", description: "Master data structures and algorithms.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "Database Management Systems", description: "Learn SQL and database management.", status: "completed", image: "https://via.placeholder.com/150" },
-    { title: "Machine Learning Basics", description: "Introduction to machine learning concepts.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "Cloud Computing", description: "Learn about cloud services and deployment.", status: "completed", image: "https://via.placeholder.com/150" },
-    { title: "Cyber Security Essentials", description: "Fundamentals of cyber security.", status: "in-progress", image: "https://via.placeholder.com/150" },
-    { title: "Software Engineering", description: "Principles of software engineering.", status: "completed", image: "https://via.placeholder.com/150" }
+    { title: "Elective Mathematics", description: "Advanced topics in mathematics, including calculus, algebra, and statistics.", status: "in-progress", image: "https://via.placeholder.com/150" },
+    { title: "English Language", description: "Comprehensive study of English language including literature, grammar, and writing skills.", status: "completed", image: "https://via.placeholder.com/150" },
+    { title: "Social Studies", description: "Exploration of social systems, history, and cultures.", status: "in-progress", image: "https://via.placeholder.com/150" },
+    { title: "Integrated Science", description: "Study of basic principles in biology, chemistry, and physics.", status: "completed", image: "https://via.placeholder.com/150" },
+    { title: "General Science", description: "Overview of fundamental scientific principles and practical applications.", status: "in-progress", image: "https://via.placeholder.com/150" },
+    { title: "Physics", description: "Introduction to the principles of physics, including mechanics and electricity.", status: "completed", image: "https://via.placeholder.com/150" },
+    { title: "Chemistry", description: "Study of chemical reactions, properties, and the periodic table.", status: "in-progress", image: "https://via.placeholder.com/150" },
+    { title: "Biology", description: "Basics of living organisms, including anatomy, ecology, and genetics.", status: "completed", image: "https://via.placeholder.com/150" },
+    { title: "Geography", description: "Understanding physical and human geography, including maps and environmental systems.", status: "in-progress", image: "https://via.placeholder.com/150" },
+    { title: "Economics", description: "Introduction to economic principles, including micro and macroeconomics.", status: "completed", image: "https://via.placeholder.com/150" }
 ];
+
 
 // Function to render courses
 function renderCourses() {
@@ -99,10 +100,13 @@ function renderAchievements() {
     const achievementsList = document.getElementById('achievements-list');
 
     const achievements = [
-        { title: "Completed Full-Stack Bootcamp", description: "Successfully completed a 12-week full-stack development bootcamp.", date: "January 2024", icon: "fas fa-medal" },
-        { title: "Top Scorer in Data Structures", description: "Achieved the highest score in Data Structures and Algorithms course.", date: "March 2024", icon: "fas fa-trophy" },
-        { title: "Certified Cloud Practitioner", description: "Earned AWS Certified Cloud Practitioner certification.", date: "May 2024", icon: "fas fa-certificate" }
+        { title: "Completed Elective Mathematics Course", description: "Successfully completed a comprehensive course on Elective Mathematics.", date: "January 2024", icon: "fas fa-heartbeat" },
+        { title: "Top Performer in Mental Health Awareness", description: "Achieved top performance in a mental health awareness course.", date: "March 2024", icon: "fas fa-brain" },
+        { title: "Certified First Aid and Safety Expert", description: "Earned certification in basic first aid and emergency response.", date: "May 2024", icon: "fas fa-first-aid" },
+        { title: "Outstanding Achievement in Nutrition and Healthy Eating", description: "Recognized for exceptional performance in a nutrition and healthy eating course.", date: "July 2024", icon: "fas fa-apple-alt" },
+        { title: "Mastered Life Skills and Personal Development", description: "Completed a course on life skills, including financial literacy and time management.", date: "September 2024", icon: "fas fa-briefcase" }
     ];
+
 
     achievements.forEach(achievement => {
         const achievementCard = document.createElement('div');

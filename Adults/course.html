@@ -147,21 +147,28 @@
     <script>
         // Mock course data
         const courses = [
-            { title: "Full-Stack Web Development", description: "Learn full-stack development with Node.js and React.", status: "in-progress", image: "https://via.placeholder.com/150" },
-            { title: "Introduction to Programming", description: "Basic programming concepts using Python.", status: "completed", image: "https://via.placeholder.com/150" },
-            { title: "Front-End Engineering", description: "Advanced front-end techniques with React.", status: "in-progress", image: "https://via.placeholder.com/150" },
-            { title: "Back-End Development", description: "Back-end development using Node.js and Express.", status: "completed", image: "https://via.placeholder.com/150" },
-            { title: "Data Structures and Algorithms", description: "Master data structures and algorithms.", status: "in-progress", image: "https://via.placeholder.com/150" },
-            { title: "Database Management Systems", description: "Learn SQL and database management.", status: "completed", image: "https://via.placeholder.com/150" },
-            { title: "Machine Learning Basics", description: "Introduction to machine learning concepts.", status: "in-progress", image: "https://via.placeholder.com/150" },
-            { title: "Cloud Computing", description: "Learn about cloud services and deployment.", status: "completed", image: "https://via.placeholder.com/150" },
-            { title: "Cyber Security Essentials", description: "Fundamentals of cyber security.", status: "in-progress", image: "https://via.placeholder.com/150" },
-            { title: "Software Engineering", description: "Principles of software engineering.", status: "completed", image: "https://via.placeholder.com/150" },
-            { title: "Ethical Hacking", description: "Learn ethical hacking techniques and tools.", status: "in-progress", image: "https://via.placeholder.com/150" },
-            { title: "DevOps Practices", description: "Introduction to DevOps practices and tools.", status: "completed", image: "https://via.placeholder.com/150" },
-            { title: "Mobile App Development", description: "Develop mobile applications using Flutter.", status: "in-progress", image: "https://via.placeholder.com/150" },
-            { title: "Advanced SQL", description: "Deep dive into advanced SQL queries and techniques.", status: "completed", image: "https://via.placeholder.com/150" }
+            { title: "Elective Mathematics", description: "Advanced topics in mathematics, including calculus, algebra, and statistics.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "English Language", description: "Comprehensive study of English language including literature, grammar, and writing skills.", status: "completed", image: "https://via.placeholder.com/150", link: "Chapter2.html" },
+            { title: "Social Studies", description: "Exploration of social systems, history, and cultures.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "Integrated Science", description: "Study of basic principles in biology, chemistry, and physics.", status: "completed", image: "https://via.placeholder.com/150" },
+            { title: "General Science", description: "Overview of fundamental scientific principles and practical applications.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "Physics", description: "Introduction to the principles of physics, including mechanics and electricity.", status: "completed", image: "https://via.placeholder.com/150" },
+            { title: "Chemistry", description: "Study of chemical reactions, properties, and the periodic table.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "Biology", description: "Basics of living organisms, including anatomy, ecology, and genetics.", status: "completed", image: "https://via.placeholder.com/150" },
+            { title: "Geography", description: "Understanding physical and human geography, including maps and environmental systems.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "Economics", description: "Introduction to economic principles, including micro and macroeconomics.", status: "completed", image: "https://via.placeholder.com/150" },
+            { title: "Personal Health and Wellness", description: "Focuses on maintaining physical health, nutrition, and exercise.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "Mental Health Awareness", description: "Understanding mental health issues, stress management, and emotional well-being.", status: "completed", image: "https://via.placeholder.com/150" },
+            { title: "Sexual Education", description: "Provides information on sexual health, relationships, and reproductive health.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "Substance Abuse Prevention", description: "Educates about the risks of drug and alcohol use and strategies for prevention.", status: "completed", image: "https://via.placeholder.com/150" },
+            { title: "Nutrition and Healthy Eating", description: "Covers the principles of a balanced diet, meal planning, and healthy eating habits.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "Physical Education", description: "Promotes physical fitness through various sports and exercise routines.", status: "completed", image: "https://via.placeholder.com/150" },
+            { title: "First Aid and Safety", description: "Basic first aid skills, emergency response, and personal safety.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "Life Skills and Personal Development", description: "Includes practical skills such as financial literacy, time management, and goal setting.", status: "completed", image: "https://via.placeholder.com/150" },
+            { title: "Sexual Health and Relationships", description: "Exploration of healthy relationships, consent, and sexual health education.", status: "in-progress", image: "https://via.placeholder.com/150" },
+            { title: "Stress Management and Resilience", description: "Techniques for managing stress, building resilience, and maintaining mental well-being.", status: "completed", image: "https://via.placeholder.com/150" }
         ];
+
 
         // Function to render courses
         function renderCourses() {
@@ -174,11 +181,13 @@
                     <img src="${course.image}" alt="${course.title}" class="w-full h-32 object-cover rounded-md mb-4">
                     <h3 class="text-xl font-semibold mb-2">${course.title}</h3>
                     <p class="text-gray-600 mb-4">${course.description}</p>
-                    <button class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">View Course</button>
+                    <a href="${course.link}" class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">View Course</a>
                 `;
                 allCoursesList.appendChild(courseCard);
             });
         }
+
+
 
         // Call render function on page load
         document.addEventListener('DOMContentLoaded', () => {
