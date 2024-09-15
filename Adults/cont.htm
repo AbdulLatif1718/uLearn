@@ -1,88 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ulearn Course Page</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <style>
-    /* Additional styling for fixed sidebar on small screens */
-    #sidebar {
-      transform: translateX(-100%);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Content</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    #sidebar.open {
-      transform: translateX(0);
-    }
-  </style>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-100">
-  
-  <!-- Header with Top Navbar -->
-  <header class="bg-[#fbbf24] flex items-center justify-between p-6">
-    <div class="flex items-center space-x-4">
-      <button id="hamburger" class="lg:hidden text-3xl text-white">
-        <i class="fas fa-bars"></i>
-      </button>
-      <h1 class="text-xl lg:text-3xl font-bold text-white">Ulearn Courses</h1>
-    </div>
 
-    <!-- Top Navbar for Other Courses -->
-    <nav class="hidden lg:flex space-x-6">
-      <a href="#" class="text-white text-lg hover:underline">Course 1</a>
-      <a href="#" class="text-white text-lg hover:underline">Course 2</a>
-      <a href="#" class="text-white text-lg hover:underline">Course 3</a>
-      <!-- Add more courses here -->
-    </nav>
-  </header>
+<body class="font-sans antialiased bg-[#0082A2] text-white">
 
-  <!-- Sidebar for Table of Contents -->
-  <div id="sidebar" class="bg-[#0082A2] w-64 p-6 flex flex-col fixed top-0 left-0 h-full z-30 transition-transform duration-300">
-    <h2 class="text-white text-2xl font-bold mb-4">Table of Contents</h2>
-    <nav class="flex flex-col space-y-4">
-      <a href="#section1" class="text-white text-lg">Introduction</a>
-      <a href="#section2" class="text-white text-lg">Chapter 1</a>
-      <a href="#section3" class="text-white text-lg">Chapter 2</a>
-      <a href="#section4" class="text-white text-lg">Chapter 3</a>
-      <!-- Add more sections as needed -->
-    </nav>
-  </div>
+    <div class="flex flex-col lg:flex-row h-screen">
 
-  <!-- Main Content Section -->
-  <main class="flex-1 lg:pl-64 p-6 bg-[#1e9ebe] overflow-y-auto">
-    <section id="section1" class="mb-6">
-      <h2 class="text-3xl font-bold mb-4">Introduction</h2>
-      <p class="text-white">This is the introduction to the course...</p>
-    </section>
-    
-    <section id="section2" class="mb-6">
-      <h2 class="text-3xl font-bold mb-4">Chapter 1</h2>
-      <p class="text-white">Content of Chapter 1...</p>
-    </section>
-    
-    <section id="section3" class="mb-6">
-      <h2 class="text-3xl font-bold mb-4">Chapter 2</h2>
-      <p class="text-white">Content of Chapter 2...</p>
-    </section>
-    
-    <section id="section4" class="mb-6">
-      <h2 class="text-3xl font-bold mb-4">Chapter 3</h2>
-      <p class="text-white">Content of Chapter 3...</p>
-    </section>
+        <!-- Sidebar -->
+        <div id="sidebar"
+            class="bg-[#0082A2] w-96 p-6 flex flex-col fixed lg:relative top-0 left-0 h-full lg:h-auto transition-transform duration-300 sidebar-hidden lg:translate-x-0 lg:translate-y-0 z-30 lg:w-80">
+            <!-- Close Button -->
+            <button id="close-sidebar" class="text-white text-2xl mb-4 lg:hidden absolute top-4 right-4">
+                <i class="fas fa-times"></i>
+            </button>
+            <!-- Toggle Button for large screens -->
+            <div class="flex items-center mb-8">
+                <img src="ulearn.png" alt="Logo" class="w-12 h-12 mr-3">
+                <span class="text-2xl lg:text-3xl font-bold">Ulearn</span>
+            </div>
+            <nav class="flex flex-col space-y-4 p-4 py-11">
+                <a href="/Adults/home.html"
+                    class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 hover:bg-gray-200 transition duration-300 ease-in-out">
+                    <i class="fas fa-home"></i>
+                    <span class="sidebar-text">Back Home</span>
+                </a>
+                <div class="h-full max-h-[600px] lg:max-h-[700px] overflow-y-auto">
+                    <h1
+                        class="sidebar-text py-8 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3">
+                        Table of Content
+                    </h1>
+                    <nav class="flex flex-col space-y-4 p-4">
+                        <!-- Chapter 1 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 1: Introduction to English Language</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section1-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Overview
+                                        of English Language</a></li>
+                                <li><a href="#section1-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Historical
+                                        Development</a></li>
+                                <li><a href="#section1-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Importance
+                                        and Scope</a></li>
+                            </ul>
+                        </details>
 
-    <!-- Add more content sections as needed -->
-  </main>
+                        <!-- Chapter 2 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 2: Grammar Fundamentals</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section2-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Parts
+                                        of Speech</a></li>
+                                <li><a href="#section2-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Sentence
+                                        Structure</a></li>
+                                <li><a href="#section2-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Tenses
+                                        and Agreement</a></li>
+                            </ul>
+                        </details>
 
-  <!-- Script for Sidebar Toggle on Mobile -->
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const sidebar = document.getElementById('sidebar');
+                        <!-- Chapter 3 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 3: Vocabulary Building</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section3-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Word
+                                        Formation</a></li>
+                                <li><a href="#section3-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Synonyms
+                                        and Antonyms</a></li>
+                                <li><a href="#section3-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Contextual
+                                        Usage</a></li>
+                            </ul>
+                        </details>
 
-    hamburger.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-    });
-  </script>
+                        <!-- Chapter 4 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 4: Reading Comprehension</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section4-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Strategies
+                                        for Effective Reading</a></li>
+                                <li><a href="#section4-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Analyzing
+                                        Texts</a></li>
+                                <li><a href="#section4-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Understanding
+                                        Main Ideas and Details</a></li>
+                            </ul>
+                        </details>
 
+                        <!-- Chapter 5 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 5: Writing Skills</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section5-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Types
+                                        of Writing</a></li>
+                                <li><a href="#section5-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Essay
+                                        Structure and Development</a></li>
+                                <li><a href="#section5-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Revising
+                                        and Editing</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 6 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 6: Literature and Literary Analysis</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section6-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Genres
+                                        of Literature</a></li>
+                                <li><a href="#section6-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Analyzing
+                                        Literary Devices</a></li>
+                                <li><a href="#section6-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Themes
+                                        and Character Analysis</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 7 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 7: Oral Communication</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section7-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Public
+                                        Speaking Techniques</a></li>
+                                <li><a href="#section7-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Effective
+                                        Listening Skills</a></li>
+                                <li><a href="#section7-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Presentation
+                                        and Debate</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 8 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 8: Functional English</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section8-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Writing
+                                        Formal Letters</a></li>
+                                <li><a href="#section8-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Writing
+                                        Reports and Proposals</a></li>
+                                <li><a href="#section8-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Job
+                                        Applications and CV Writing</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 9 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 9: Language Use in Context</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section9-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Language
+                                        and Culture</a></li>
+                                <li><a href="#section9-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Dialects
+                                        and Accents</a></li>
+                                <li><a href="#section9-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Language
+                                        Variation and Change</a></li>
+                            </ul>
+                        </details>
+
+                        <!-- Chapter 10 -->
+                        <details class="group border-b border-gray-300">
+                            <summary
+                                class="sidebar-item py-3 px-5 text-center text-sm lg:text-lg font-semibold flex items-center space-x-3 cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <i class="fas fa-chapter"></i>
+                                <span class="sidebar-text">Chapter 10: Exam Preparation and Revision</span>
+                            </summary>
+                            <ul class="pl-6 space-y-2 mt-2">
+                                <li><a href="#section10-1"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Exam
+                                        Techniques and Strategies</a></li>
+                                <li><a href="#section10-2"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Practice
+                                        Papers and Mock Exams</a></li>
+                                <li><a href="#section10-3"
+                                        class="text-sm lg:text-base text-gray-700 hover:text-blue-600 transition duration-300 ease-in-out">Review
+                                        of Key Concepts</a></li>
+                            </ul>
+                        </details>
+                    </nav>
+
+
+                </div>
+
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col lg:transition-all lg:duration-300"">
+            <!-- Top Nav -->
+            <header class=" bg-[#fbbf24] flex items-center justify-between p-6">
+            <button id="hamburger" class="lg:hidden text-3xl">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div id="greeting" class="text-xl lg:text-3xl font-bold text-white mb-4 lg:mb-0">
+                Hi <span id="username">Loading...</span>
+            </div>
+
+            <div class="relative w-full lg:w-1/4 mt-4 lg:mt-0 hidden lg:block">
+                <input type="text" placeholder="Search..."
+                    class="p-3 pl-10 rounded-md w-full bg-white text-gray-700 placeholder-gray-500 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+            </div>
+            </header>
+
+            <!-- Sub Nav Bar for Courses -->
+            <div class="relative">
+                <!-- Left Scroll Icon -->
+                <div id="left-arrow"
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-white bg-[#0082A2] cursor-pointer z-10">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+
+                <!-- Scrollable Navigation with padding for extra scroll space -->
+
+
+                <!-- Right Scroll Icon -->
+                <div id="right-arrow"
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 text-white bg-[#0082A2] cursor-pointer z-10">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+
+
+            <!-- Course Content Section -->
+            <main class="flex-1 p-2 bg-[#1e9ebe] overflow-y-auto">
+
+            </main>
+
+            <footer class="bg-[#fbbf24] text-white p-6 id=" footer">
+                <div class="flex flex-col lg:flex-row items-center justify-between">
+                    <footer class="bg-[#fbbf24] text-white p-6">
+                        <div class="flex flex-col lg:flex-row items-center justify-between">
+                            <p class="text-sm">&copy; 2024 Ulearn. All rights reserved.</p>
+                            <div class="flex space-x-4 mt-4 lg:mt-0">
+                                <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+            // JavaScript for sidebar functionality
+            document.getElementById('hamburger').addEventListener('click', () => {
+                document.getElementById('sidebar').classList.toggle('sidebar-hidden');
+                document.getElementById('sidebar').classList.toggle('sidebar-visible');
+            });
+
+            document.getElementById('close-sidebar').addEventListener('click', () => {
+                document.getElementById('sidebar').classList.add('sidebar-hidden');
+                document.getElementById('sidebar').classList.remove('sidebar-visible');
+            });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                // Fetch the username (placeholder example)
+                document.getElementById('username').textContent = 'User';
+            });
+            const scrollableNav = document.getElementById('scrollable-nav');
+            const leftArrow = document.getElementById('left-arrow');
+            const rightArrow = document.getElementById('right-arrow');
+
+            // Scroll Left
+            leftArrow.addEventListener('click', () => {
+                scrollableNav.scrollBy({
+                    left: -250, // Adjust this value based on how much you want to scroll
+                    behavior: 'smooth'
+                });
+            });
+
+            // Scroll Right
+            rightArrow.addEventListener('click', () => {
+                scrollableNav.scrollBy({
+                    left: 250, // Adjust this value based on how much you want to scroll
+                    behavior: 'smooth'
+                });
+            });
+        </script>
 </body>
+
 </html>

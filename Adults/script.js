@@ -38,11 +38,26 @@ toggleSidebar.addEventListener('click', () => {
 // Mock data for user authentication (Replace with Firebase authentication later)
 const mockUsername = "Senior Man";
 
-// Function to display greeting with username
+// Function to display greeting with username based on the time of day
 function displayGreeting() {
     const usernameElement = document.getElementById('username');
-    usernameElement.textContent = mockUsername;
+    const currentHour = new Date().getHours();
+    let greeting;
+
+    if (currentHour < 12) {
+        greeting = `Good morning, ${mockUsername}!`;
+    } else if (currentHour < 18) {
+        greeting = `Good afternoon, ${mockUsername}!`;
+    } else {
+        greeting = `Good evening, ${mockUsername}!`;
+    }
+
+    usernameElement.textContent = greeting;
 }
+
+// Call the function to display the greeting when the page loads
+document.addEventListener('DOMContentLoaded', displayGreeting);
+
 
 // Display greeting on page load
 displayGreeting();

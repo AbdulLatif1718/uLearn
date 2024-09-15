@@ -100,7 +100,7 @@
     <!-- Welcome Text -->
     <div class="text-center text-white py-6">
         <h1 class="text-4xl font-extrabold mb-4">Welcome to Ulearn for KG!</h1>
-        <p class="text-xl font-light">
+        <p class="text-2xl font-light">
             Let's Play, Learn, and Explore Together! Get ready for a world full of colors,
             fun activities, and awesome adventures that help you grow and shine!
         </p>
@@ -109,16 +109,22 @@
     <!-- Ulearn Logo, Back Icon, and Text -->
     <div class="absolute top-20 left-4 right-4 flex items-center justify-between flex-wrap">
         <div class="flex items-center space-x-4">
-            <div class="w-20 h-20 logo-bg rounded-full flex items-center justify-center">
-                <span class="text-4xl font-bold text-[#0082A2]">U</span>
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center">
+                <img src="ulearn.png" alt="Ulearn Logo" class="w-full h-full object-cover rounded-full">
             </div>
-            <div class="text-4xl font-bold text-white">
+            <div class="text-2xl md:text-4xl font-bold text-white">
                 learn
             </div>
         </div>
-        <a href="#" class="back-icon mt-4 md:mt-0">
-            <img src="/path/to/your/back-icon.png" alt="Back">
-        </a>
+        <button onclick="goBack()"
+            class="back-icon mt-4 md:mt-0 text-yellow-400 hover:text-white flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-2"
+            title="Go back">
+            <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 12H5m7-7l-7 7 7 7"></path>
+            </svg>
+            <span class="sr-only">Back</span>
+        </button>
     </div>
 
     <!-- Courses Section -->
@@ -138,7 +144,6 @@
             class="course-card relative group text-center bg-green-200 rounded-xl p-4 shadow-lg cursor-pointer">
             <img src="https://c8.alamy.com/comp/F2T1CK/numeracy-balloons-meaning-child-youngsters-and-boy-F2T1CK.jpg"
                 alt="Numeracy" class="w-36 h-36 mx-auto mb-2 rounded-full">
-
             <h3 class="text-2xl font-bold text-green-800">Numeracy</h3>
             <p class="text-sm text-gray-700">Build foundational math skills through play</p>
             <button class="mt-4 bg-green-500 text-white px-6 py-2 rounded-lg font-bold">Let's Go!</button>
@@ -176,22 +181,22 @@
 
         <!-- Science Course -->
         <a href="science.html"
-            class="course-card relative group text-center bg-orange-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            class="course-card relative group text-center bg-green-400 rounded-xl p-4 shadow-lg cursor-pointer">
             <img src="https://i.pinimg.com/736x/63/e7/b5/63e7b5fe578e15600757672710488e2d.jpg" alt="Science"
                 class="w-36 h-36 mx-auto mb-2 rounded-full">
             <h3 class="text-2xl font-bold text-orange-800">Science</h3>
             <p class="text-sm text-gray-700">Encourage curiosity and exploration of the natural world</p>
-            <button class="mt-4 bg-orange-500 text-white px-6 py-2 rounded-lg font-bold">Start Exploring</button>
+            <button class="mt-4 bg-green-500 text-white px-6 py-2 rounded-lg font-bold">Start Exploring</button>
         </a>
 
         <!-- Life Skills Course -->
         <a href="life-skills.html"
-            class="course-card relative group text-center bg-teal-200 rounded-xl p-4 shadow-lg cursor-pointer">
+            class="course-card relative group text-center bg-yellow-100 rounded-xl p-4 shadow-lg cursor-pointer">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLMyVyZF0hEJdK5rI5u7BALfNE_ZfXw_PlDg&s"
                 alt="Life Skills" class="w-36 h-36 mx-auto mb-2 rounded-full">
             <h3 class="text-2xl font-bold text-teal-800">Life Skills</h3>
             <p class="text-sm text-gray-700">Teach essential life skills, such as hygiene and safety</p>
-            <button class="mt-4 bg-teal-500 text-white px-6 py-2 rounded-lg font-bold">Learn Now</button>
+            <button class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg font-bold">Learn Now</button>
         </a>
     </nav>
     <!-- Footer Section -->
@@ -203,6 +208,11 @@
             <a href="#privacy">Privacy Policy</a>
         </p>
     </footer>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 
 </html>

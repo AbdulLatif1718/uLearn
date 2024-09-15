@@ -97,15 +97,34 @@
 <body class="flex flex-col items-center min-h-screen overflow-x-hidden">
     <!-- Header Background -->
     <div class="header-bg w-full"></div>
+    <!-- Welcome Text -->
+    <div class="text-center text-white py-6">
+        <h1 class="text-4xl font-extrabold mb-4">Welcome to Ulearn for Lower Primary!</h1>
+        <p class="text-2xl font-light">
+            Let's Play, Learn, and Explore Together! Get ready for a world full of colors,
+            fun activities, and awesome adventures that help you grow and shine!
+        </p>
+    </div>
 
-    <!-- Logo and Title -->
-    <div class="flex flex-col items-center mb-10">
-        <div class="logo-bg rounded-full shadow-lg">
-            <span>U</span>
+    <!-- Ulearn Logo, Back Icon, and Text -->
+    <div class="absolute top-20 left-4 right-4 flex items-center justify-between flex-wrap">
+        <div class="flex items-center space-x-4">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center">
+                <img src="ulearn.png" alt="Ulearn Logo" class="w-full h-full object-cover rounded-full">
+            </div>
+            <div class="text-2xl md:text-4xl font-bold text-white">
+                learn
+            </div>
         </div>
-        <h1 class="text-4xl lg:text-5xl font-bold text-white text-center">
-            learn <span class="text-yellow-400">for Lower Primary</span>
-        </h1>
+        <button onclick="goBack()"
+            class="back-icon mt-4 md:mt-0 text-yellow-400 hover:text-white flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-2"
+            title="Go back">
+            <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 12H5m7-7l-7 7 7 7"></path>
+            </svg>
+            <span class="sr-only">Back</span>
+        </button>
     </div>
 
     <!-- Courses Section -->
@@ -113,7 +132,7 @@
         <!-- Science Course -->
         <a href="science.html"
             class="course-card relative group text-center bg-yellow-200 rounded-xl p-4 shadow-lg cursor-pointer">
-            <img src="/images/science-2.png" alt="Science" class="w-36 h-36 mx-auto mb-2 rounded-full">
+            <img src="/images/nutural-science-2.png" alt="Science" class="w-36 h-36 mx-auto mb-2 rounded-full">
             <h3 class="text-2xl font-bold text-blue-800">Natural Science</h3>
             <p class="text-sm text-gray-700">Explore Nature!</p>
             <button class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg font-bold">Start Now</button>
@@ -189,6 +208,11 @@
             <a href="#privacy">Privacy Policy</a>
         </p>
     </footer>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 
 </html>

@@ -93,16 +93,7 @@
             margin-bottom: 10px;
         }
 
-        #footer {
-            display: none;
-            background-color: #f8f9fa;
-            color: #6c757d;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+
 
         .video-container {
             position: relative;
@@ -121,6 +112,16 @@
             width: 100%;
             height: 100%;
             border: 0;
+        }
+
+        #footer {
+            transition: transform 0.3s ease-in-out;
+            /* Smooth transition */
+        }
+
+        .footer-hidden {
+            transform: translateY(100%);
+            /* Hide by moving it down */
         }
     </style>
 </head>
@@ -289,9 +290,8 @@
                                 <span class="sidebar-text">Chapter 9: Language Use in Context</span>
                             </summary>
                             <ul class="pl-6 space-y-2
-mt-2">
-                                <li><a href="#section9-1" class="text-gray-700 hover:text-blue-600">Language in
-                                        Different Settings</a></li>
+                                <li><a href=" #section9-1" class="text-gray-700 hover:text-blue-600">Language in
+                                Different Settings</a></li>
                                 <li><a href="#section9-2" class="text-gray-700 hover:text-blue-600">Cultural and Social
                                         Influences</a></li>
                                 <li><a href="#section9-3" class="text-gray-700 hover:text-blue-600">Adapting Language
@@ -350,9 +350,9 @@ mt-2">
 
                 <!-- Scrollable Navigation with padding for extra scroll space -->
                 <nav id="scrollable-nav"
-                    class="bg-[#0082A2] p-4 pl-28 pr-8 flex justify-center space-x-4 md:space-x-8 overflow-x-auto scroll-smooth no-scrollbar">
+                    class="bg-[#0082A2] p-4 pl-96 pr-8 flex justify-center space-x-4 md:space-x-8 overflow-x-auto scroll-smooth no-scrollbar">
                     <a href="#"
-                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap bg-yellow-500 rounded-lg p-2">
+                        class="text-white text-sm md:text-lg font-semibold hover:underline transition duration-300 ease-in-out whitespace-nowrap bg-yellow-500 rounded-lg p-1">
                         English Language
                     </a>
                     <a href="#"
@@ -2054,27 +2054,21 @@ mt-2">
                         </section>
                     </div>
 
-
-
-                    <!-- Navigation Buttons -->
-                    <div id="navigation-buttons" class="flex justify-between">
-                        <button id="prev-chapter"
-                            class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">Previous</button>
-                        <button id="next-chapter"
-                            class="bg-[#1e9ebe] text-white py-2 px-4 rounded shadow-md hover:bg-[#0082a2]">Next</button>
-                    </div>
                 </section>
             </main>
 
             <footer id="footer" class="bg-[#fbbf24] text-white p-6">
                 <div class="flex flex-col lg:flex-row items-center justify-between">
                     <p class="text-sm">&copy; 2024 Ulearn. All rights reserved.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-white hover:underline">Privacy Policy</a>
-                        <a href="#" class="text-white hover:underline">Terms of Service</a>
+                    <div class="flex space-x-4 mt-4 lg:mt-0">
+                        <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white hover:text-gray-200"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </footer>
+
         </div>
     </div>
 
@@ -2148,6 +2142,26 @@ mt-2">
             // Initial highlight
             highlightCurrentChapter();
         });
+        let lastScrollTop = 0;
+        const footer = document.getElementById('footer');
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Check if the user is scrolling down or up
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down, hide the footer
+                footer.classList.add('footer-hidden');
+            } else {
+                // Scrolling up, show the footer
+                footer.classList.remove('footer-hidden');
+            }
+
+            // Update the last scroll position
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+
+
     </script>
 </body>
 
