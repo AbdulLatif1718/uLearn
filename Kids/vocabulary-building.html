@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulearn for Kids - vocabulary-building</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0082A2;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .header-bg {
+            padding-top: 6rem;
+            /* Adjust this if needed */
+            background-color: #0082A2;
+            /* Example background color */
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .main-container {
+            display: flex;
+            height: calc(100vh - 150px);
+            padding: 0 1rem;
+            padding-top: 1.2rem;
+            gap: 1rem;
+        }
+
+        .sidebar {
+            background-color: #FF6B6B;
+            border-radius: 20px;
+            padding: 1rem;
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .sidebar .button {
+            background-color: #FF6B6B;
+            color: white;
+            font-size: 1.5rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 15px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .sidebar .button:hover {
+            transform: scale(1.05);
+            background-color: #FF4C4C;
+            border-color: #FFD700;
+        }
+
+        .content-section {
+            background-color: #E6E6FA;
+            border-radius: 20px;
+            width: 75%;
+            padding: 2rem;
+            margin: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content-section img {
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .content-section h1 {
+            font-size: 2.5rem;
+            color: #4B0082;
+            text-shadow: 1px 1px 3px #FFD700;
+        }
+
+        .content-section p {
+            font-size: 1.25rem;
+            color: #333;
+            margin-top: 1rem;
+        }
+
+        .content-section .interactive-box {
+            background-color: #FFDEAD;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        .story-content {
+            max-height: 550px;
+            /* Adjust this value for desired scroll height */
+            overflow-y: auto;
+            padding-right: 1rem;
+            max-width: full;
+        }
+
+
+        .interactive-box button {
+            background-color: #6A5ACD;
+            color: white;
+            font-size: 1.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .interactive-box button:hover {
+            transform: scale(1.05);
+            background-color: #483D8B;
+        }
+
+        @media (max-width: 1024px) {
+            body {
+                padding-bottom: 10%;
+            }
+
+            .header-bg {
+                height: 120px;
+                font-size: 1.5rem;
+            }
+
+            .main-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                /* Aligns children centrally */
+                width: 100%;
+                /* Ensures full width */
+                padding: 0;
+                /* Removes any unnecessary padding */
+                margin: 0 auto;
+                /* Centers the container */
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding-top: 3%;
+                top: 0;
+                left: 0;
+                border-bottom: 2px solid #FFD700;
+            }
+
+            .sidebar .button {
+                flex: 1;
+                justify-content: center;
+                padding: 0.5rem;
+                text-align: center;
+                font-size: 1rem;
+                margin: 0;
+            }
+
+            .content-section {
+                margin-top: 20px;
+                width: 100%;
+                /* Ensure full width on mobile */
+                max-width: 100%;
+                /* Prevent overflow */
+                padding: 0 16px;
+                /* Adjust padding for mobile */
+                overflow-x: hidden;
+                /* Hide any potential horizontal overflow */
+                height: calc(100vh - 150px)
+            }
+
+            .story-content {
+                max-height: 500px;
+                /* Adjust this value for desired scroll height */
+                overflow-y: auto;
+                padding-right: 1rem;
+            }
+        }
+
+        .footer {
+            background-color: #004d60;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #fbbf24;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="relative flex flex-col justify-center items-center min-h-screen">
+    <!-- Ulearn Logo, Back Icon, and Text -->
+    <div class="flex items-center justify-between flex-wrap bg-[#0082A2] p-4 z-50 w-full">
+        <!-- Logo and Title on the left -->
+        <div class="flex items-center space-x-4">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center">
+                <img src="ulearn.png" alt="Ulearn Logo" class="w-full h-full object-cover rounded-full">
+            </div>
+            <div class="text-2xl md:text-4xl font-bold text-white">
+                learn
+            </div>
+        </div>
+
+        <!-- Hidden on mobile view, shown on desktop view -->
+        <div class="hidden md:flex flex-grow justify-center text-2xl md:text-4xl font-bold text-white">
+            vocabulary Building for Kids
+        </div>
+
+        <!-- Back button on the right -->
+        <button onclick="goBack()"
+            class="back-icon mt-4 md:mt-0 text-yellow-400 hover:text-white flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-2"
+            title="Go back">
+            <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 12H5m7-7l-7 7 7 7"></path>
+            </svg>
+            <span class="sr-only">Back</span>
+        </button>
+    </div>
+
+    <div class="md:hidden mt-4 text-center text-xl font-bold text-white bg-[#0082A2] p-4 z-50">
+        vocabulary Building for Kids
+    </div <!-- Main Content -->
+    <div class="main-container w-full">
+        <!-- Sidebar -->
+        <div class="sidebar bg-gray-200 p-4">
+            <div class="button bg-blue-500 text-white p-2 mb-2 cursor-pointer"
+                onclick="showContent('vocabulary-building')">
+                🔤 Vocabulary Basics
+            </div>
+            <div class="button bg-blue-500 text-white p-2 mb-2 cursor-pointer"
+                onclick="showContent('vocabulary-activities')">
+                📖 Vocabulary Skills
+            </div>
+            <div class="button bg-blue-500 text-white p-2 mb-2 cursor-pointer" onclick="showContent('quiz')">
+                📝 Fun Quiz
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-section p-4">
+            <!-- Welcome Message -->
+            <div id="welcome-message" class="text-center text-3xl font-bold text-gray-800 p-4">
+                <img class="mx-auto w-full max-w-xs rounded-md shadow-lg mb-4"
+                    src="https://www.beginlearning.com/wp-content/uploads/2023/08/writing-games_5.jpg"
+                    alt="Reading Image">
+                <h1 class="text-4xl text-purple-600 mb-2">Welcome to vocabulary Building!</h1>
+                <p class="text-xl text-gray-700">Let’s explore the wonderful world of Vocabulary! Choose an activity to
+                    begin.</p>
+            </div>
+
+            <!-- Content that will dynamically change -->
+            <div id="content" class="text-center text-3xl font-bold text-gray-800">
+                <!-- Content will be injected here based on the user's choice -->
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2024 Ulearn. All rights reserved.</p>
+        <p>
+            <a href="#about">About Us</a> |
+            <a href="#contact">Contact</a> |
+            <a href="#privacy">Privacy Policy</a>
+        </p>
+    </footer>
+    <script>
+        function showContent(contentType) {
+            const interactiveContent = document.getElementById('content');
+            const welcomeMessage = document.getElementById('welcome-message');
+
+            if (welcomeMessage) {
+                welcomeMessage.style.display = 'none';
+            }
+
+            if (contentType === 'vocabulary-building') {
+                interactiveContent.innerHTML = `
+                    <div class="story-content overflow-y-auto max-h-96 p-4">
+                        <h2 class="text-xl text-blue-800">Vocabulary Building</h2>
+        
+                        <h3 class="text-lg text-blue-600">1. Word Exploration</h3>
+                        <p>Learn new words and their meanings with this engaging video:</p>
+                        <div class="video-container">
+                            <iframe class="w-full h-48 sm:h-64 md:h-80 lg:h-96 max-w-3xl" src="https://www.youtube.com/embed/VIDEO_ID_1" 
+                                title="Video on Word Exploration" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                        </div>
+        
+                        <h3 class="text-lg text-blue-600">2. Matching Words with Pictures</h3>
+                        <p>Watch this video to see how words match with pictures and try it yourself:</p>
+                        <div class="video-container">
+                            <iframe class="w-full h-48 sm:h-64 md:h-80 lg:h-96 max-w-3xl" src="https://www.youtube.com/embed/VIDEO_ID_2" 
+                                title="Video on Matching Words with Pictures" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                        </div>
+        
+                        <h3 class="text-lg text-blue-600">3. Fun with Synonyms and Antonyms</h3>
+                        <p>Learn about synonyms and antonyms in this fun video:</p>
+                        <div class="video-container">
+                            <iframe class="w-full h-48 sm:h-64 md:h-80 lg:h-96 max-w-3xl" src="https://www.youtube.com/embed/VIDEO_ID_3" 
+                                title="Video on Synonyms and Antonyms" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                        </div>
+        
+                        <h3 class="text-lg text-blue-600">4. Vocabulary Games</h3>
+                        <p>Play these interactive vocabulary games to reinforce what you’ve learned:</p>
+                        <div class="video-container">
+                            <iframe class="w-full h-48 sm:h-64 md:h-80 lg:h-96 max-w-3xl" src="https://www.youtube.com/embed/VIDEO_ID_4" 
+                                title="Video on Vocabulary Games" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                `;
+            } else if (contentType === 'vocabulary-activities') {
+                interactiveContent.innerHTML = `
+                    <div class="story-content overflow-y-auto max-h-96 p-4">
+                        <h2 class="text-xl text-green-800">Vocabulary Activities</h2>
+        
+                        <h3 class="text-lg text-green-600">1. Word Matching</h3>
+                        <p>Match words with their definitions using this interactive video:</p>
+                        <div class="video-container">
+                            <iframe class="w-full h-48 sm:h-64 md:h-80 lg:h-96 max-w-3xl" src="https://www.youtube.com/embed/VIDEO_ID_5" 
+                                title="Video on Word Matching" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                        </div>
+        
+                        <h3 class="text-lg text-green-600">2. Creating Sentences</h3>
+                        <p>Learn how to create sentences with new vocabulary words:</p>
+                        <div class="video-container">
+                            <iframe class="w-full h-48 sm:h-64 md:h-80 lg:h-96 max-w-3xl" src="https://www.youtube.com/embed/VIDEO_ID_6" 
+                                title="Video on Creating Sentences" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                        </div>
+        
+                        <h3 class="text-lg text-green-600">3. Fun Vocabulary Challenges</h3>
+                        <p>Participate in vocabulary challenges to test your skills:</p>
+                        <div class="video-container">
+                            <iframe class="w-full h-48 sm:h-64 md:h-80 lg:h-96 max-w-3xl" src="https://www.youtube.com/embed/VIDEO_ID_7" 
+                                title="Video on Vocabulary Challenges" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                `;
+            } else if (contentType === 'quiz') {
+                interactiveContent.innerHTML = `
+                    <h2 class="text-xl text-purple-800">Vocabulary Quiz</h2>
+                    <p>Test your vocabulary knowledge with this fun quiz:</p>
+                    <div id="quiz-container">
+                        <div class="quiz-question">
+                            <p>What is the synonym of "happy"?</p>
+                            <button class="quiz-answer" data-correct="true">Joyful</button>
+                            <button class="quiz-answer" data-correct="false">Sad</button>
+                        </div>
+                        <div class="quiz-question mt-4">
+                            <p>What is the antonym of "hot"?</p>
+                            <button class="quiz-answer" data-correct="true">Cold</button>
+                            <button class="quiz-answer" data-correct="false">Warm</button>
+                        </div>
+                        <div id="quiz-result" class="mt-4"></div>
+                    </div>
+                `;
+                attachQuizEventListeners();
+            }
+        }
+
+        function attachQuizEventListeners() {
+            document.querySelectorAll('.quiz-answer').forEach(button => {
+                button.addEventListener('click', function () {
+                    const isCorrect = this.getAttribute('data-correct') === 'true';
+                    const resultContainer = document.getElementById('quiz-result');
+
+                    if (isCorrect) {
+                        resultContainer.innerHTML = '<p class="text-green-500">Correct! 🎉</p>';
+                    } else {
+                        resultContainer.innerHTML = '<p class="text-red-500">Oops! Try again.</p>';
+                    }
+                });
+            });
+        }
+
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+
+
+</body>
+
+</html>
